@@ -130,7 +130,6 @@ p {
   text-underline-offset: 6px;
 }
 .header-phone {
-  margin-inline-start: auto;
   gap: 9px;
   color: var(--blue);
   direction: ltr;
