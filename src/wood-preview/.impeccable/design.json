@@ -1,71 +1,15 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T17:08:42.669421+00:00",
+  "generatedAt": "2026-10-02T17:41:19.135626+00:00",
   "title": "Design System: Olympic Furniture — Wood Preview Alias",
   "extensions": {},
   "components": [
     {
-      "name": "Primary Action",
-      "kind": "button",
-      "description": "Walnut action with tactile hover and pointer press.",
-      "html": "<a class=\"ds-primary\" dir=\"rtl\" href=\"#furniture\">לצפייה ברהיטים<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M20 12H4m6-6-6 6 6 6\"/></svg></a>",
-      "css": ".ds-primary{font-family:Heebo,sans-serif;display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:54px;padding:13px 23px;background:var(--red,#73503b);color:#fff;border-radius:6px;font-size:17px;font-weight:600;text-decoration:none;transition:background-color 180ms,transform 180ms}.ds-primary:hover{background:#5d3f2e;transform:translateY(-2px)}@media(hover:hover) and (pointer:fine){.ds-primary:active{transform:scale(.97)}}.ds-primary:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none}}"
-    },
-    {
-      "name": "Text Link",
-      "kind": "button",
-      "description": "Olive secondary action.",
-      "html": "<a class=\"ds-text-link\" dir=\"rtl\" href=\"#visit\">בואו לבקר בחנות<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M20 12H4m6-6-6 6 6 6\"/></svg></a>",
-      "css": ".ds-text-link{font-family:Heebo,sans-serif;display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--blue,#526047);font-weight:500;text-decoration:none}.ds-text-link:hover{text-decoration:underline;text-underline-offset:6px}.ds-text-link:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}"
-    },
-    {
-      "name": "Room Selector",
-      "kind": "chip",
-      "description": "Native room buttons with an understated selected underline.",
-      "html": "<div class=\"ds-room-tabs\" dir=\"rtl\" role=\"group\" aria-label=\"סוג החדר להמחשה\"><button aria-pressed=\"true\">סלון</button><button aria-pressed=\"false\">חדר שינה</button><button aria-pressed=\"false\">פינת עבודה</button></div>",
-      "css": ".ds-room-tabs{display:flex;justify-content:center;gap:24px}.ds-room-tabs button{font-family:Heebo,sans-serif;font-size:15px;color:var(--muted,#716452);border:0;border-bottom:2px solid transparent;padding:8px 0;min-height:44px;background:transparent;cursor:pointer}.ds-room-tabs button[aria-pressed=\"true\"]{color:var(--ink,#332a20);border-bottom-color:#936e49}.ds-room-tabs button:hover{color:var(--ink,#332a20)}.ds-room-tabs button:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}"
-    },
-    {
-      "name": "Finish Selector",
-      "kind": "chip",
-      "description": "Circular finish swatches with a selected outline. These describe the illustration only.",
-      "html": "<div class=\"ds-finishes\" role=\"group\" aria-label=\"גווני עץ להמחשה\"><button aria-label=\"עץ בהיר\" aria-pressed=\"false\"><span style=\"background:#ac8257\"></span></button><button aria-label=\"אגוז חם\" aria-pressed=\"true\"><span style=\"background:#785238\"></span></button><button aria-label=\"אלון מעושן\" aria-pressed=\"false\"><span style=\"background:#736b57\"></span></button></div>",
-      "css": ".ds-finishes{display:flex;gap:3px}.ds-finishes button{width:44px;height:44px;display:grid;place-items:center;background:transparent;border:1px solid transparent;border-radius:50%;cursor:pointer}.ds-finishes button[aria-pressed=\"true\"]{border-color:var(--ink,#332a20)}.ds-finishes span{width:29px;height:29px;border-radius:50%}.ds-finishes button:hover{background:#e8dfd1}.ds-finishes button:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}"
-    },
-    {
-      "name": "Replay Control",
-      "kind": "button",
-      "description": "Native replay control, disabled whenever motion is paused or off.",
-      "html": "<button class=\"ds-replay\" aria-label=\"הרכבת החדר מחדש\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M4 9a8 8 0 1 1 0 6M4 4v5h5\"/></svg></button>",
-      "css": ".ds-replay{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line,#d8cbbb);border-radius:50%;color:var(--ink,#332a20);background:transparent;cursor:pointer}.ds-replay:disabled{opacity:.45;cursor:default}.ds-replay:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}"
-    },
-    {
-      "name": "Motion Control",
-      "kind": "button",
-      "description": "Main header pause/play control; pressed means motion is paused. Reduced-motion preference disables it.",
-      "html": "<button class=\"ds-motion\" aria-label=\"השהיית אנימציות\" aria-pressed=\"false\"><svg width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M8 5v14M16 5v14\"/></svg></button>",
-      "css": ".ds-motion{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line,#d8cbbb);border-radius:50%;background:transparent;color:var(--blue,#526047);cursor:pointer}.ds-motion:disabled{opacity:.6;cursor:default}.ds-motion:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px}"
-    },
-    {
-      "name": "Header Navigation",
+      "name": "Preview Alias Toolbar",
       "kind": "nav",
-      "description": "Right-side olive Hebrew navigation in the main sticky header; motion and phone controls sit on the left.",
-      "html": "<nav class=\"ds-nav\" dir=\"rtl\" aria-label=\"ניווט ראשי\"><a href=\"#furniture\">רהיטים</a><a href=\"#custom\">בהתאמה אישית</a><a href=\"#visit\">בואו לבקר</a></nav>",
-      "css": ".ds-nav{font-family:Heebo,sans-serif;display:flex;gap:clamp(20px,3vw,44px);color:var(--blue,#526047);font-weight:500}.ds-nav a{min-height:44px;display:inline-flex;align-items:center;color:inherit;text-decoration:none}.ds-nav a:hover{text-decoration:underline;text-underline-offset:6px}.ds-nav a:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}"
-    },
-    {
-      "name": "Disclosure Row",
-      "kind": "custom",
-      "description": "Native custom-option disclosure with rotating SVG plus and short body entry.",
-      "html": "<details class=\"ds-disclosure\" dir=\"rtl\"><summary>מידות לפי הצורך<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M12 4v16M4 12h16\"/></svg></summary><p>פרטים על אפשרויות ההתאמה.</p></details>",
-      "css": ".ds-disclosure{font-family:Heebo,sans-serif;color:var(--ink,#332a20);border-bottom:1px solid #cbbca8}.ds-disclosure summary{display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;list-style:none;padding-block:17px;font-size:19px}.ds-disclosure summary::-webkit-details-marker{display:none}.ds-disclosure summary svg{transition:transform 160ms cubic-bezier(.23,1,.32,1)}.ds-disclosure[open] summary svg{transform:rotate(45deg)}.ds-disclosure[open] p{animation:ds-disclosure-open 220ms cubic-bezier(.23,1,.32,1) both}.ds-disclosure p{color:#665744;padding-bottom:20px;max-width:450px;line-height:1.8}.ds-disclosure summary:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-disclosure summary svg{transition:none}}@keyframes ds-disclosure-open{from{opacity:.6;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}@media(prefers-reduced-motion:reduce){.ds-disclosure[open] p{animation:none}}"
-    },
-    {
-      "name": "Furniture Card Frame",
-      "kind": "card",
-      "description": "Open catalog frame with a thin walnut ledge. The panel sample labels the image region; published cards use real contained furniture photographs.",
-      "html": "<article class=\"ds-card\" dir=\"rtl\"><button class=\"ds-card-photo\" aria-label=\"הגדלת תמונה\"><span>מקום לתצלום הרהיט</span></button><h4>כותרת הרהיט</h4><p>תיאור הרהיט מהגלריה.</p></article>",
-      "css": ".ds-card{font-family:Heebo,sans-serif;color:var(--ink,#332a20);background:transparent;padding:0;box-shadow:none;border-radius:0;max-width:300px}.ds-card-photo{display:flex;align-items:end;justify-content:center;position:relative;width:100%;height:320px;padding:0;border:0;background:transparent;overflow:visible;color:var(--muted,#716452);font-family:Heebo,sans-serif;cursor:pointer}.ds-card-photo::after{content:\"\";position:absolute;bottom:-5px;inset-inline:0;height:5px;border-radius:2px;background:#b08a64}.ds-card-photo span{transition:transform 250ms}.ds-card-photo:hover span{transform:scale(1.025)}.ds-card-photo:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px}.ds-card h4{font-size:18px;font-weight:500;letter-spacing:-.025em;margin:18px 0 0}.ds-card p{font-size:14px;line-height:1.8;color:var(--muted,#716452);margin:7px 0 0;max-width:38ch}@media(max-width:767px){.ds-card-photo{height:340px}.ds-card h4{margin-top:15px}}@media(prefers-reduced-motion:reduce){.ds-card-photo span{transition:none}}"
+      "description": "Alias-only title and root-homepage link; all visual tokens and homepage components are owned by root DESIGN.md and .impeccable/design.json.",
+      "html": "<div class=\"ds-alias-toolbar\" dir=\"rtl\"><span>תצוגת עיצוב חדשה</span><a href=\"/\">לאתר הנוכחי<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M18 18 6 6M6 16V6h10\"/></svg></a></div>",
+      "css": ".ds-alias-toolbar{font-family:Heebo,sans-serif;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:42px;background:#e8dfd1;color:#554533;font-size:13px;padding-inline:20px}.ds-alias-toolbar a{display:inline-flex;align-items:center;gap:7px;min-height:42px;color:inherit;text-decoration:none}.ds-alias-toolbar a:hover{text-decoration:underline;text-underline-offset:6px}.ds-alias-toolbar a:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px}@media(max-width:767px){.ds-alias-toolbar{font-size:11px;gap:8px}}"
     }
   ],
   "narrative": {
@@ -80,7 +24,7 @@
     "dos": [
       "**Do** apply the root wood system to both `/` and `/wood-preview/`.",
       "**Do** keep the preview alias unindexed and account for its extra toolbar.",
-      "**Do** preserve the root motion controls, reduced-motion presentation and animated WebGL fallback."
+      "**Do** preserve the root local photo-strip pause control, reduced-motion presentation and animated WebGL fallback."
     ],
     "donts": [
       "**Don't** restore the former prohibition against using this system on the homepage.",

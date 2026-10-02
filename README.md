@@ -2,7 +2,7 @@
 
 Hebrew, right-to-left furniture website built with React, TypeScript, Tailwind CSS and Vite. The approved destination is [olympic-furniture.github.io](https://olympic-furniture.github.io/). Check the [publishing workflow status](https://github.com/olympic-furniture/olympic-furniture.github.io/actions/workflows/deploy.yml) for the latest verification and deployment results.
 
-The approved homepage uses a cream, walnut and olive palette, an interactive room assembly and a moving strip of real furniture photos. Room and finish controls are illustrative; they do not configure a product. All business text and furniture records stay editable. Browsers without WebGL use a matching animated 16-frame room render; reduced motion shows the assembled room. The original logo remains recognizable with the two requested wooden letters. [Brand assets and generation prompts](docs/design/wood-brand-assets.json) and [authored room animation provenance](docs/design/wood-assembly-assets.json) record the supplied and produced imagery. The [preview alias](https://olympic-furniture.github.io/wood-preview/) remains unindexed. See [the design brief](docs/design/wood-preview.md).
+The approved homepage uses a cream, walnut and olive palette, a fixed, staged room assembly and a moving strip of real furniture photos. The hero shows one illustrative living room, with a 4.6-second staged furniture assembly and a gentle camera move. It has no room, finish or replay controls. All business text and furniture records stay editable. Browsers without WebGL use a matching animated 48-frame room render; reduced motion shows the assembled room. The original logo remains recognizable with the two requested wooden letters. [Brand assets and generation prompts](docs/design/wood-brand-assets.json) and [current hero motion provenance](docs/design/wood-hero-motion-assets.json) record the supplied and produced imagery. The [preview alias](https://olympic-furniture.github.io/wood-preview/) remains unindexed. See [the design brief](docs/design/wood-preview.md).
 
 ## Development
 
@@ -22,7 +22,7 @@ npm run preview
 
 ## Editing and content ownership
 
-The family owns the business descriptions, furniture information, photographs and confirmed prices. Use the [Hebrew editing guide](docs/editing-guide.he.md). The footer links to the real [Pages CMS editor](https://app.pagescms.org/).
+The family owns the business descriptions, furniture information, photographs and confirmed prices. Use the [Hebrew editing guide](docs/editing-guide.he.md). The public website has no CMS link; editors use [Pages CMS](https://app.pagescms.org/) directly.
 
 - `content/site.json` contains business details and homepage text.
 - `content/products/*.json` contains one furniture entry per file. The filename determines its public identifier.

@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { createRoomScene } from "./room-scene";
-import type { Motion, Room } from "./room-presets";
+import type { Motion } from "./room-presets";
+import { roomMotion } from "./room-motion";
 
 type Controller = ReturnType<typeof createRoomScene>;
-type Props = { room: Room; finish: number; replay: number; motion: Motion };
+type Props = { motion: Motion };
 export function RoomScene(props: Props) {
   const host = useRef<HTMLDivElement>(null);
   const controller = useRef<Controller | null>(null);
@@ -14,7 +15,7 @@ export function RoomScene(props: Props) {
   );
   const [loadedSprite, setLoadedSprite] = useState<string>();
   const [visible, setVisible] = useState(true);
-  const sprite = `/images/wood-preview/${props.room}-${props.finish}-assembly.webp`;
+  const sprite = "/images/wood-preview/living-hero-assembly.webp";
   useEffect(() => {
     let cancelled = false;
     let canvas: HTMLCanvasElement | undefined;
@@ -36,8 +37,8 @@ export function RoomScene(props: Props) {
           const scene = createRoomScene(host.current);
           controller.current = scene;
           scene.setMotion(latest.current.motion);
-          scene.setRoom(latest.current.room);
-          scene.setFinish(latest.current.finish);
+          scene.setRoom("living");
+          scene.setFinish(1);
           canvas = host.current.querySelector("canvas") ?? undefined;
           canvas?.addEventListener("webglcontextlost", contextLost);
           setRenderer("webgl");
@@ -54,7 +55,7 @@ export function RoomScene(props: Props) {
     };
   }, []);
   useEffect(() => {
-    if (renderer !== "fallback") return;
+    if (renderer !== "fallback" || props.motion === "off") return;
     let cancelled = false;
     const image = new Image();
     image.onload = () => {
@@ -65,7 +66,7 @@ export function RoomScene(props: Props) {
       cancelled = true;
       image.onload = null;
     };
-  }, [renderer, sprite]);
+  }, [renderer, sprite, props.motion]);
   useEffect(() => {
     const element = host.current;
     if (!element || typeof IntersectionObserver === "undefined") return;
@@ -76,39 +77,31 @@ export function RoomScene(props: Props) {
     return () => observer.disconnect();
   }, []);
   useEffect(() => {
-    controller.current?.setRoom(props.room);
-  }, [props.room]);
-  useEffect(() => {
-    controller.current?.setFinish(props.finish);
-  }, [props.finish]);
-  useEffect(() => {
     controller.current?.setMotion(props.motion);
   }, [props.motion]);
-  useEffect(() => {
-    if (props.replay) controller.current?.replay();
-  }, [props.replay]);
-  const animatedFallback = renderer === "fallback" && loadedSprite === sprite;
+  const animatedFallback =
+    renderer === "fallback" &&
+    loadedSprite === sprite &&
+    props.motion !== "off";
   return (
     <div
       className="wood-room"
       aria-hidden="true"
       data-renderer={renderer}
-      data-room={props.room}
-      data-finish={props.finish}
       data-motion={props.motion}
       data-visible={visible}
+      style={{ "--room-duration": `${roomMotion.duration}ms` } as CSSProperties}
     >
       <img
         className="wood-room-still"
         data-visible={renderer !== "webgl" && !animatedFallback}
-        src={`/images/wood-preview/${props.room}-${props.finish}.webp`}
+        src="/images/wood-preview/living-hero.webp"
         alt=""
         width="640"
         height="470"
       />
       {animatedFallback && (
         <div
-          key={`${sprite}-${props.replay}`}
           className="wood-room-flipbook"
           style={{ backgroundImage: `url("${sprite}")` }}
         />

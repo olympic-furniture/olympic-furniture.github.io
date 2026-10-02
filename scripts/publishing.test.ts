@@ -113,10 +113,8 @@ describe('editor contract and production output', () => {
     expect(main.documentElement.getAttribute('data-design')).toBe('wood');
     expect(main.querySelector('meta[name="robots"]')?.getAttribute('content') ?? '').not.toContain('noindex');
     expect(output).toContain('/images/brand/logo-wood-letters.webp');
-    for (const room of ['living', 'bedroom', 'office']) {
-      for (const finish of [0, 1, 2]) {
-        expect((await readFile(path.join(root, `dist/images/wood-preview/${room}-${finish}-assembly.webp`))).byteLength).toBeGreaterThan(1000);
-      }
+    for (const asset of ['living-hero.webp', 'living-hero-assembly.webp']) {
+      expect((await readFile(path.join(root, `dist/images/wood-preview/${asset}`))).byteLength).toBeGreaterThan(1000);
     }
   });
 });

@@ -33,12 +33,26 @@ export function usePageMotion() {
       { threshold: 0.2 },
     );
     if (family) observer.observe(family);
+    const strip = root.current?.querySelector<HTMLElement>(".wood-photo-strip");
+    let stripVisible = false;
+    function updateStrip() {
+      if (strip)
+        strip.dataset.visible = String(stripVisible && !document.hidden);
+    }
+    const stripObserver = new IntersectionObserver(([entry]) => {
+      stripVisible = entry.isIntersecting;
+      updateStrip();
+    });
+    if (strip) stripObserver.observe(strip);
+    document.addEventListener("visibilitychange", updateStrip);
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       resize.disconnect();
       observer.disconnect();
+      stripObserver.disconnect();
+      document.removeEventListener("visibilitychange", updateStrip);
     };
   }, []);
   return { root, progress };

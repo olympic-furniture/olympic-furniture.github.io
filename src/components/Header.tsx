@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ListIcon, PhoneIcon, XIcon } from "@phosphor-icons/react";
 import { site } from "../content";
 import { phoneHref } from "./ContactLinks";
@@ -9,7 +9,7 @@ const links = [
   { href: "#story", label: "הסיפור שלנו" },
   { href: "#visit", label: "בואו לבקר" },
 ];
-export function Header({ controls }: { controls?: ReactNode }) {
+export function Header() {
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
   const header = useRef<HTMLElement>(null);
@@ -57,7 +57,6 @@ export function Header({ controls }: { controls?: ReactNode }) {
           {open ? <XIcon size={25} /> : <ListIcon size={25} />}
         </button>
         <div className="header-actions">
-          {controls}
           <a className="header-phone" href={phoneHref}>
             <PhoneIcon size={19} aria-hidden />
             <bdi>{site.phone}</bdi>

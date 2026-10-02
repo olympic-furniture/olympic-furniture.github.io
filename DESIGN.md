@@ -14,7 +14,7 @@ colors:
 typography:
   display:
     fontFamily: "Heebo, sans-serif"
-    fontSize: "clamp(40px, 4.5vw, 72px)"
+    fontSize: "clamp(40px, 4.5vw, 64px)"
     fontWeight: 500
     lineHeight: 1.18
     letterSpacing: "-0.025em"
@@ -55,21 +55,15 @@ components:
     backgroundColor: "#5d3f2e"
   text-link:
     textColor: "{colors.blue}"
-  room-tab:
-    textColor: "{colors.muted}"
-    padding: "8px 0"
-  room-tab-selected:
-    textColor: "{colors.ink}"
-  replay:
-    textColor: "{colors.ink}"
-    rounded: "{rounded.round}"
-    width: "44px"
-    height: "44px"
-  motion-control:
+  phone-pill:
+    backgroundColor: "{colors.surface}"
     textColor: "{colors.blue}"
-    rounded: "{rounded.round}"
-    width: "44px"
-    height: "44px"
+    rounded: "999px"
+    padding: "0 14px"
+    height: "46px"
+  carousel-control:
+    textColor: "{colors.blue}"
+    padding: "0"
   furniture-card:
     textColor: "{colors.ink}"
     padding: "0"
@@ -85,7 +79,7 @@ Warm cream, walnut ink and olive controls surround real furniture photographs an
 
 This is the canonical system for the approved homepage at `/`. The unindexed `/wood-preview/` alias uses the same system with an additional utility toolbar. It supersedes the former light-blue, red and pale-yellow homepage identity; retained base stylesheet declarations are implementation history, not the current visual authority. The durable brand commitments are in [PRODUCT.md](PRODUCT.md); the page direction and visitor path are in [the surface brief](docs/design/wood-preview.md). This document records the finished implementation, reviewed with a ship disposition on 2026-10-02.
 
-Broad section grounds and open furniture displays provide structure. Spatial assembly explains the room; motion controls and reduced-motion behavior preserve access to the content. Generated lettering and scene renders serve the illustration and identity, while the catalog remains real business photography.
+Broad section grounds and open furniture displays provide structure. A single staged assembly explains the fixed living room; the photo strip’s local pause control and reduced-motion behavior preserve access to the content. Generated lettering and scene renders serve the illustration and identity, while the catalog remains real business photography.
 
 **Key Characteristics:**
 
@@ -94,7 +88,7 @@ Broad section grounds and open furniture displays provide structure. Spatial ass
 - Complete furniture photographs on an open canvas with thin wooden ledges.
 - Solid room geometry and matching animated raster fallback.
 - Recognizable original logo with matching wooden initials and screw details.
-- Explicit pause, reduced-motion support and native selection, disclosure and dialog controls.
+- Local photo-strip pause, reduced-motion support and native category selection, disclosure and dialog controls.
 
 ## Colors
 
@@ -111,7 +105,7 @@ Warm neutrals carry the page; walnut and olive distinguish actions without compe
 ### Neutral
 
 - **Warm Paper** (`paper`): hero, catalog and visit canvas.
-- **Cream Surface** (`surface`): utility controls, mobile contact strip and image dialog.
+- **Cream Surface** (`surface`): utility controls, outlined telephone pill and image dialog.
 - **Wood Tint** (`tint`): subdued empty and unavailable-image states.
 - **Walnut Ink** (`ink`): headings and selected controls.
 - **Muted Timber** (`muted`): supporting copy, captions and unselected controls.
@@ -131,11 +125,11 @@ Section grounds vary within this material family: a warmer showcase, pale custom
 
 ### Hierarchy
 
-- **Display:** hero headline; its desktop scale is in frontmatter. It becomes (52px) at the intermediate breakpoint and `clamp(34px, 8.5vw, 46px)` on mobile. The wooden ר in ריהוט and ל in לבית are transparent PNG illustrations with visible grain and screws, aligned within the live heading.
+- **Display:** hero headline; its desktop scale is in frontmatter. It becomes (52px) at the intermediate breakpoint and `clamp(34px, 8.5vw, 46px)` on mobile. The wooden ר in ריהוט and ל in לבית are transparent PNG illustrations with visible grain and screws, absolutely positioned within the live heading, with bottom-aligned images sharing the surrounding text baseline.
 - **Headline:** section titles. The showcase has a local `clamp(32px, 3.3vw, 49px)` size, becoming (32px) on mobile; shared section titles become (34px).
 - **Title:** medium gallery item headings. Contact and disclosure titles use larger local sizes where their functions warrant them.
 - **Body:** recurring section copy. Supporting prose ranges from (16px) mobile copy through (20px) hero copy, with widths set to the content rather than a universal line-length token.
-- **Label:** supporting controls and captions. Room buttons use (15px), then (14px) on mobile; image captions and utility labels range from (12–15px).
+- **Label:** supporting controls and captions. Image captions and utility labels range from (12–15px).
 
 The full CMS headline remains the heading's accessible name; decorative letter pieces and visible split spans are hidden from assistive technology.
 
@@ -145,7 +139,7 @@ The full CMS headline remains the heading's accessible name; decorative letter p
 
 The centered shell is `min(1320px, calc(100% - 112px))`, narrowing to `calc(100% - 64px)` at (1100px) and `calc(100% - 40px)` at (767px). The sticky header occupies (77px) desktop and (71px) mobile. Main-page anchor offsets are (100px) desktop and (94px) mobile. The preview alias adds a (42px) toolbar above the header and uses (142px / 130px) anchor offsets.
 
-The hero fills at least the viewport below the header and any alias toolbar. Its RTL copy and room share a (0.9fr / 1.1fr) grid with (64px) separation, reducing to (32px) at the intermediate breakpoint. It stacks at (767px), with the room capped at (430px) and retaining its (640 / 470) aspect ratio. Custom and family sections use broad two-column layouts and stack on mobile.
+The hero fills at least the viewport below the header and any alias toolbar. Its RTL copy and room share a (0.8fr / 1.2fr) grid with (40px) separation, reducing to (32px) at the intermediate breakpoint. At the widest shell the room spans (768px). It stacks at (767px), with the room capped at (500px) and retaining its (640 / 470) aspect ratio. Custom and family sections use broad two-column layouts and stack on mobile.
 
 The complete gallery contains the existing (83) published photographs across six categories. It uses four columns from (1024px), two from (768px) and one below that. Two rows maximum means (8 / 4 / 2) entries per page; category changes reset paging, and paging controls remain below the grid. Gallery gaps are (28px), becoming (32px) on mobile. Image regions are (320px) tall on desktop and (340px) on mobile, with contained pictures aligned above the ledge.
 
@@ -159,7 +153,7 @@ Buttons and gallery articles are flat. Depth comes from real photography, the na
 
 ## Shapes
 
-Primary controls use restrained corners (`control`), photography uses softly rounded corners (`photo`), and replay, motion, finish and paging controls are circular. Room and category selectors use text and an active underline rather than filled pills. Gallery ledges are thin (5px) with small (2px) corners. Large section grounds remain full-width and unboxed. Custom and shop photography can use a padded outer frame; this treatment does not extend to catalog image backgrounds.
+Primary controls use restrained corners (`control`), photography uses softly rounded corners (`photo`), and menu and paging controls are circular, while the telephone link is an outlined pill. Category selectors use text and an active underline rather than filled pills. Gallery ledges are thin (5px) with small (2px) corners. Large section grounds remain full-width and unboxed. Custom and shop photography can use a padded outer frame; this treatment does not extend to catalog image backgrounds.
 
 ## Components
 
@@ -169,13 +163,13 @@ Primary actions pair white text with walnut and a (54px) minimum height. Hover d
 
 ### Navigation
 
-The main sticky header has right-side navigation and left-side motion and telephone controls. It has no logo or preview banner. The (44px) circular motion button has an accessible name, pressed state and pause/play SVG icon; reduced-motion preference disables it. At (1023px), navigation becomes a native menu toggle and mobile panel. Escape closes the panel and returns focus to the toggle; outside pointer input and desktop resizing also close it. The alias toolbar contains its motion control and a link to `/`.
+The main sticky header has right-side navigation and a left-side outlined telephone pill. The phone icon sits to the left of isolated numerals; the pill and circular menu control both measure (46px) high. The header has no logo, preview banner or global motion button. At (1023px), navigation becomes a native menu toggle and mobile panel. Escape closes the panel and returns focus to the toggle; outside pointer input and desktop resizing also close it. The alias toolbar contains only its title and a link to `/`.
 
-A decorative (2px) walnut line below the header tracks scroll position from the right. It remains an orientation aid when motion is paused or reduced; it is hidden from assistive technology.
+A decorative (2px) walnut line below the header tracks scroll position from the right. It remains an orientation aid under reduced motion; it is hidden from assistive technology.
 
-### Room and Category Selectors
+### Category Selectors
 
-Native buttons communicate selection with `aria-pressed`, walnut ink and a (2px) warm-brown underline. Room targets are at least (44px) high; category targets retain (50px) desktop and (44px) mobile minimums. Finish selectors are (44px) circular targets around (29px) swatches and have an ink selection outline. Their labels identify illustrative finishes, not inventory. Replay is a circular outlined control, disabled whenever motion is paused or reduced.
+Native buttons communicate selection with `aria-pressed`, walnut ink and a (2px) warm-brown underline. Category targets retain (50px) desktop and (44px) mobile minimums. The fixed hero illustration has no room selectors, finish selectors, replay or visible disclaimer text; its figure carries the accessible illustration label.
 
 ### Cards / Containers
 
@@ -189,13 +183,17 @@ Native `details` and `summary` rows use fine dividers, (17px) vertical summary p
 
 ### Room Assembly and Photo Strip
 
-The room is explicitly labeled as an illustration. Living room, bedroom and office presets each have three finishes. Solid furniture pieces assemble with (170ms) stagger, (1150ms) piece duration and quartic ease-out; the cycle completes at (1750ms). The renderer is imported lazily, caps pixel ratio at (2), stops frames when assembled, paused or offscreen and disposes its resources on unmount.
+The figure identifies one fixed walnut living room as an illustration. Its single (4600ms) assembly uses furniture-root delays of (250ms + index × 450ms), (1800ms) root movement and quartic ease-out. Cabinet doors, sofa arms, back and seat cushions, tabletop, throw and book assemble in stages ending at (4500ms). A mild camera orbit and (8%) zoom keep the room centered at a (1.23) look-at height. The renderer is imported lazily, caps pixel ratio at (2), suspends offscreen or when the document is hidden, stops frames when assembled and disposes resources on unmount.
 
-If WebGL is unavailable, initialization fails or its context is lost, the same authored room uses matching (16-frame, 4 × 4) sprite sheets for all nine room/finish combinations. The fallback assembles over the same (1750ms), supports selection, replay and pause, and pauses offscreen. An assembled transparent WebP is visible while the sprite loads; reduced motion shows the completed room. WebGL finish changes recolor the current assembly; changing the fallback finish starts the corresponding sprite sequence.
+If WebGL is unavailable, initialization fails or its context is lost, one matching native (48-frame, 8 × 6) sprite sheet assembles over the same (4600ms), suspending offscreen. An assembled transparent WebP is visible while the sprite loads. Reduced motion shows the final static room and does not request the sprite. [The current motion asset manifest](docs/design/wood-hero-motion-assets.json) records source files, rendering and framing; the previous nine room/finish sprite sheets remain archived assets.
 
-The real-photo conveyor runs a constant-speed (36s) loop. Hover with a fine pointer, keyboard focus and the explicit motion control pause it. Reduced motion removes the loop and copies, exposing one horizontally scrollable photo group.
+The real-photo conveyor runs a constant-speed (22s) loop. A text-and-SVG pause/resume button beside its caption has a (44px) minimum height and an `aria-pressed` state. This local control affects only the strip and is hidden under reduced motion. Fine-pointer hover, keyboard focus, offscreen state and a hidden document also pause the strip. Reduced motion removes the loop and copies, exposing one horizontally scrollable photo group.
 
-The explicit pause controls room assembly, conveyor and the letter, gallery, disclosure-body and family-arrival CSS animations. It preserves their current progress; it does not disable native controls, the scroll-position indicator or ordinary hover transitions. Reduced motion presents assembled/static content and removes transitions. Wooden initials arrive over (850ms), with the ל delayed (140ms). The family photograph has a (650ms) arrival only once, when it first intersects at a (0.2) threshold while motion is playing; otherwise it stays visible without that entrance.
+Reduced motion presents assembled/static content and removes transitions. Wooden initials arrive over (850ms), with the ל delayed (140ms). Gallery and disclosure entries remain short independent effects. The family photograph has a (650ms) arrival only once, when it first intersects at a (0.2) threshold while motion is playing; otherwise it stays visible without that entrance.
+
+### Footer
+
+The footer contains business identity, address and Facebook. Direct contact actions remain in the header and visit section. There is no fixed bottom contact bar or public CMS link; mobile footer bottom padding is (28px). Editors use the direct Pages CMS address in the editing guide.
 
 ### Brand Signature
 
@@ -214,10 +212,10 @@ The signature before the footer uses the adapted original logo, retaining its ch
 
 ### Don't:
 
-- **Don't** treat room illustrations or finish swatches as catalog products or promised inventory.
+- **Don't** treat the room illustration as catalog products or promised inventory.
 - **Don't** put pale filled mats or elevated cards around the catalog furniture photographs.
 - **Don't** hide functional content behind an entrance animation or require WebGL to browse the page.
-- **Don't** add movement without pause controls and a complete reduced-motion presentation.
+- **Don't** add continuous movement without a local pause control and a complete reduced-motion presentation.
 - **Don't** introduce unsupported prices, delivery promises, reviews or checkout through visual examples.
 
 Not canonized: obsolete base palette/display styling, inherited utility and storefront-image shadows, local scene/material colors and the unused wood ease-in-out property are not new reusable house tokens. The ship review identifies no craft-floor defect to canonize.

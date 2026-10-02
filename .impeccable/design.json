@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T17:08:42.669421+00:00",
+  "generatedAt": "2026-10-02T17:41:19.135626+00:00",
   "title": "Design System: Olympic Furniture — Walnut Showroom",
   "extensions": {
     "colorMeta": {
@@ -165,43 +165,43 @@
       },
       {
         "name": "assembly",
-        "value": "1750ms total; 170ms stagger; 1150ms per piece; quartic ease-out",
-        "purpose": "Explanatory WebGL room assembly; pauses, stops offscreen and stops when complete."
+        "value": "4600ms total; furniture-root delay 250ms + index × 450ms; 1800ms root duration; component stages end at 4500ms; quartic ease-out",
+        "purpose": "Fixed walnut living room; mild camera orbit, 8% zoom and look-at height 1.23. Suspends offscreen/document-hidden and stops frames when complete."
       },
       {
         "name": "assembly-fallback",
-        "value": "1750ms steps(1, end); 16 frames in a 4 × 4 sheet",
-        "purpose": "Same authored room without WebGL or after context loss; selection, replay, pause and offscreen suspension. Reduced motion uses the final frame."
+        "value": "4600ms steps(1, end); 48 native frames in an 8 × 6 sheet",
+        "purpose": "Matching fixed living room without WebGL or after context loss; offscreen/document-hidden suspension. Reduced motion uses the final static frame without requesting the sprite."
       },
       {
         "name": "photo-conveyor",
-        "value": "36s linear infinite",
-        "purpose": "Pauses on fine-pointer hover, keyboard focus and explicit control. Reduced motion leaves one horizontally scrollable photo group."
+        "value": "22s linear infinite",
+        "purpose": "Pauses on fine-pointer hover, keyboard focus, local caption control and offscreen/document-hidden state. Reduced motion leaves one horizontally scrollable photo group."
       },
       {
         "name": "letter-arrival",
         "value": "850ms cubic-bezier(0.16, 1, 0.3, 1); lamed delay 140ms",
-        "purpose": "Wooden initials arrive with small downward/rotation settling, paused by explicit control and absent under reduced motion."
+        "purpose": "Bottom-aligned wooden initials settle into the shared headline baseline; absent under reduced motion."
       },
       {
         "name": "gallery-change",
         "value": "260ms cubic-bezier(0.23, 1, 0.32, 1)",
-        "purpose": "Short horizontal page/category change; disabled for keyboard input and reduced motion, pausable."
+        "purpose": "Short horizontal page/category change; disabled for keyboard input and reduced motion."
       },
       {
         "name": "disclosure-body",
         "value": "220ms cubic-bezier(0.23, 1, 0.32, 1)",
-        "purpose": "Native disclosure body entry; pausable and absent under reduced motion."
+        "purpose": "Native disclosure body entry; absent under reduced motion."
       },
       {
         "name": "disclosure-icon",
         "value": "160ms cubic-bezier(0.23, 1, 0.32, 1)",
-        "purpose": "Native plus icon rotation; removed under reduced motion but not by the global pause control."
+        "purpose": "Native plus icon rotation; removed under reduced motion."
       },
       {
         "name": "family-arrival",
         "value": "650ms cubic-bezier(0.23, 1, 0.32, 1); intersection threshold 0.2",
-        "purpose": "Once on first intersection while playing; otherwise content stays visible. Pausable and absent under reduced motion."
+        "purpose": "Once on first intersection while playing; otherwise content stays visible. Absent under reduced motion."
       },
       {
         "name": "button-feedback",
@@ -255,40 +255,9 @@
       "css": ".ds-text-link{font-family:Heebo,sans-serif;display:inline-flex;align-items:center;gap:12px;min-height:44px;color:var(--blue,#526047);font-weight:500;text-decoration:none}.ds-text-link:hover{text-decoration:underline;text-underline-offset:6px}.ds-text-link:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}"
     },
     {
-      "name": "Room Selector",
-      "kind": "chip",
-      "refersTo": "room-tab",
-      "description": "Native room buttons with an understated selected underline.",
-      "html": "<div class=\"ds-room-tabs\" dir=\"rtl\" role=\"group\" aria-label=\"סוג החדר להמחשה\"><button aria-pressed=\"true\">סלון</button><button aria-pressed=\"false\">חדר שינה</button><button aria-pressed=\"false\">פינת עבודה</button></div>",
-      "css": ".ds-room-tabs{display:flex;justify-content:center;gap:24px}.ds-room-tabs button{font-family:Heebo,sans-serif;font-size:15px;color:var(--muted,#716452);border:0;border-bottom:2px solid transparent;padding:8px 0;min-height:44px;background:transparent;cursor:pointer}.ds-room-tabs button[aria-pressed=\"true\"]{color:var(--ink,#332a20);border-bottom-color:#936e49}.ds-room-tabs button:hover{color:var(--ink,#332a20)}.ds-room-tabs button:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}"
-    },
-    {
-      "name": "Finish Selector",
-      "kind": "chip",
-      "description": "Circular finish swatches with a selected outline. These describe the illustration only.",
-      "html": "<div class=\"ds-finishes\" role=\"group\" aria-label=\"גווני עץ להמחשה\"><button aria-label=\"עץ בהיר\" aria-pressed=\"false\"><span style=\"background:#ac8257\"></span></button><button aria-label=\"אגוז חם\" aria-pressed=\"true\"><span style=\"background:#785238\"></span></button><button aria-label=\"אלון מעושן\" aria-pressed=\"false\"><span style=\"background:#736b57\"></span></button></div>",
-      "css": ".ds-finishes{display:flex;gap:3px}.ds-finishes button{width:44px;height:44px;display:grid;place-items:center;background:transparent;border:1px solid transparent;border-radius:50%;cursor:pointer}.ds-finishes button[aria-pressed=\"true\"]{border-color:var(--ink,#332a20)}.ds-finishes span{width:29px;height:29px;border-radius:50%}.ds-finishes button:hover{background:#e8dfd1}.ds-finishes button:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}"
-    },
-    {
-      "name": "Replay Control",
-      "kind": "button",
-      "refersTo": "replay",
-      "description": "Native replay control, disabled whenever motion is paused or off.",
-      "html": "<button class=\"ds-replay\" aria-label=\"הרכבת החדר מחדש\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M4 9a8 8 0 1 1 0 6M4 4v5h5\"/></svg></button>",
-      "css": ".ds-replay{width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--line,#d8cbbb);border-radius:50%;color:var(--ink,#332a20);background:transparent;cursor:pointer}.ds-replay:disabled{opacity:.45;cursor:default}.ds-replay:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}"
-    },
-    {
-      "name": "Motion Control",
-      "kind": "button",
-      "refersTo": "motion-control",
-      "description": "Main header pause/play control; pressed means motion is paused. Reduced-motion preference disables it.",
-      "html": "<button class=\"ds-motion\" aria-label=\"השהיית אנימציות\" aria-pressed=\"false\"><svg width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M8 5v14M16 5v14\"/></svg></button>",
-      "css": ".ds-motion{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line,#d8cbbb);border-radius:50%;background:transparent;color:var(--blue,#526047);cursor:pointer}.ds-motion:disabled{opacity:.6;cursor:default}.ds-motion:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px}"
-    },
-    {
       "name": "Header Navigation",
       "kind": "nav",
-      "description": "Right-side olive Hebrew navigation in the main sticky header; motion and phone controls sit on the left.",
+      "description": "Right-side olive Hebrew navigation in the sticky header; the outlined phone pill sits on the left. A native menu replaces navigation below 1024px.",
       "html": "<nav class=\"ds-nav\" dir=\"rtl\" aria-label=\"ניווט ראשי\"><a href=\"#furniture\">רהיטים</a><a href=\"#custom\">בהתאמה אישית</a><a href=\"#visit\">בואו לבקר</a></nav>",
       "css": ".ds-nav{font-family:Heebo,sans-serif;display:flex;gap:clamp(20px,3vw,44px);color:var(--blue,#526047);font-weight:500}.ds-nav a{min-height:44px;display:inline-flex;align-items:center;color:inherit;text-decoration:none}.ds-nav a:hover{text-decoration:underline;text-underline-offset:6px}.ds-nav a:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px;}"
     },
@@ -306,18 +275,34 @@
       "description": "Open catalog frame with a thin walnut ledge. The panel sample labels the image region; published cards use real contained furniture photographs.",
       "html": "<article class=\"ds-card\" dir=\"rtl\"><button class=\"ds-card-photo\" aria-label=\"הגדלת תמונה\"><span>מקום לתצלום הרהיט</span></button><h4>כותרת הרהיט</h4><p>תיאור הרהיט מהגלריה.</p></article>",
       "css": ".ds-card{font-family:Heebo,sans-serif;color:var(--ink,#332a20);background:transparent;padding:0;box-shadow:none;border-radius:0;max-width:300px}.ds-card-photo{display:flex;align-items:end;justify-content:center;position:relative;width:100%;height:320px;padding:0;border:0;background:transparent;overflow:visible;color:var(--muted,#716452);font-family:Heebo,sans-serif;cursor:pointer}.ds-card-photo::after{content:\"\";position:absolute;bottom:-5px;inset-inline:0;height:5px;border-radius:2px;background:#b08a64}.ds-card-photo span{transition:transform 250ms}.ds-card-photo:hover span{transform:scale(1.025)}.ds-card-photo:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px}.ds-card h4{font-size:18px;font-weight:500;letter-spacing:-.025em;margin:18px 0 0}.ds-card p{font-size:14px;line-height:1.8;color:var(--muted,#716452);margin:7px 0 0;max-width:38ch}@media(max-width:767px){.ds-card-photo{height:340px}.ds-card h4{margin-top:15px}}@media(prefers-reduced-motion:reduce){.ds-card-photo span{transition:none}}"
+    },
+    {
+      "name": "Header Phone Pill",
+      "kind": "button",
+      "refersTo": "phone-pill",
+      "description": "Outlined 46px telephone link matching the menu-control height; icon left of isolated numerals.",
+      "html": "<a class=\"ds-phone\" href=\"tel:098618985\"><svg width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M7 3 3 5c0 8 8 16 16 16l2-4-5-3-2 2c-3-1-5-3-6-6l2-2-3-5Z\"/></svg><bdi>09-861-8985</bdi></a>",
+      "css": ".ds-phone{font-family:Heebo,sans-serif;display:inline-flex;align-items:center;direction:ltr;gap:8px;height:46px;padding-inline:14px;border:1px solid var(--line,#d8cbbb);border-radius:999px;background:var(--surface,#fcf8f1);color:var(--blue,#526047);font-size:17px;white-space:nowrap;text-decoration:none}.ds-phone svg{display:block;flex-shrink:0}.ds-phone:hover{text-decoration:underline;text-underline-offset:6px}.ds-phone:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px}"
+    },
+    {
+      "name": "Photo Strip Pause Control",
+      "kind": "button",
+      "refersTo": "carousel-control",
+      "description": "Local text-and-SVG pause/resume beside the real-photo caption; pressed means this strip is paused. Hidden under reduced motion.",
+      "html": "<button class=\"ds-carousel-control\" dir=\"rtl\" aria-pressed=\"false\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M8 5v14M16 5v14\"/></svg>עצירת התמונות</button>",
+      "css": ".ds-carousel-control{font-family:Heebo,sans-serif;display:inline-flex;align-items:center;gap:7px;min-height:44px;border:0;padding:0;background:transparent;color:var(--blue,#526047);font-size:13px;cursor:pointer}.ds-carousel-control:hover{color:var(--ink,#332a20)}.ds-carousel-control:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-carousel-control{display:none}}"
     }
   ],
   "narrative": {
     "northStar": "The Contemporary Walnut Showroom",
-    "overview": "Warm cream, walnut ink and olive controls surround real furniture photographs and a softly lit room illustration. Self-hosted Hebrew Heebo and RTL reading order keep the family business direct and familiar. Wooden planks and screws give the hero initials a material identity, echoed by the corresponding letters in the recognizable original logo.\n\nThis is the canonical system for the approved homepage at `/`. The unindexed `/wood-preview/` alias uses the same system with an additional utility toolbar. It supersedes the former light-blue, red and pale-yellow homepage identity; retained base stylesheet declarations are implementation history, not the current visual authority. The durable brand commitments are in [PRODUCT.md](PRODUCT.md); the page direction and visitor path are in [the surface brief](docs/design/wood-preview.md). This document records the finished implementation, reviewed with a ship disposition on 2026-10-02.\n\nBroad section grounds and open furniture displays provide structure. Spatial assembly explains the room; motion controls and reduced-motion behavior preserve access to the content. Generated lettering and scene renders serve the illustration and identity, while the catalog remains real business photography.",
+    "overview": "Warm cream, walnut ink and olive controls surround real furniture photographs and a softly lit room illustration. Self-hosted Hebrew Heebo and RTL reading order keep the family business direct and familiar. Wooden planks and screws give the hero initials a material identity, echoed by the corresponding letters in the recognizable original logo.\n\nThis is the canonical system for the approved homepage at `/`. The unindexed `/wood-preview/` alias uses the same system with an additional utility toolbar. It supersedes the former light-blue, red and pale-yellow homepage identity; retained base stylesheet declarations are implementation history, not the current visual authority. The durable brand commitments are in [PRODUCT.md](PRODUCT.md); the page direction and visitor path are in [the surface brief](docs/design/wood-preview.md). This document records the finished implementation, reviewed with a ship disposition on 2026-10-02.\n\nBroad section grounds and open furniture displays provide structure. A single staged assembly explains the fixed living room; the photo strip’s local pause control and reduced-motion behavior preserve access to the content. Generated lettering and scene renders serve the illustration and identity, while the catalog remains real business photography.",
     "keyCharacteristics": [
       "Cream grounds, walnut emphasis and olive navigation.",
       "One Hebrew type family with medium headings and generous paragraph leading.",
       "Complete furniture photographs on an open canvas with thin wooden ledges.",
       "Solid room geometry and matching animated raster fallback.",
       "Recognizable original logo with matching wooden initials and screw details.",
-      "Explicit pause, reduced-motion support and native selection, disclosure and dialog controls."
+      "Local photo-strip pause, reduced-motion support and native category selection, disclosure and dialog controls."
     ],
     "rules": [
       {
@@ -345,10 +330,10 @@
       "**Do** keep the original logo recognizable and contact actions direct."
     ],
     "donts": [
-      "**Don't** treat room illustrations or finish swatches as catalog products or promised inventory.",
+      "**Don't** treat the room illustration as catalog products or promised inventory.",
       "**Don't** put pale filled mats or elevated cards around the catalog furniture photographs.",
       "**Don't** hide functional content behind an entrance animation or require WebGL to browse the page.",
-      "**Don't** add movement without pause controls and a complete reduced-motion presentation.",
+      "**Don't** add continuous movement without a local pause control and a complete reduced-motion presentation.",
       "**Don't** introduce unsupported prices, delivery promises, reviews or checkout through visual examples."
     ]
   }

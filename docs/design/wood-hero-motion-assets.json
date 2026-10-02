@@ -1,0 +1,1081 @@
+{
+  "purpose": "Dedicated hero motion fallback rendered from authored living room source; illustrative scene, not catalog product photography.",
+  "classification": "illustrative-not-catalog",
+  "source": [
+    {
+      "path": "src/wood-preview/room-scene.ts",
+      "sha256": "9c9a5770b1fcd8c61edbd26d43a8017101a749b2fc2fbf43e1543b2400e86eea"
+    },
+    {
+      "path": "src/wood-preview/room-motion.ts",
+      "sha256": "1f4b7029c48cf289756ac1374c0585f606798ee63cf144cac995c471ba5846ca"
+    },
+    {
+      "path": "src/wood-preview/room-presets.ts",
+      "sha256": "0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1"
+    }
+  ],
+  "rendering": {
+    "method": "Native authored Three.js WebGL capture followed by ImageMagick WebP conversion",
+    "browser": "153.0.8010.12",
+    "browserArguments": [
+      "--use-gl=angle",
+      "--use-angle=swiftshader",
+      "--enable-unsafe-swiftshader"
+    ],
+    "host": "http://127.0.0.1:5173/__hero-assembly-helper",
+    "viewport": {
+      "width": 800,
+      "height": 600
+    },
+    "settings": {
+      "duration": 4600,
+      "columns": 8,
+      "rows": 6,
+      "frames": 48,
+      "dpr": 1,
+      "width": 640,
+      "height": 470,
+      "renderer": "webgl"
+    },
+    "room": "living",
+    "finish": 1,
+    "alpha": true,
+    "colorSpace": "sRGB",
+    "camera": {
+      "kind": "orthographic",
+      "frustum": [
+        -4.5,
+        4.5,
+        3.3,
+        -3.3,
+        0.1,
+        40
+      ],
+      "lookAt": [
+        0,
+        1.23,
+        0
+      ],
+      "position_start": [
+        9.4,
+        7.8,
+        9.2
+      ],
+      "position_end": [
+        8,
+        7.5,
+        10
+      ],
+      "zoom_start": 1,
+      "zoom_end": 1.08,
+      "progress": "1 - (1 - min(1, elapsed / 4600))^3",
+      "position_formula": "[9.4 - 1.4 * progress, 7.8 - 0.3 * progress, 9.2 + 0.8 * progress]"
+    },
+    "frame_dimensions": {
+      "width": 640,
+      "height": 470
+    },
+    "frame_count": 48,
+    "duration_ms": 4600,
+    "frame_elapsed_ms": [
+      0,
+      97.87234042553192,
+      195.74468085106383,
+      293.6170212765957,
+      391.48936170212767,
+      489.36170212765956,
+      587.2340425531914,
+      685.1063829787234,
+      782.9787234042553,
+      880.8510638297872,
+      978.7234042553191,
+      1076.595744680851,
+      1174.468085106383,
+      1272.340425531915,
+      1370.212765957447,
+      1468.0851063829787,
+      1565.9574468085107,
+      1663.8297872340424,
+      1761.7021276595744,
+      1859.5744680851064,
+      1957.4468085106382,
+      2055.31914893617,
+      2153.191489361702,
+      2251.063829787234,
+      2348.936170212766,
+      2446.808510638298,
+      2544.68085106383,
+      2642.553191489362,
+      2740.425531914894,
+      2838.2978723404253,
+      2936.1702127659573,
+      3034.0425531914893,
+      3131.9148936170213,
+      3229.7872340425533,
+      3327.659574468085,
+      3425.531914893617,
+      3523.404255319149,
+      3621.276595744681,
+      3719.148936170213,
+      3817.021276595745,
+      3914.8936170212764,
+      4012.7659574468084,
+      4110.63829787234,
+      4208.510638297872,
+      4306.382978723404,
+      4404.255319148936,
+      4502.127659574468,
+      4600
+    ],
+    "grid": {
+      "columns": 8,
+      "rows": 6,
+      "order": "row-major"
+    },
+    "quality": 88
+  },
+  "produce": [
+    {
+      "id": "living-hero",
+      "output_path": "public/images/wood-preview/living-hero.webp",
+      "dimensions": {
+        "width": 640,
+        "height": 470
+      },
+      "role": "Assembled hero fallback",
+      "prompt_used": "Native authored Three.js scene rendering, illustrative-not-catalog. Origin: src/wood-preview/room-scene.ts, src/wood-preview/room-motion.ts, src/wood-preview/room-presets.ts; exact source SHA256s [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"9c9a5770b1fcd8c61edbd26d43a8017101a749b2fc2fbf43e1543b2400e86eea\"},{\"path\":\"src/wood-preview/room-motion.ts\",\"sha256\":\"1f4b7029c48cf289756ac1374c0585f606798ee63cf144cac995c471ba5846ca\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}]. Import createRoomScene and roomMotion into isolated Playwright Chromium helper http://127.0.0.1:5173/__hero-assembly-helper. Headless Chromium ANGLE SwiftShader arguments --use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader; viewport800x600, DPR1, exact640x470CSS host/canvas; alpha:true antialias:true preserveDrawingBuffer:true clearRGBA0 shadowsPCFSoft1024x1024 outputColorSpaceSRGB. setMotion('off'), setRoom('living'), setFinish(1), captureAssemblyFrames() defaults to48frames inclusive0..4600ms with elapsed=4600*index/47. Preserve source geometry, staged cabinet/sofa arms/cushions/tabletop/book assembly, materials, lighting, shadow and camera orbit/zoom {\"kind\":\"orthographic\",\"frustum\":[-4.5,4.5,3.3,-3.3,0.1,40],\"lookAt\":[0,1.23,0],\"position_start\":[9.4,7.8,9.2],\"position_end\":[8,7.5,10],\"zoom_start\":1,\"zoom_end\":1.08,\"progress\":\"1 - (1 - min(1, elapsed / 4600))^3\",\"position_formula\":\"[9.4 - 1.4 * progress, 7.8 - 0.3 * progress, 9.2 + 0.8 * progress]\"}. Source PNG canvas dataURLs; no imagegen, UI or catalog photography. Repeat capture after resetting room/finish produced identical SHA256 for all48PNGframes. Select finalframe47 at4600ms; native ImageMagick conversion -quality88 to640x470true-alphaWebP.",
+      "source_crop": null,
+      "strategy": "Deterministic authored Three.js capture and native ImageMagick conversion",
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 22266,
+      "sha256": "d547a5a5a20b39976ed09a25faa93c71ecae6ab46cbc80551fc89e5e5880efa8"
+    },
+    {
+      "id": "living-hero-assembly",
+      "output_path": "public/images/wood-preview/living-hero-assembly.webp",
+      "dimensions": {
+        "width": 5120,
+        "height": 2820
+      },
+      "role": "48-frame hero assembly fallback",
+      "prompt_used": "Native authored Three.js scene rendering, illustrative-not-catalog. Origin: src/wood-preview/room-scene.ts, src/wood-preview/room-motion.ts, src/wood-preview/room-presets.ts; exact source SHA256s [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"9c9a5770b1fcd8c61edbd26d43a8017101a749b2fc2fbf43e1543b2400e86eea\"},{\"path\":\"src/wood-preview/room-motion.ts\",\"sha256\":\"1f4b7029c48cf289756ac1374c0585f606798ee63cf144cac995c471ba5846ca\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}]. Import createRoomScene and roomMotion into isolated Playwright Chromium helper http://127.0.0.1:5173/__hero-assembly-helper. Headless Chromium ANGLE SwiftShader arguments --use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader; viewport800x600, DPR1, exact640x470CSS host/canvas; alpha:true antialias:true preserveDrawingBuffer:true clearRGBA0 shadowsPCFSoft1024x1024 outputColorSpaceSRGB. setMotion('off'), setRoom('living'), setFinish(1), captureAssemblyFrames() defaults to48frames inclusive0..4600ms with elapsed=4600*index/47. Preserve source geometry, staged cabinet/sofa arms/cushions/tabletop/book assembly, materials, lighting, shadow and camera orbit/zoom {\"kind\":\"orthographic\",\"frustum\":[-4.5,4.5,3.3,-3.3,0.1,40],\"lookAt\":[0,1.23,0],\"position_start\":[9.4,7.8,9.2],\"position_end\":[8,7.5,10],\"zoom_start\":1,\"zoom_end\":1.08,\"progress\":\"1 - (1 - min(1, elapsed / 4600))^3\",\"position_formula\":\"[9.4 - 1.4 * progress, 7.8 - 0.3 * progress, 9.2 + 0.8 * progress]\"}. Source PNG canvas dataURLs; no imagegen, UI or catalog photography. Repeat capture after resetting room/finish produced identical SHA256 for all48PNGframes. Compose all48transparentPNGframes row-major into8columns6rows using native ImageMagick montage -tile8x6 -geometry640x470+0+0 -backgroundnone -quality88;5120x2820true-alphaWebP.",
+      "source_crop": null,
+      "strategy": "Deterministic authored Three.js capture and native ImageMagick conversion",
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 1046488,
+      "sha256": "ae101a6ea1d90f5f8557552333beb4d70127e9c01a6e84dad765dcbe8751e891"
+    }
+  ],
+  "direct": [],
+  "semantic": [
+    {
+      "id": "hero-assembly-player",
+      "implementation": "Existing RoomScene hero fallback composes the 8x6 sprite as CSS background frames at a 640/470 aspect ratio, playing 48 source frames over 4600ms. Use living-hero.webp as the final frame and reduced-motion still. CSS owns responsive sizing and surrounding page presentation; original Three.js source owns geometry, materials, lighting, camera and assembly.",
+      "notes": "Existing catalog photography and legacy nine sprites stay unchanged.",
+      "qa_status": "accepted"
+    }
+  ],
+  "execution_order": [
+    "Capture living room finish1 twice and compare all48frames",
+    "Encode48-frame sprite and final still",
+    "Write exact source rendering provenance",
+    "Inspect representative frames and alpha/framing",
+    "Finalize manifest"
+  ],
+  "blockers": [],
+  "assumptions": [
+    "Dedicated hero imagery is illustrative, not catalog evidence.",
+    "Source geometry and camera are authoritative."
+  ],
+  "validation": {
+    "browserPageErrors": [],
+    "unique_png_frames": 48,
+    "deterministicCapture": {
+      "passed": true,
+      "compared_frames": 48,
+      "frame_sha256": [
+        "8c0858db96aaad93990e446eaf8fcd76941c14d5514d9e03cd9c6ea467eb3f0f",
+        "8fb5904e22499ecfa8272f940c9f04d97f223bfc01024adf562f61b752181a32",
+        "24fae6854eb92076a480e7400f38e163d6817e4cb6bd5f8f086608296bb7a101",
+        "0df03b311f2ed40da617209bb8a7d0ad2392a3f48fda3e6c944dbec93969fba2",
+        "d9fb1842f118493e7991f5ee44e236dec06d81ba34cc36094ad7fc78d5a57e4c",
+        "7e18f094eb4b321d55d16a40d4c3df7f4396a5ef534e730f59a689dab9e6e974",
+        "02cbd81d3ac5624249b042108f2c05e5d92f1f5ac506dc2717c638a3a78755fd",
+        "7f89a0ec2eea593b1f76909fbd172be6baf842574937afd6c38fdd09218aaeaa",
+        "df5518b65debc95bd26eedf2d85c07acdb57bf8a0082382fa111daab6b8665ad",
+        "dbdf4c60f8acd35e7a60e15f08470d2687e1cffea9991a3e997e38d06cbc64f7",
+        "bea46577155ca606c903114de824b9c3339dbbeea5abc178a1f28199b84830f3",
+        "aa19a2f7c8f7db90bec5dc6889bffb6a43bf90f0cf99a00b0af219f095bca431",
+        "fa9fa52531cef25eb60e8f759e2b0edc458ca0e2ade1d527f4318a8ee333594b",
+        "685dc33de8d424ffe322a96887d29cc7a46877872a6a3fc5e11701b843b7eb76",
+        "c36ac4a80024963696977bed8a5fb415bdf4ed847c4bb1492d962cb3c3073523",
+        "2d6160d798763e524b07363cf8c352054ab3552e2fde30ca1748c39c0de4aa4f",
+        "0764d39591c7385e0193b5f0421e229ed172f9174e091288bfca5451eea10af0",
+        "3dbf955c88ed23646b79404cee3b4795d50723edc52c69af8e30f56da16aa56c",
+        "91068d0f591881118b7c85d5c5b1d53c10c112ee8b8294ec77c4325dc87a507f",
+        "90349b8b52daacd7a9ed924599b1dcb0b5550411af525486bd9fb50062159ca1",
+        "c92e395fe1cd36fedae4538c72ef1a94b783d1fc7457751fb94f8d9154d4c3fd",
+        "71de6ce3656aa15dc9eed51b95006f5a2bdcf2ec999fe6d5dbddff65a323a4e5",
+        "f20ef72690de9d83f2cffac5473147e6afb1bc9f10d9de4bc41ed13f7bd7dfac",
+        "461f79a40e08cffd0825ada2ffa98aaf92ed17b88913e799fa26193f7045cb8e",
+        "02b74056bffb9c15056c62e64af20c77a5e8cd8b1062ecfbc1a0a7d885e8231a",
+        "1a9a0ccb1d990d85b1c4b10d209136a59d24c169d900b42b76252ff3e8c4b4bc",
+        "43c5eb65b93ca385bd2000c65a376b1aa47a82c4bba8d75dae9f8f9d02f209ee",
+        "ea6927074330627635bf5925c935e41b94740ea57be226ac19c216ae02afc604",
+        "6c4eb75f19ff58e33da6dc2811ecbf946c3b7b51dcfee30964f5990b5d0bf966",
+        "4d362e4905b34e6c4241c325e5b6b3f9fb5f72bb213db7170aec91920d223a6e",
+        "73d585c8ba09d862d159a94aa53dfaddd621cc96658551691a1ec55da9e8d1b3",
+        "919bc25fb4061cbfbc176d9b69d83dd90074070c42ffa9e224b298000e73e0c5",
+        "e91dace177ea11afb11a1ad059252b5fdc27adaa09d9a7716380aa7d18e786f4",
+        "b8ca93488e85fbf27c561c6898f0ccad014d130fdc4a525871347aa8e6243ee7",
+        "ce5bde99b7cc7cfcd74fbbdbaba6e3dadaaded3be056361e1767ca868cfe169e",
+        "6f2dd009cfe4cfacd0ba15a5948d6da8daece1c59a9029f99395e578656a076e",
+        "c04ea0c69d5f52e01fc7c6255865eb436c4a76869295c6ef80e30ee9281cf76b",
+        "6a18ac8c7eac62f6fb857e9abb564b79fcb6bc7d2ecc40ef6fc8790477580979",
+        "beced0d285582f6dfad3e1b017a2bba2712c3720804951c5bf37fbfd5ed19e84",
+        "489ce74407ca44142b87c4936ad15cedb54c5efe4014e0e12ced271598017643",
+        "293f88de913f3d1ae24ae85343810735d26674325710ec6ac13b9b4542278667",
+        "ecd9c6661a4cef28945e7f2b73faabb219ac8490dd0927d99a8e202ba6150493",
+        "511857f1a00c034c5d4d013b525245576609a4a33fae2af7266dcd212a91690e",
+        "e922e8fbff34fb3d338368a0e8b8c28022d7e6c3fd1f2021c6765fed7c83a183",
+        "a646122461ecf393e851f4cae0f7e628dd027eb07616a8780db051c6dd3b2cfd",
+        "b9b222c68ffd64faa087ee6330c8976c1f23e9a3f21064e67f5ae4de8cd33655",
+        "d1b3a5c397e41348d470488fd664f1ca893f26742f39e099ce90be8672559c96",
+        "e706c788eb9b8578ae68f3f67f26c6ed9576acc79eb57ca0ebef8ee47ea526ad"
+      ],
+      "repeat_sha256": [
+        "8c0858db96aaad93990e446eaf8fcd76941c14d5514d9e03cd9c6ea467eb3f0f",
+        "8fb5904e22499ecfa8272f940c9f04d97f223bfc01024adf562f61b752181a32",
+        "24fae6854eb92076a480e7400f38e163d6817e4cb6bd5f8f086608296bb7a101",
+        "0df03b311f2ed40da617209bb8a7d0ad2392a3f48fda3e6c944dbec93969fba2",
+        "d9fb1842f118493e7991f5ee44e236dec06d81ba34cc36094ad7fc78d5a57e4c",
+        "7e18f094eb4b321d55d16a40d4c3df7f4396a5ef534e730f59a689dab9e6e974",
+        "02cbd81d3ac5624249b042108f2c05e5d92f1f5ac506dc2717c638a3a78755fd",
+        "7f89a0ec2eea593b1f76909fbd172be6baf842574937afd6c38fdd09218aaeaa",
+        "df5518b65debc95bd26eedf2d85c07acdb57bf8a0082382fa111daab6b8665ad",
+        "dbdf4c60f8acd35e7a60e15f08470d2687e1cffea9991a3e997e38d06cbc64f7",
+        "bea46577155ca606c903114de824b9c3339dbbeea5abc178a1f28199b84830f3",
+        "aa19a2f7c8f7db90bec5dc6889bffb6a43bf90f0cf99a00b0af219f095bca431",
+        "fa9fa52531cef25eb60e8f759e2b0edc458ca0e2ade1d527f4318a8ee333594b",
+        "685dc33de8d424ffe322a96887d29cc7a46877872a6a3fc5e11701b843b7eb76",
+        "c36ac4a80024963696977bed8a5fb415bdf4ed847c4bb1492d962cb3c3073523",
+        "2d6160d798763e524b07363cf8c352054ab3552e2fde30ca1748c39c0de4aa4f",
+        "0764d39591c7385e0193b5f0421e229ed172f9174e091288bfca5451eea10af0",
+        "3dbf955c88ed23646b79404cee3b4795d50723edc52c69af8e30f56da16aa56c",
+        "91068d0f591881118b7c85d5c5b1d53c10c112ee8b8294ec77c4325dc87a507f",
+        "90349b8b52daacd7a9ed924599b1dcb0b5550411af525486bd9fb50062159ca1",
+        "c92e395fe1cd36fedae4538c72ef1a94b783d1fc7457751fb94f8d9154d4c3fd",
+        "71de6ce3656aa15dc9eed51b95006f5a2bdcf2ec999fe6d5dbddff65a323a4e5",
+        "f20ef72690de9d83f2cffac5473147e6afb1bc9f10d9de4bc41ed13f7bd7dfac",
+        "461f79a40e08cffd0825ada2ffa98aaf92ed17b88913e799fa26193f7045cb8e",
+        "02b74056bffb9c15056c62e64af20c77a5e8cd8b1062ecfbc1a0a7d885e8231a",
+        "1a9a0ccb1d990d85b1c4b10d209136a59d24c169d900b42b76252ff3e8c4b4bc",
+        "43c5eb65b93ca385bd2000c65a376b1aa47a82c4bba8d75dae9f8f9d02f209ee",
+        "ea6927074330627635bf5925c935e41b94740ea57be226ac19c216ae02afc604",
+        "6c4eb75f19ff58e33da6dc2811ecbf946c3b7b51dcfee30964f5990b5d0bf966",
+        "4d362e4905b34e6c4241c325e5b6b3f9fb5f72bb213db7170aec91920d223a6e",
+        "73d585c8ba09d862d159a94aa53dfaddd621cc96658551691a1ec55da9e8d1b3",
+        "919bc25fb4061cbfbc176d9b69d83dd90074070c42ffa9e224b298000e73e0c5",
+        "e91dace177ea11afb11a1ad059252b5fdc27adaa09d9a7716380aa7d18e786f4",
+        "b8ca93488e85fbf27c561c6898f0ccad014d130fdc4a525871347aa8e6243ee7",
+        "ce5bde99b7cc7cfcd74fbbdbaba6e3dadaaded3be056361e1767ca868cfe169e",
+        "6f2dd009cfe4cfacd0ba15a5948d6da8daece1c59a9029f99395e578656a076e",
+        "c04ea0c69d5f52e01fc7c6255865eb436c4a76869295c6ef80e30ee9281cf76b",
+        "6a18ac8c7eac62f6fb857e9abb564b79fcb6bc7d2ecc40ef6fc8790477580979",
+        "beced0d285582f6dfad3e1b017a2bba2712c3720804951c5bf37fbfd5ed19e84",
+        "489ce74407ca44142b87c4936ad15cedb54c5efe4014e0e12ced271598017643",
+        "293f88de913f3d1ae24ae85343810735d26674325710ec6ac13b9b4542278667",
+        "ecd9c6661a4cef28945e7f2b73faabb219ac8490dd0927d99a8e202ba6150493",
+        "511857f1a00c034c5d4d013b525245576609a4a33fae2af7266dcd212a91690e",
+        "e922e8fbff34fb3d338368a0e8b8c28022d7e6c3fd1f2021c6765fed7c83a183",
+        "a646122461ecf393e851f4cae0f7e628dd027eb07616a8780db051c6dd3b2cfd",
+        "b9b222c68ffd64faa087ee6330c8976c1f23e9a3f21064e67f5ae4de8cd33655",
+        "d1b3a5c397e41348d470488fd664f1ca893f26742f39e099ce90be8672559c96",
+        "e706c788eb9b8578ae68f3f67f26c6ed9576acc79eb57ca0ebef8ee47ea526ad"
+      ]
+    },
+    "sourceUnchanged": true,
+    "visualInspection": {
+      "inspectedFrames": [
+        0,
+        24,
+        47
+      ],
+      "representativePNGPaths": [
+        "/tmp/olympic-qa/wood-hero-motion-sources/living-hero-00.png",
+        "/tmp/olympic-qa/wood-hero-motion-sources/living-hero-24.png",
+        "/tmp/olympic-qa/wood-hero-motion-sources/living-hero-47.png"
+      ],
+      "browserComposite": "/tmp/olympic-qa/wood-hero-motion-sources/browser-final-composite.png",
+      "result": "Accepted after inspecting native PNG frames0,24,47 and browser final composite: staged authored geometry, floor, complete window and full upper wall remain visible with no canvas-edge contact."
+    },
+    "alphaFraming": {
+      "nativeSourcePerFrame": [
+        {
+          "frame": 0,
+          "bbox": [
+            67,
+            15,
+            605,
+            439
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 1,
+          "bbox": [
+            65,
+            14,
+            607,
+            440
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 2,
+          "bbox": [
+            64,
+            13,
+            608,
+            441
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 3,
+          "bbox": [
+            62,
+            13,
+            610,
+            442
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 4,
+          "bbox": [
+            61,
+            12,
+            612,
+            442
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 5,
+          "bbox": [
+            60,
+            11,
+            613,
+            443
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 6,
+          "bbox": [
+            59,
+            10,
+            615,
+            444
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 7,
+          "bbox": [
+            58,
+            10,
+            616,
+            444
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 8,
+          "bbox": [
+            57,
+            9,
+            617,
+            445
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 9,
+          "bbox": [
+            56,
+            8,
+            619,
+            446
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 10,
+          "bbox": [
+            55,
+            8,
+            620,
+            446
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 11,
+          "bbox": [
+            54,
+            7,
+            621,
+            447
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 12,
+          "bbox": [
+            53,
+            7,
+            622,
+            447
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 13,
+          "bbox": [
+            53,
+            6,
+            623,
+            447
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 14,
+          "bbox": [
+            52,
+            6,
+            624,
+            448
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 15,
+          "bbox": [
+            51,
+            5,
+            625,
+            448
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 16,
+          "bbox": [
+            51,
+            5,
+            625,
+            448
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 17,
+          "bbox": [
+            50,
+            5,
+            613,
+            449
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 18,
+          "bbox": [
+            49,
+            4,
+            596,
+            449
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 19,
+          "bbox": [
+            49,
+            4,
+            592,
+            449
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 20,
+          "bbox": [
+            48,
+            4,
+            592,
+            450
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 21,
+          "bbox": [
+            48,
+            4,
+            592,
+            450
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 22,
+          "bbox": [
+            48,
+            3,
+            593,
+            450
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 23,
+          "bbox": [
+            47,
+            3,
+            593,
+            450
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 24,
+          "bbox": [
+            47,
+            3,
+            593,
+            450
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 25,
+          "bbox": [
+            47,
+            3,
+            594,
+            451
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 26,
+          "bbox": [
+            46,
+            3,
+            594,
+            451
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 27,
+          "bbox": [
+            46,
+            2,
+            594,
+            451
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 28,
+          "bbox": [
+            46,
+            2,
+            595,
+            451
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 29,
+          "bbox": [
+            46,
+            2,
+            595,
+            451
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 30,
+          "bbox": [
+            45,
+            2,
+            595,
+            451
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 31,
+          "bbox": [
+            45,
+            2,
+            595,
+            451
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 32,
+          "bbox": [
+            45,
+            2,
+            595,
+            451
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 33,
+          "bbox": [
+            45,
+            2,
+            595,
+            451
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 34,
+          "bbox": [
+            45,
+            2,
+            595,
+            451
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 35,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 36,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 37,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 38,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 39,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 40,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 41,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 42,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 43,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 44,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 45,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 46,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        },
+        {
+          "frame": 47,
+          "bbox": [
+            45,
+            2,
+            596,
+            452
+          ],
+          "edge_max_alpha": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        }
+      ],
+      "allFrameBoundsUnion": [
+        45,
+        2,
+        625,
+        452
+      ],
+      "minimumCanvasMargins": {
+        "left": 45,
+        "top": 2,
+        "right": 15,
+        "bottom": 18
+      },
+      "edgeContactFrames": [],
+      "spriteDimensions": [
+        5120,
+        2820
+      ],
+      "staticDimensions": [
+        640,
+        470
+      ],
+      "spriteAlphaExtrema": [
+        0,
+        255
+      ],
+      "staticAlphaExtrema": [
+        0,
+        255
+      ],
+      "spriteAll48AlphaCellsExactlyMatchSource": true,
+      "staticAlphaExactlyMatchesSource": true,
+      "finalModelClipsCanvas": false,
+      "floorCropped": false,
+      "windowCropped": false
+    },
+    "provenance": "embed-prompt.mjs WebP format uses recoverable .webp.json sidecars with exact native rendering origin; readback checked for both assets."
+  }
+}

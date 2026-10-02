@@ -41,14 +41,14 @@ function subscribeToMotion(onChange: () => void) {
 }
 export function WoodPreview({ preview = false }: { preview?: boolean }) {
   const { root, progress } = usePageMotion();
-  const [playing, setPlaying] = useState(true);
+  const [carouselPaused, setCarouselPaused] = useState(false);
   const [selected, setSelected] = useState<Product | null>(null);
   const reduce = useSyncExternalStore(
     subscribeToMotion,
     getReducedMotion,
     () => true,
   );
-  const motion = reduce ? "off" : playing ? "playing" : "paused";
+  const motion = reduce ? "off" : "playing";
   return (
     <div
       className={`wood-preview${preview ? " is-preview" : ""}`}
@@ -63,31 +63,6 @@ export function WoodPreview({ preview = false }: { preview?: boolean }) {
           <div className="shell wood-preview-toolbar-inner">
             <span>תצוגת עיצוב חדשה</span>
             <div>
-              <button
-                disabled={reduce}
-                aria-pressed={!playing || reduce}
-                aria-label={
-                  reduce
-                    ? "תנועה מופחתת מופעלת"
-                    : playing
-                      ? "השהיית אנימציות"
-                      : "הפעלת אנימציות"
-                }
-                onClick={() => setPlaying((value) => !value)}
-              >
-                {motion === "playing" ? (
-                  <PauseIcon size={18} aria-hidden />
-                ) : (
-                  <PlayIcon size={18} aria-hidden />
-                )}
-                <span>
-                  {reduce
-                    ? "תנועה מופחתת"
-                    : playing
-                      ? "השהיית תנועה"
-                      : "הפעלת תנועה"}
-                </span>
-              </button>
               <a href="/">
                 לאתר הנוכחי
                 <ArrowUpLeftIcon size={16} aria-hidden />
@@ -96,38 +71,7 @@ export function WoodPreview({ preview = false }: { preview?: boolean }) {
           </div>
         </div>
       )}
-      <Header
-        controls={
-          !preview ? (
-            <button
-              className="wood-motion-control"
-              disabled={reduce}
-              aria-pressed={!playing || reduce}
-              aria-label={
-                reduce
-                  ? "תנועה מופחתת מופעלת"
-                  : playing
-                    ? "השהיית אנימציות"
-                    : "הפעלת אנימציות"
-              }
-              title={
-                reduce
-                  ? "תנועה מופחתת מופעלת"
-                  : playing
-                    ? "השהיית אנימציות"
-                    : "הפעלת אנימציות"
-              }
-              onClick={() => setPlaying((value) => !value)}
-            >
-              {motion === "playing" ? (
-                <PauseIcon size={19} aria-hidden />
-              ) : (
-                <PlayIcon size={19} aria-hidden />
-              )}
-            </button>
-          ) : undefined
-        }
-      />
+      <Header />
       <div className="wood-scroll-progress" aria-hidden="true" ref={progress} />
       <main id="main" tabIndex={-1}>
         <section
@@ -173,6 +117,7 @@ export function WoodPreview({ preview = false }: { preview?: boolean }) {
           </div>
           <div
             className="wood-photo-strip"
+            data-paused={carouselPaused}
             role="region"
             aria-label="תמונות נבחרות מהחנות"
           >
@@ -209,7 +154,23 @@ export function WoodPreview({ preview = false }: { preview?: boolean }) {
             </div>
           </div>
           <div className="shell wood-showcase-bottom">
-            <span>צילום אמיתי מהחנות. לחצו כדי לראות מקרוב.</span>
+            <div className="wood-showcase-caption">
+              <span>צילום אמיתי מהחנות. לחצו כדי לראות מקרוב.</span>
+              {!reduce && (
+                <button
+                  className="wood-carousel-control"
+                  aria-pressed={carouselPaused}
+                  onClick={() => setCarouselPaused((value) => !value)}
+                >
+                  {carouselPaused ? (
+                    <PlayIcon size={17} aria-hidden />
+                  ) : (
+                    <PauseIcon size={17} aria-hidden />
+                  )}
+                  {carouselPaused ? "הפעלת התמונות" : "עצירת התמונות"}
+                </button>
+              )}
+            </div>
             <a className="text-link" href="#furniture">
               לכל הרהיטים
               <ArrowLeftIcon size={19} aria-hidden />

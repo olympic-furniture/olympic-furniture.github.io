@@ -19,11 +19,11 @@ The approved wood design now defines `/`. This directory implements that homepag
 
 ## Layout
 
-The homepage has no preview toolbar. The alias adds a sticky (42px) toolbar above the same header; header position, hero viewport height and scroll indicator account for it. Alias anchor offsets are (142px) desktop and (130px) mobile. The toolbar provides motion control and a link to `/`; root layout and responsive rules otherwise apply.
+The homepage has no preview toolbar. The alias adds a sticky (42px) toolbar above the same header; header position, hero viewport height and scroll indicator account for it. Alias anchor offsets are (142px) desktop and (130px) mobile. The toolbar provides only its title and a link to `/`; root layout and responsive rules otherwise apply.
 
 ## Components
 
-Use the root system's actual components. The alias does not define alternate tokens or a separate catalog treatment. Its local sidecar supplies representative standalone samples from the canonical system; all primitive token authority and detailed behavior remain at the root.
+Use the root system's actual components. The alias does not define alternate tokens or a separate catalog treatment. Its local sidecar supplies a standalone alias-toolbar sample; all primitive token authority and detailed behavior remain at the root.
 
 ## Do's and Don'ts
 
@@ -31,7 +31,7 @@ Use the root system's actual components. The alias does not define alternate tok
 
 - **Do** apply the root wood system to both `/` and `/wood-preview/`.
 - **Do** keep the preview alias unindexed and account for its extra toolbar.
-- **Do** preserve the root motion controls, reduced-motion presentation and animated WebGL fallback.
+- **Do** preserve the root local photo-strip pause control, reduced-motion presentation and animated WebGL fallback.
 
 ### Don't:
 

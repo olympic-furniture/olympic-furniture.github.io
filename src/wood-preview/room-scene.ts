@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 
 import { finishes, type Room, type Motion } from "./room-presets";
+import { roomMotion } from "./room-motion";
 
 export function createRoomScene(host: HTMLDivElement) {
   const canvas = document.createElement("canvas");
@@ -65,7 +66,7 @@ export function createRoomScene(host: HTMLDivElement) {
   const shell = new THREE.Group();
   scene.add(shell);
   function box(
-    parent: THREE.Group,
+    parent: THREE.Object3D,
     x: number,
     y: number,
     z: number,
@@ -112,10 +113,15 @@ export function createRoomScene(host: HTMLDivElement) {
   const furniture = new THREE.Group();
   scene.add(furniture);
   let pieces: {
-    group: THREE.Group;
+    group: THREE.Object3D;
     target: THREE.Vector3;
     offset: THREE.Vector3;
+    delay: number;
+    duration: number;
+    rotation: number;
+    turn: number;
   }[] = [];
+  let furnitureIndex = 0;
   let motion: Motion = "playing";
   let elapsed = 0;
   let lastTime = 0;
@@ -126,13 +132,30 @@ export function createRoomScene(host: HTMLDivElement) {
     renderer.render(scene, camera);
   }
   function arrange() {
-    pieces.forEach(({ group, target, offset }, i) => {
-      const t = Math.min(1, Math.max(0, (elapsed - i * 170) / 1150));
-      const remaining = motion === "off" ? 0 : Math.pow(1 - t, 4);
-      group.position.copy(target).addScaledVector(offset, remaining);
-    });
+    const progress =
+      motion === "off" ? 1 : Math.min(1, elapsed / roomMotion.duration);
+    const cameraProgress = 1 - Math.pow(1 - progress, 3);
+    camera.position.set(
+      9.4 - 1.4 * cameraProgress,
+      7.8 - 0.3 * cameraProgress,
+      9.2 + 0.8 * cameraProgress,
+    );
+    camera.lookAt(0, 1.23, 0);
+    camera.zoom = 1 + 0.08 * cameraProgress;
+    camera.updateProjectionMatrix();
+    pieces.forEach(
+      ({ group, target, offset, delay, duration, rotation, turn }) => {
+        const t = Math.min(1, Math.max(0, (elapsed - delay) / duration));
+        const remaining = motion === "off" ? 0 : Math.pow(1 - t, 4);
+        group.position.copy(target).addScaledVector(offset, remaining);
+        group.rotation.y = rotation + turn * remaining;
+        group.scale.setScalar(1 - 0.035 * remaining);
+      },
+    );
     host.dataset.assembly =
-      elapsed >= 1750 || motion === "off" ? "assembled" : "assembling";
+      elapsed >= roomMotion.duration || motion === "off"
+        ? "assembled"
+        : "assembling";
     draw();
   }
   function tick(time: number) {
@@ -141,13 +164,18 @@ export function createRoomScene(host: HTMLDivElement) {
     if (lastTime) elapsed += Math.min(time - lastTime, 50);
     lastTime = time;
     arrange();
-    if (elapsed < 1750) frame = requestAnimationFrame(tick);
+    if (elapsed < roomMotion.duration) frame = requestAnimationFrame(tick);
   }
   function start() {
     cancelAnimationFrame(frame);
     lastTime = 0;
     arrange();
-    if (motion === "playing" && visible && elapsed < 1750)
+    if (
+      motion === "playing" &&
+      visible &&
+      !document.hidden &&
+      elapsed < roomMotion.duration
+    )
       frame = requestAnimationFrame(tick);
   }
   function clearFurniture() {
@@ -156,17 +184,38 @@ export function createRoomScene(host: HTMLDivElement) {
     });
     furniture.clear();
     pieces = [];
+    furnitureIndex = 0;
+  }
+  function assemblyPart(
+    group: THREE.Object3D,
+    offset: THREE.Vector3,
+    delay: number,
+    duration = 1400,
+    turn = 0,
+  ) {
+    pieces.push({
+      group,
+      target: group.position.clone(),
+      offset,
+      delay,
+      duration,
+      rotation: group.rotation.y,
+      turn,
+    });
+    return group;
   }
   function piece(x: number, z: number, offsetX: number, offsetZ: number) {
     const group = new THREE.Group();
     const target = new THREE.Vector3(x, 0, z);
     group.position.copy(target);
     furniture.add(group);
-    pieces.push({
+    assemblyPart(
       group,
-      target,
-      offset: new THREE.Vector3(offsetX, 0.15, offsetZ),
-    });
+      new THREE.Vector3(offsetX * 1.5, 0.55, offsetZ * 1.5),
+      250 + furnitureIndex++ * 450,
+      1800,
+      offsetX * 0.2,
+    );
     return group;
   }
   function legs(
@@ -218,7 +267,7 @@ export function createRoomScene(host: HTMLDivElement) {
       wood,
     );
     for (const x of [-0.215, 0.215]) {
-      box(
+      const door = box(
         storage,
         x,
         cabinetHeight / 2 + 0.12,
@@ -229,16 +278,13 @@ export function createRoomScene(host: HTMLDivElement) {
         cream,
         0.005,
       );
-      box(
-        storage,
-        x > 0 ? 0.06 : -0.06,
-        cabinetHeight / 2 + 0.1,
-        0.317,
-        0.025,
-        0.18,
-        0.025,
-        wood,
-      );
+      if (room === "living")
+        assemblyPart(
+          door,
+          new THREE.Vector3(x * 0.7, 0.2, 0.35),
+          1550 + (x > 0 ? 180 : 0),
+        );
+      box(door, x > 0 ? -0.155 : 0.155, -0.02, 0.03, 0.025, 0.18, 0.025, wood);
     }
     if (room === "living") {
       const sofa = piece(0.35, -1.23, 0, -0.8);
@@ -246,10 +292,26 @@ export function createRoomScene(host: HTMLDivElement) {
       box(sofa, 0, 0.33, 0, 2.6, 0.28, 0.9, green, 0.08);
       box(sofa, 0, 0.8, -0.36, 2.55, 0.8, 0.24, green, 0.09);
       for (const x of [-1.18, 1.18])
-        box(sofa, x, 0.63, 0, 0.25, 0.58, 0.94, green, 0.08);
+        assemblyPart(
+          box(sofa, x, 0.63, 0, 0.25, 0.58, 0.94, green, 0.08),
+          new THREE.Vector3(Math.sign(x) * 0.65, 0.25, 0),
+          1550 + (x > 0 ? 180 : 0),
+          1500,
+          Math.sign(x) * 0.15,
+        );
       for (const x of [-0.55, 0.55]) {
-        box(sofa, x, 0.53, 0.05, 1.03, 0.2, 0.7, cream, 0.08);
-        box(sofa, x, 0.87, -0.15, 1.01, 0.53, 0.19, green, 0.075);
+        assemblyPart(
+          box(sofa, x, 0.53, 0.05, 1.03, 0.2, 0.7, cream, 0.08),
+          new THREE.Vector3(0, 0.55, 0.35),
+          2050 + (x > 0 ? 180 : 0),
+          1450,
+        );
+        assemblyPart(
+          box(sofa, x, 0.87, -0.15, 1.01, 0.53, 0.19, green, 0.075),
+          new THREE.Vector3(0, 0.3, -0.45),
+          1800 + (x > 0 ? 180 : 0),
+          1450,
+        );
       }
       const cushion = box(
         sofa,
@@ -263,11 +325,30 @@ export function createRoomScene(host: HTMLDivElement) {
         0.075,
       );
       cushion.rotation.z = -0.15;
+      assemblyPart(
+        cushion,
+        new THREE.Vector3(-0.25, 0.6, 0.25),
+        3050,
+        1400,
+        -0.25,
+      );
       const table = piece(0.3, 0.7, 0.3, 0.9);
       box(table, 0, 0.035, 0, 2.7, 0.045, 1.55, rug, 0.015);
       legs(table, 1.25, 0.67, 0.39);
-      box(table, 0, 0.45, 0, 1.45, 0.11, 0.82, wood, 0.08);
-      box(table, 0.22, 0.535, -0.02, 0.35, 0.05, 0.23, cream, 0.006);
+      assemblyPart(
+        box(table, 0, 0.45, 0, 1.45, 0.11, 0.82, wood, 0.08),
+        new THREE.Vector3(0, 0.55, 0.2),
+        2450,
+        1500,
+        0.13,
+      );
+      assemblyPart(
+        box(table, 0.22, 0.535, -0.02, 0.35, 0.05, 0.23, cream, 0.006),
+        new THREE.Vector3(0.2, 0.45, 0),
+        3300,
+        1200,
+        -0.2,
+      );
     } else if (room === "bedroom") {
       const bed = piece(0.45, -0.15, 0, -0.8);
       legs(bed, 1.8, 2.5, 0.18);
@@ -317,16 +398,17 @@ export function createRoomScene(host: HTMLDivElement) {
     start();
   });
   visibility.observe(host);
+  document.addEventListener("visibilitychange", start);
   renderer.setSize(host.clientWidth, host.clientHeight, false);
   host.dataset.renderer = "webgl";
   return {
-    captureAssemblyFrames(count = 16) {
+    captureAssemblyFrames(count = roomMotion.frames) {
       const previousMotion = motion;
       const previousElapsed = elapsed;
       cancelAnimationFrame(frame);
       motion = "playing";
       const frames = Array.from({ length: count }, (_, index) => {
-        elapsed = (1750 * index) / (count - 1);
+        elapsed = (roomMotion.duration * index) / (count - 1);
         arrange();
         return renderer.domElement.toDataURL("image/png");
       });
@@ -344,7 +426,7 @@ export function createRoomScene(host: HTMLDivElement) {
     },
     setMotion(value: Motion) {
       motion = value;
-      if (value === "off") elapsed = 1750;
+      if (value === "off") elapsed = roomMotion.duration;
       start();
     },
     replay() {
@@ -356,6 +438,7 @@ export function createRoomScene(host: HTMLDivElement) {
       cancelAnimationFrame(frame);
       resize.disconnect();
       visibility.disconnect();
+      document.removeEventListener("visibilitychange", start);
       scene.traverse((object) => {
         if (object instanceof THREE.Mesh) object.geometry.dispose();
       });
