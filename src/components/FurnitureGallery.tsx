@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import {
   ArrowUpLeftIcon,
   PlusIcon,
@@ -9,6 +9,8 @@ import {
   TableIcon,
   MoonIcon,
   OfficeChairIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
 } from '@phosphor-icons/react';
 import { categories, type CategoryId, type Product } from '../content';
 import { BusinessImage } from './BusinessImage';
@@ -24,12 +26,45 @@ const categoryIcons = {
   office: OfficeChairIcon,
 };
 
+const desktopQuery = '(min-width: 1024px)';
+const tabletQuery = '(min-width: 768px)';
+
+function getGalleryColumns() {
+  if (typeof window === 'undefined' || !window.matchMedia) return 4;
+  if (window.matchMedia(desktopQuery).matches) return 4;
+  return window.matchMedia(tabletQuery).matches ? 2 : 1;
+}
+
+function subscribeToGalleryColumns(onChange: () => void) {
+  if (typeof window === 'undefined' || !window.matchMedia) return () => {};
+  const queries = [desktopQuery, tabletQuery].map((query) =>
+    window.matchMedia(query),
+  );
+  queries.forEach((query) => query.addEventListener('change', onChange));
+  return () => {
+    queries.forEach((query) => query.removeEventListener('change', onChange));
+  };
+}
+
 export function FurnitureGallery({ items }: { items: Product[] }) {
   const [category, setCategory] = useState<CategoryId>('wardrobes');
   const [selected, setSelected] = useState<Product | null>(null);
+  const [pageStart, setPageStart] = useState(0);
+  const columns = useSyncExternalStore(
+    subscribeToGalleryColumns,
+    getGalleryColumns,
+    () => 4,
+  );
+  const pageSize = columns * 2;
   const visible = items.filter(
     (item) => item.published && item.category === category,
   );
+  const pageCount = Math.ceil(visible.length / pageSize);
+  const page = Math.min(
+    Math.floor(pageStart / pageSize),
+    Math.max(0, pageCount - 1),
+  );
+  const pageItems = visible.slice(page * pageSize, (page + 1) * pageSize);
   const current = categories.find((item) => item.id === category)!;
   return (
     <section
@@ -55,6 +90,7 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
               onClick={() => {
                 setCategory(item.id);
                 setSelected(null);
+                setPageStart(0);
               }}
             >
               <Icon size={20} aria-hidden />
@@ -68,15 +104,43 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
         <p>{current.description}</p>
       </div>
       <p className="gallery-note">
-        התמונות מציגות דוגמאות לרהיטים לאורך השנים. מחירים ומבצעים שמופיעים בתמונות
-        הם מפרסומים ישנים. לבירור מחיר וזמינות עדכניים, דברו איתנו.
+        התמונות מציגות דוגמאות לרהיטים לאורך השנים. מחירים ומבצעים שמופיעים
+        בתמונות הם מפרסומים ישנים. לבירור מחיר וזמינות עדכניים, דברו איתנו.
       </p>
-      <p className="sr-only" role="status">
+      <p className="sr-only" role="status" aria-atomic="true">
         {current.label}: {visible.length} תמונות
+        {visible.length > 0 && `, עמוד ${page + 1} מתוך ${pageCount}`}
       </p>
+      {pageCount > 1 && (
+        <nav className="gallery-pagination" aria-label="דפדוף בתמונות רהיטים">
+          <button
+            aria-label="העמוד הקודם"
+            aria-controls="furniture-grid"
+            disabled={page === 0}
+            onClick={() => setPageStart((page - 1) * pageSize)}
+          >
+            <CaretRightIcon size={24} aria-hidden />
+          </button>
+          <span className="gallery-page-count" aria-hidden="true">
+            עמוד {page + 1} מתוך {pageCount}
+          </span>
+          <button
+            aria-label="העמוד הבא"
+            aria-controls="furniture-grid"
+            disabled={page === pageCount - 1}
+            onClick={() => setPageStart((page + 1) * pageSize)}
+          >
+            <CaretLeftIcon size={24} aria-hidden />
+          </button>
+        </nav>
+      )}
       {visible.length ? (
-        <div className="gallery-grid">
-          {visible.map((product) => (
+        <div
+          id="furniture-grid"
+          className="gallery-grid"
+          style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
+        >
+          {pageItems.map((product) => (
             <article key={product.id} className="furniture-item">
               <button
                 className="furniture-image"

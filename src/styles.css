@@ -299,8 +299,38 @@ h1 {
 }
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 28px;
+}
+.gallery-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.gallery-pagination button {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--blue);
+  transition: background-color 180ms;
+}
+.gallery-pagination button:enabled:hover {
+  background: var(--tint);
+}
+.gallery-pagination button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.gallery-page-count {
+  min-width: 110px;
+  text-align: center;
+  color: var(--blue);
+  font-variant-numeric: tabular-nums;
 }
 .furniture-item {
   padding: 12px 12px 24px;
@@ -766,7 +796,6 @@ address {
     margin-bottom: 5px;
   }
   .gallery-grid {
-    grid-template-columns: 1fr;
     gap: 32px;
   }
   .furniture-image > img,
