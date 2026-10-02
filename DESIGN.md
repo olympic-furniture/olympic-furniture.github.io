@@ -1,6 +1,6 @@
 ---
 name: Olympic Furniture — Walnut Showroom
-description: The approved Hebrew wood homepage and its unindexed preview alias.
+description: The approved Hebrew wood homepage.
 colors:
   paper: "#f5efe5"
   surface: "#fcf8f1"
@@ -80,7 +80,7 @@ components:
 
 Warm cream, walnut ink and olive controls surround real furniture photographs and a softly lit room illustration. Self-hosted Hebrew Heebo and RTL reading order keep the family business direct and familiar. Wooden planks and screws give the hero initials a material identity, echoed by the corresponding letters in the recognizable original logo.
 
-This is the canonical system for the approved homepage at `/`. The unindexed `/wood-preview/` alias uses the same system with an additional utility toolbar. It supersedes the former light-blue, red and pale-yellow homepage identity; retained base stylesheet declarations are implementation history, not the current visual authority. The durable brand commitments are in [PRODUCT.md](PRODUCT.md); the page direction and visitor path are in [the surface brief](docs/design/wood-preview.md). This document records the finished implementation, reviewed with a ship disposition on 2026-10-02.
+This is the canonical system for the approved homepage at `/`. It supersedes the former light-blue, red and pale-yellow homepage identity; retained base stylesheet declarations are implementation history, not the current visual authority. The durable brand commitments are in [PRODUCT.md](PRODUCT.md); the page direction and visitor path are in [the surface brief](docs/design/wood-preview.md). This document records the finished implementation, reviewed with a ship disposition on 2026-10-02.
 
 Broad section grounds and open furniture displays provide structure. A single staged assembly explains the fixed living room; the photo strip’s local pause control and reduced-motion behavior preserve access to the content. Generated lettering and scene renders serve the illustration and identity, while the catalog remains real business photography.
 
@@ -140,9 +140,9 @@ The full CMS headline remains the heading's accessible name; decorative letter p
 
 ## Layout
 
-The centered shell is `min(1320px, calc(100% - 112px))`, narrowing to `calc(100% - 64px)` at (1100px) and `calc(100% - 40px)` at (767px). The sticky header occupies (77px) desktop and (71px) mobile. Main-page anchor offsets are (100px) desktop and (94px) mobile. The preview alias adds a (42px) toolbar above the header and uses (142px / 130px) anchor offsets.
+The centered shell is `min(1320px, calc(100% - 112px))`, narrowing to `calc(100% - 64px)` at (1100px) and `calc(100% - 40px)` at (767px). The sticky header occupies (77px) desktop and (71px) mobile. Main-page anchor offsets are (100px) desktop and (94px) mobile.
 
-The hero fills at least the viewport below the header and any alias toolbar. Its RTL copy and room share a (0.8fr / 1.2fr) grid with (40px) separation, reducing to (32px) at the intermediate breakpoint. At the widest shell the room spans (768px). It stacks at (767px), with the room capped at (500px) and retaining its (640 / 470) aspect ratio. Custom and family sections use broad two-column layouts and stack on mobile.
+The hero fills at least the viewport below the header. Its RTL copy and room share a (0.8fr / 1.2fr) grid with (40px) separation, reducing to (32px) at the intermediate breakpoint. At the widest shell the room spans (768px). It stacks at (767px), with the room capped at (500px) and retaining its (640 / 470) aspect ratio. Custom and family sections use broad two-column layouts and stack on mobile.
 
 The complete gallery contains the existing (83) published photographs across six categories. It uses four columns from (1024px), two from (768px) and one below that. Two rows maximum means (8 / 4 / 2) entries per page; category changes reset paging, and paging controls remain below the grid. Gallery gaps are (28px), becoming (32px) on mobile. Image regions are (320px) tall on desktop and (340px) on mobile, with contained pictures aligned above the ledge.
 
@@ -166,7 +166,7 @@ Primary actions pair white text with walnut and a (54px) minimum height. Hover d
 
 ### Navigation
 
-The main sticky header has right-side navigation and a left-side outlined telephone pill. The phone icon sits to the left of isolated numerals; the pill and circular menu control both measure (46px) high. The header has no logo, preview banner or global motion button. At (1023px), navigation becomes a native menu toggle and mobile panel. Escape closes the panel and returns focus to the toggle; outside pointer input and desktop resizing also close it. The alias toolbar contains only its title and a link to `/`.
+The main sticky header has right-side navigation and a left-side outlined telephone pill. The phone icon sits to the left of isolated numerals; the pill and circular menu control both measure (46px) high. The header has no logo, preview banner or global motion button. At (1023px), navigation becomes a native menu toggle and mobile panel. Escape closes the panel and returns focus to the toggle; outside pointer input and desktop resizing also close it.
 
 A decorative (2px) walnut line below the header tracks scroll position from the right. It remains an orientation aid under reduced motion; it is hidden from assistive technology.
 
@@ -206,7 +206,7 @@ The signature before the footer uses the adapted original logo, retaining its ch
 
 ### Do:
 
-- **Do** use this wood system for the approved homepage and its unindexed preview alias.
+- **Do** use this wood system for the approved homepage.
 - **Do** keep real furniture photographs complete, contained and available in native image dialogs.
 - **Do** preserve Hebrew reading order, visible focus and native selection, disclosure and dialog semantics.
 - **Do** retain equivalent animated room fallback when WebGL fails and assembled/static content under reduced motion.

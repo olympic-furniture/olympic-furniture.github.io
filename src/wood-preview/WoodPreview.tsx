@@ -39,7 +39,7 @@ function subscribeToMotion(onChange: () => void) {
   query?.addEventListener("change", onChange);
   return () => query?.removeEventListener("change", onChange);
 }
-export function WoodPreview({ preview = false }: { preview?: boolean }) {
+export function WoodPreview() {
   const { root, progress } = usePageMotion();
   const [carouselPaused, setCarouselPaused] = useState(false);
   const [selected, setSelected] = useState<Product | null>(null);
@@ -51,26 +51,13 @@ export function WoodPreview({ preview = false }: { preview?: boolean }) {
   const motion = reduce ? "off" : "playing";
   return (
     <div
-      className={`wood-preview${preview ? " is-preview" : ""}`}
+      className="wood-preview"
       data-motion={motion}
       ref={root}
     >
       <a className="skip-link" href="#main">
         דילוג לתוכן הראשי
       </a>
-      {preview && (
-        <div className="wood-preview-toolbar">
-          <div className="shell wood-preview-toolbar-inner">
-            <span>תצוגת עיצוב חדשה</span>
-            <div>
-              <a href="/">
-                לאתר הנוכחי
-                <ArrowUpLeftIcon size={16} aria-hidden />
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
       <Header />
       <div className="wood-scroll-progress" aria-hidden="true" ref={progress} />
       <main id="main" tabIndex={-1}>

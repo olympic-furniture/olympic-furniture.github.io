@@ -20,7 +20,7 @@ let output: string;
 describe('editor contract and production output', () => {
   beforeAll(async () => {
     root = await mkdtemp(path.join(os.tmpdir(), 'olympic-publishing-'));
-    await Promise.all(['content', 'public', 'src', 'scripts', 'index.html', 'wood-preview', 'vite.config.ts', 'package.json'].map((file) =>
+    await Promise.all(['content', 'public', 'src', 'scripts', 'index.html', 'vite.config.ts', 'package.json'].map((file) =>
       cp(path.join(projectRoot, file), path.join(root, file), { recursive: true })));
     await symlink(path.join(projectRoot, 'node_modules'), path.join(root, 'node_modules'), 'dir');
     // This is an isolated editor save. Production business content stays unchanged.
@@ -102,12 +102,8 @@ describe('editor contract and production output', () => {
     expect(sitemap.querySelector('loc')?.textContent).toBe('https://olympic-furniture.github.io/');
   });
 
-  it('publishes the wood homepage with root metadata and keeps the preview unindexed', async () => {
-    const preview = new JSDOM(await readFile(path.join(root, 'dist/wood-preview/index.html'), 'utf8')).window.document;
-    expect(preview.documentElement.getAttribute('dir')).toBe('rtl');
-    expect(preview.querySelector('meta[name="robots"]')?.getAttribute('content')).toBe('noindex, nofollow');
-    expect(preview.querySelector('link[rel="canonical"]')).toBeNull();
-    expect(preview.querySelector('script[type="module"][src]')).not.toBeNull();
+  it('publishes only the wood homepage with root metadata', async () => {
+    await expect(readFile(path.join(root, 'dist/wood-preview/index.html'), 'utf8')).rejects.toMatchObject({ code: 'ENOENT' });
     const main = new JSDOM(html).window.document;
     expect(main.title).toContain('כותרת בדיקת עריכה');
     expect(main.documentElement.getAttribute('data-design')).toBe('wood');

@@ -1,6 +1,6 @@
 # Wood design preview
 
-Mode: Persuade. Primary route: /. The user approved promotion of the wood design to the homepage. /wood-preview/ remains an unindexed preview alias.
+Mode: Persuade. Primary route: /. The user approved promotion of the wood design to the homepage. The former /wood-preview/ entry has been removed.
 
 The user pinned modern wood-inspired colors and layout, the driving-site motion reference, and furniture sliding and assembling into a room. That commitment takes precedence over the random direction seed. The preview follows a contemporary walnut showroom: warm cream surfaces, dark walnut text, muted olive upholstery, clay accents and broad, clear spacing. Heebo stays self-hosted and Hebrew-first.
 
@@ -8,7 +8,7 @@ The first viewport pairs the approved furniture headline with a fixed WebGL room
 
 Motion serves explanation and spatial continuity: a single staged room assembly, a faster 22-second constant-speed furniture strip, and short tactile press feedback. The hero initials and matching logo letters are walnut planks with screw details. Gallery changes, disclosure content and the founders photograph receive distinct, short transitions; a thin scroll-position line aids orientation. Functional content stays visible. Reduced motion uses the assembled scene and a static scrollable photo strip. Hover and focus pause the strip; an icon-only control on the photo strip stops its movement. The old photo caption and visible pause/resume wording are removed.
 
-All six categories, four desktop columns, two-row page limit, arrows below images, native image dialogs, verified business copy and direct contact/navigation actions survive. No prices, delivery promises, reviews or checkout are added. Preview metadata excludes it from indexing.
+All six categories, four desktop columns, two-row page limit, arrows below images, native image dialogs, verified business copy and direct contact/navigation actions survive. No prices, delivery promises, reviews or checkout are added.
 
 ## FORM
 

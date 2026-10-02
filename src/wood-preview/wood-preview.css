@@ -1,12 +1,3 @@
-.wood-preview {
-  --wood-toolbar-height: 0px;
-}
-.wood-preview.is-preview {
-  --wood-toolbar-height: 42px;
-}
-html[data-preview="true"] {
-  scroll-padding-top: 142px;
-}
 .header-actions {
   display: flex;
   align-items: center;
@@ -53,48 +44,13 @@ html[data-design="wood"] ::selection {
   letter-spacing: -0.025em;
 }
 .wood-preview .site-header {
-  top: var(--wood-toolbar-height);
+  top: 0;
   background: #f5efe5;
   backdrop-filter: none;
 }
-.wood-preview-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  background: #e8dfd1;
-  color: #554533;
-}
-.wood-preview-toolbar-inner {
-  min-height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  font-size: 13px;
-}
-.wood-preview-toolbar-inner > div {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.wood-preview-toolbar a,
-.wood-preview-toolbar button {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  min-height: 42px;
-}
-.wood-preview-toolbar button {
-  border: 0;
-  padding: 0;
-  background: transparent;
-}
-.wood-preview-toolbar button:disabled {
-  cursor: default;
-}
 .wood-hero {
-  min-height: calc(100vh - var(--header-height) - var(--wood-toolbar-height));
-  min-height: calc(100dvh - var(--header-height) - var(--wood-toolbar-height));
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100dvh - var(--header-height));
   padding-block: 38px 72px;
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
@@ -713,16 +669,6 @@ html[data-design="wood"] ::selection {
   html[data-design="wood"] {
     scroll-padding-top: 130px;
   }
-  .wood-preview-toolbar-inner {
-    font-size: 11px;
-    gap: 8px;
-  }
-  .wood-preview-toolbar-inner > div {
-    gap: 12px;
-  }
-  .wood-preview-toolbar button span {
-    display: none;
-  }
   .wood-hero {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -876,9 +822,6 @@ html[data-design="wood"] ::selection {
   z-index: 32;
   pointer-events: none;
 }
-.is-preview .wood-scroll-progress {
-  top: calc(var(--header-height) + 40px);
-}
 .wood-preview[data-motion="paused"]
   :is(
     .gallery-grid,
@@ -918,9 +861,6 @@ html[data-design="wood"] ::selection {
 @media (max-width: 767px) {
   html[data-design="wood"] {
     scroll-padding-top: 94px;
-  }
-  html[data-preview="true"] {
-    scroll-padding-top: 130px;
   }
   .header-actions {
     gap: 10px;
