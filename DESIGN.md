@@ -63,7 +63,10 @@ components:
     height: "46px"
   carousel-control:
     textColor: "{colors.blue}"
+    rounded: "{rounded.round}"
     padding: "0"
+    width: "44px"
+    height: "44px"
   furniture-card:
     textColor: "{colors.ink}"
     padding: "0"
@@ -183,11 +186,11 @@ Native `details` and `summary` rows use fine dividers, (17px) vertical summary p
 
 ### Room Assembly and Photo Strip
 
-The figure identifies one fixed walnut living room as an illustration. Its single (4600ms) assembly uses furniture-root delays of (250ms + index × 450ms), (1800ms) root movement and quartic ease-out. Cabinet doors, sofa arms, back and seat cushions, tabletop, throw and book assemble in stages ending at (4500ms). A mild camera orbit and (8%) zoom keep the room centered at a (1.23) look-at height. The renderer is imported lazily, caps pixel ratio at (2), suspends offscreen or when the document is hidden, stops frames when assembled and disposes resources on unmount.
+The figure identifies one fixed walnut living room as an illustration. Its single (4900ms) assembly starts with the foundation alone. Fourteen floorboards settle from a small (0.16) vertical offset with delays of (100ms + index × 32ms) and (700ms) duration. The back wall unfolds from a (90°) X hinge at (650ms); the whole window-side wall unfolds from a (−90°) Z hinge at (900ms), both over (1150ms). The rug enters at (1350ms) over (1000ms). Complete cabinet, sofa, table with book and plant remain structurally intact and glide along floor level with delays of (1600ms + index × 700ms), (1200ms) duration, cubic ease-out, a short (180ms) fade and a small Y-axis turn. Furniture children stay attached throughout. A mild camera orbit and (8%) zoom keep the room centered at a (1.23) look-at height. The renderer is imported lazily, caps pixel ratio at (2), suspends offscreen or when the document is hidden, stops frames when assembled and disposes resources on unmount.
 
-If WebGL is unavailable, initialization fails or its context is lost, one matching native (48-frame, 8 × 6) sprite sheet assembles over the same (4600ms), suspending offscreen. An assembled transparent WebP is visible while the sprite loads. Reduced motion shows the final static room and does not request the sprite. [The current motion asset manifest](docs/design/wood-hero-motion-assets.json) records source files, rendering and framing; the previous nine room/finish sprite sheets remain archived assets.
+If WebGL is unavailable or initialization fails, one matching native (48-frame, 8 × 6) sprite sheet assembles over the same (4900ms), suspending offscreen. The matching foundation-only opening WebP stays visible while the renderer or sprite loads, preserving the opening frame. Context loss or sprite failure shows the completed static room without replay. Reduced motion shows the final static room and does not request the sprite. [The current motion asset manifest](docs/design/wood-hero-motion-assets.json) records source files, rendering and framing; the previous nine room/finish sprite sheets remain archived assets.
 
-The real-photo conveyor runs a constant-speed (22s) loop. A text-and-SVG pause/resume button beside its caption has a (44px) minimum height and an `aria-pressed` state. This local control affects only the strip and is hidden under reduced motion. Fine-pointer hover, keyboard focus, offscreen state and a hidden document also pause the strip. Reduced motion removes the loop and copies, exposing one horizontally scrollable photo group.
+The real-photo conveyor runs a constant-speed (22s) loop. An icon-only pause/resume button sits above the photos inside the strip at (0px) top and (20px) from its inline end. Its circular target is (44px), with an accessible label, title and `aria-pressed` state. The strip has no explanatory caption or visible pause/resume wording; the all-furniture link remains below. Mobile strip top padding is (54px). This local control affects only the strip and is hidden under reduced motion. Fine-pointer hover, focus within the photo track, offscreen state and a hidden document also pause the strip. Focus on the control does not prevent resume. Reduced motion removes the loop and copies, exposing one horizontally scrollable photo group.
 
 Reduced motion presents assembled/static content and removes transitions. Wooden initials arrive over (850ms), with the ל delayed (140ms). Gallery and disclosure entries remain short independent effects. The family photograph has a (650ms) arrival only once, when it first intersects at a (0.2) threshold while motion is playing; otherwise it stays visible without that entrance.
 

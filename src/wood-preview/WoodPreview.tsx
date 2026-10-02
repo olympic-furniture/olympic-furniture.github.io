@@ -121,6 +121,21 @@ export function WoodPreview({ preview = false }: { preview?: boolean }) {
             role="region"
             aria-label="תמונות נבחרות מהחנות"
           >
+            {!reduce && (
+              <button
+                className="wood-carousel-control"
+                aria-label={carouselPaused ? "הפעלת התמונות" : "עצירת התמונות"}
+                title={carouselPaused ? "הפעלת התמונות" : "עצירת התמונות"}
+                aria-pressed={carouselPaused}
+                onClick={() => setCarouselPaused((value) => !value)}
+              >
+                {carouselPaused ? (
+                  <PlayIcon size={18} aria-hidden />
+                ) : (
+                  <PauseIcon size={18} aria-hidden />
+                )}
+              </button>
+            )}
             <div className="wood-strip-track" dir="ltr">
               <div className="wood-strip-group">
                 {featured.map((product) => (
@@ -154,23 +169,6 @@ export function WoodPreview({ preview = false }: { preview?: boolean }) {
             </div>
           </div>
           <div className="shell wood-showcase-bottom">
-            <div className="wood-showcase-caption">
-              <span>צילום אמיתי מהחנות. לחצו כדי לראות מקרוב.</span>
-              {!reduce && (
-                <button
-                  className="wood-carousel-control"
-                  aria-pressed={carouselPaused}
-                  onClick={() => setCarouselPaused((value) => !value)}
-                >
-                  {carouselPaused ? (
-                    <PlayIcon size={17} aria-hidden />
-                  ) : (
-                    <PauseIcon size={17} aria-hidden />
-                  )}
-                  {carouselPaused ? "הפעלת התמונות" : "עצירת התמונות"}
-                </button>
-              )}
-            </div>
             <a className="text-link" href="#furniture">
               לכל הרהיטים
               <ArrowLeftIcon size={19} aria-hidden />

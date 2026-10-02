@@ -17,7 +17,7 @@ export function createRoomScene(host: HTMLDivElement) {
   });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.setClearColor(0x000000, 0);
   host.append(renderer.domElement);
@@ -86,42 +86,76 @@ export function createRoomScene(host: HTMLDivElement) {
     parent.add(mesh);
     return mesh;
   }
-  box(shell, 0, -0.1, 0, 5.6, 0.2, 4.5, wood);
-  for (let i = 0; i < 14; i++)
-    box(
-      shell,
-      -2.6 + i * 0.4,
-      0.015,
-      0,
-      0.39,
-      0.045,
-      4.48,
-      floorMaterial,
-      0.003,
-    );
-  box(shell, 0, 1.45, -2.2, 5.6, 2.9, 0.12, wall);
-  // The window is an opening in the side wall, not a rectangle painted on it.
-  box(shell, -2.74, 0.5, 0, 0.12, 1, 4.4, wall);
-  box(shell, -2.74, 2.65, 0, 0.12, 0.5, 4.4, wall);
-  box(shell, -2.74, 1.7, -1.55, 0.12, 1.4, 1.3, wall);
-  box(shell, -2.74, 1.7, 1.55, 0.12, 1.4, 1.3, wall);
-  for (const y of [1, 1.7, 2.4])
-    box(shell, -2.7, y, 0, 0.17, 0.045, 1.8, wood, 0.008);
-  for (const z of [-0.9, 0, 0.9])
-    box(shell, -2.7, 1.7, z, 0.17, 1.4, 0.045, wood, 0.008);
-  box(shell, -2.58, 0.99, 0, 0.4, 0.055, 1.95, wood);
-  const furniture = new THREE.Group();
-  scene.add(furniture);
-  let pieces: {
+  type AssemblyPart = {
     group: THREE.Object3D;
     target: THREE.Vector3;
     offset: THREE.Vector3;
     delay: number;
     duration: number;
-    rotation: number;
-    turn: number;
-  }[] = [];
+    rotation: THREE.Euler;
+    turn: THREE.Vector3;
+    materials: THREE.Material[];
+    meshes: THREE.Mesh[];
+  };
+  const architecture: AssemblyPart[] = [];
+  let pieces: AssemblyPart[] = [];
   let furnitureIndex = 0;
+  box(shell, 0, -0.1, 0, 5.6, 0.2, 4.5, wood);
+  for (let i = 0; i < 14; i++) {
+    assemblyPart(
+      box(
+        shell,
+        -2.6 + i * 0.4,
+        0.015,
+        0,
+        0.39,
+        0.045,
+        4.48,
+        floorMaterial,
+        0.003,
+      ),
+      new THREE.Vector3(0, 0.16, 0),
+      100 + i * 32,
+      700,
+      new THREE.Vector3(),
+      architecture,
+    );
+  }
+  const backWall = new THREE.Group();
+  backWall.position.z = -2.2;
+  shell.add(backWall);
+  box(backWall, 0, 1.45, 0, 5.6, 2.9, 0.12, wall);
+  assemblyPart(
+    backWall,
+    new THREE.Vector3(),
+    650,
+    1150,
+    new THREE.Vector3(Math.PI / 2, 0, 0),
+    architecture,
+  );
+  const sideWall = new THREE.Group();
+  sideWall.position.x = -2.74;
+  shell.add(sideWall);
+  // The window and its wall unfold together around the floor edge.
+  box(sideWall, 0, 0.5, 0, 0.12, 1, 4.4, wall);
+  box(sideWall, 0, 2.65, 0, 0.12, 0.5, 4.4, wall);
+  box(sideWall, 0, 1.7, -1.55, 0.12, 1.4, 1.3, wall);
+  box(sideWall, 0, 1.7, 1.55, 0.12, 1.4, 1.3, wall);
+  for (const y of [1, 1.7, 2.4])
+    box(sideWall, 0.04, y, 0, 0.17, 0.045, 1.8, wood, 0.008);
+  for (const z of [-0.9, 0, 0.9])
+    box(sideWall, 0.04, 1.7, z, 0.17, 1.4, 0.045, wood, 0.008);
+  box(sideWall, 0.16, 0.99, 0, 0.4, 0.055, 1.95, wood);
+  assemblyPart(
+    sideWall,
+    new THREE.Vector3(),
+    900,
+    1150,
+    new THREE.Vector3(0, 0, -Math.PI / 2),
+    architecture,
+  );
+  const furniture = new THREE.Group();
+  scene.add(furniture);
   let motion: Motion = "playing";
   let elapsed = 0;
   let lastTime = 0;
@@ -143,15 +177,28 @@ export function createRoomScene(host: HTMLDivElement) {
     camera.lookAt(0, 1.23, 0);
     camera.zoom = 1 + 0.08 * cameraProgress;
     camera.updateProjectionMatrix();
-    pieces.forEach(
-      ({ group, target, offset, delay, duration, rotation, turn }) => {
-        const t = Math.min(1, Math.max(0, (elapsed - delay) / duration));
-        const remaining = motion === "off" ? 0 : Math.pow(1 - t, 4);
-        group.position.copy(target).addScaledVector(offset, remaining);
-        group.rotation.y = rotation + turn * remaining;
-        group.scale.setScalar(1 - 0.035 * remaining);
-      },
-    );
+    for (const part of [...architecture, ...pieces]) {
+      const { group, target, offset, delay, duration, rotation, turn } = part;
+      const t =
+        motion === "off"
+          ? 1
+          : Math.min(1, Math.max(0, (elapsed - delay) / duration));
+      const remaining = Math.pow(1 - t, 3);
+      const opacity =
+        motion === "off"
+          ? 1
+          : Math.min(1, Math.max(0, (elapsed - delay) / 180));
+      group.visible = opacity > 0;
+      group.position.copy(target).addScaledVector(offset, remaining);
+      group.rotation.set(
+        rotation.x + turn.x * remaining,
+        rotation.y + turn.y * remaining,
+        rotation.z + turn.z * remaining,
+      );
+      group.scale.setScalar(1 - 0.035 * remaining);
+      for (const mat of part.materials) mat.opacity = opacity;
+      for (const mesh of part.meshes) mesh.castShadow = opacity > 0.65;
+    }
     host.dataset.assembly =
       elapsed >= roomMotion.duration || motion === "off"
         ? "assembled"
@@ -160,7 +207,7 @@ export function createRoomScene(host: HTMLDivElement) {
   }
   function tick(time: number) {
     frame = 0;
-    if (disposed || motion !== "playing" || !visible) return;
+    if (disposed || motion !== "playing" || !visible || document.hidden) return;
     if (lastTime) elapsed += Math.min(time - lastTime, 50);
     lastTime = time;
     arrange();
@@ -183,6 +230,7 @@ export function createRoomScene(host: HTMLDivElement) {
       if (object instanceof THREE.Mesh) object.geometry.dispose();
     });
     furniture.clear();
+    for (const part of pieces) part.materials.forEach((mat) => mat.dispose());
     pieces = [];
     furnitureIndex = 0;
   }
@@ -190,32 +238,42 @@ export function createRoomScene(host: HTMLDivElement) {
     group: THREE.Object3D,
     offset: THREE.Vector3,
     delay: number,
-    duration = 1400,
-    turn = 0,
+    duration = 1200,
+    turn = new THREE.Vector3(),
+    collection = pieces,
   ) {
-    pieces.push({
+    const materials: THREE.Material[] = [];
+    const meshes: THREE.Mesh[] = [];
+    group.traverse((object) => {
+      if (!(object instanceof THREE.Mesh)) return;
+      object.material = (object.material as THREE.Material).clone();
+      object.material.transparent = true;
+      materials.push(object.material);
+      meshes.push(object);
+    });
+    collection.push({
       group,
       target: group.position.clone(),
       offset,
       delay,
       duration,
-      rotation: group.rotation.y,
+      rotation: group.rotation.clone(),
       turn,
+      materials,
+      meshes,
     });
     return group;
   }
   function piece(x: number, z: number, offsetX: number, offsetZ: number) {
     const group = new THREE.Group();
-    const target = new THREE.Vector3(x, 0, z);
-    group.position.copy(target);
+    group.position.set(x, 0, z);
+    group.userData.entrance = {
+      offset: new THREE.Vector3(offsetX, 0, offsetZ),
+      delay: 1600 + furnitureIndex++ * 700,
+      duration: 1200,
+      turn: new THREE.Vector3(0, offsetX * 0.18 - offsetZ * 0.12, 0),
+    };
     furniture.add(group);
-    assemblyPart(
-      group,
-      new THREE.Vector3(offsetX * 1.5, 0.55, offsetZ * 1.5),
-      250 + furnitureIndex++ * 450,
-      1800,
-      offsetX * 0.2,
-    );
     return group;
   }
   function legs(
@@ -229,7 +287,7 @@ export function createRoomScene(host: HTMLDivElement) {
         box(parent, x, height / 2, z, 0.07, height, 0.07, wood);
   }
   function plant() {
-    const group = piece(2.05, -1.4, 0.7, -0.5);
+    const group = piece(2.05, -1.4, -0.15, 0.55);
     const pot = new THREE.Mesh(
       new THREE.CylinderGeometry(0.22, 0.16, 0.42, 24),
       clay,
@@ -254,7 +312,7 @@ export function createRoomScene(host: HTMLDivElement) {
   }
   function setRoom(room: Room) {
     clearFurniture();
-    const storage = piece(-1.95, -1.2, -0.6, -0.2);
+    const storage = piece(-1.95, -1.2, 0.35, 0.55);
     const cabinetHeight = room === "bedroom" ? 2.25 : 1.3;
     box(
       storage,
@@ -278,40 +336,18 @@ export function createRoomScene(host: HTMLDivElement) {
         cream,
         0.005,
       );
-      if (room === "living")
-        assemblyPart(
-          door,
-          new THREE.Vector3(x * 0.7, 0.2, 0.35),
-          1550 + (x > 0 ? 180 : 0),
-        );
       box(door, x > 0 ? -0.155 : 0.155, -0.02, 0.03, 0.025, 0.18, 0.025, wood);
     }
     if (room === "living") {
-      const sofa = piece(0.35, -1.23, 0, -0.8);
+      const sofa = piece(0.35, -1.23, 0, 1.1);
       legs(sofa, 2.55, 0.86, 0.2);
       box(sofa, 0, 0.33, 0, 2.6, 0.28, 0.9, green, 0.08);
       box(sofa, 0, 0.8, -0.36, 2.55, 0.8, 0.24, green, 0.09);
       for (const x of [-1.18, 1.18])
-        assemblyPart(
-          box(sofa, x, 0.63, 0, 0.25, 0.58, 0.94, green, 0.08),
-          new THREE.Vector3(Math.sign(x) * 0.65, 0.25, 0),
-          1550 + (x > 0 ? 180 : 0),
-          1500,
-          Math.sign(x) * 0.15,
-        );
+        box(sofa, x, 0.63, 0, 0.25, 0.58, 0.94, green, 0.08);
       for (const x of [-0.55, 0.55]) {
-        assemblyPart(
-          box(sofa, x, 0.53, 0.05, 1.03, 0.2, 0.7, cream, 0.08),
-          new THREE.Vector3(0, 0.55, 0.35),
-          2050 + (x > 0 ? 180 : 0),
-          1450,
-        );
-        assemblyPart(
-          box(sofa, x, 0.87, -0.15, 1.01, 0.53, 0.19, green, 0.075),
-          new THREE.Vector3(0, 0.3, -0.45),
-          1800 + (x > 0 ? 180 : 0),
-          1450,
-        );
+        box(sofa, x, 0.53, 0.05, 1.03, 0.2, 0.7, cream, 0.08);
+        box(sofa, x, 0.87, -0.15, 1.01, 0.53, 0.19, green, 0.075);
       }
       const cushion = box(
         sofa,
@@ -325,30 +361,15 @@ export function createRoomScene(host: HTMLDivElement) {
         0.075,
       );
       cushion.rotation.z = -0.15;
-      assemblyPart(
-        cushion,
-        new THREE.Vector3(-0.25, 0.6, 0.25),
-        3050,
-        1400,
-        -0.25,
-      );
-      const table = piece(0.3, 0.7, 0.3, 0.9);
-      box(table, 0, 0.035, 0, 2.7, 0.045, 1.55, rug, 0.015);
+      const rugGroup = new THREE.Group();
+      rugGroup.position.set(0.3, 0, 0.7);
+      furniture.add(rugGroup);
+      box(rugGroup, 0, 0.035, 0, 2.7, 0.045, 1.55, rug, 0.015);
+      assemblyPart(rugGroup, new THREE.Vector3(0, 0.06, 0), 1350, 1000);
+      const table = piece(0.3, 0.7, 0.65, 0.6);
       legs(table, 1.25, 0.67, 0.39);
-      assemblyPart(
-        box(table, 0, 0.45, 0, 1.45, 0.11, 0.82, wood, 0.08),
-        new THREE.Vector3(0, 0.55, 0.2),
-        2450,
-        1500,
-        0.13,
-      );
-      assemblyPart(
-        box(table, 0.22, 0.535, -0.02, 0.35, 0.05, 0.23, cream, 0.006),
-        new THREE.Vector3(0.2, 0.45, 0),
-        3300,
-        1200,
-        -0.2,
-      );
+      box(table, 0, 0.45, 0, 1.45, 0.11, 0.82, wood, 0.08);
+      box(table, 0.22, 0.535, -0.02, 0.35, 0.05, 0.23, cream, 0.006);
     } else if (room === "bedroom") {
       const bed = piece(0.45, -0.15, 0, -0.8);
       legs(bed, 1.8, 2.5, 0.18);
@@ -384,6 +405,24 @@ export function createRoomScene(host: HTMLDivElement) {
       box(chair, 0, 0.92, 0.27, 0.65, 0.77, 0.16, green, 0.08);
     }
     if (room !== "bedroom") plant();
+    for (const group of furniture.children) {
+      const entrance = group.userData.entrance as
+        | {
+            offset: THREE.Vector3;
+            delay: number;
+            duration: number;
+            turn: THREE.Vector3;
+          }
+        | undefined;
+      if (entrance)
+        assemblyPart(
+          group,
+          entrance.offset,
+          entrance.delay,
+          entrance.duration,
+          entrance.turn,
+        );
+    }
     elapsed = 0;
     host.dataset.room = room;
     start();
@@ -442,6 +481,9 @@ export function createRoomScene(host: HTMLDivElement) {
       scene.traverse((object) => {
         if (object instanceof THREE.Mesh) object.geometry.dispose();
       });
+      [...architecture, ...pieces].forEach((part) =>
+        part.materials.forEach((mat) => mat.dispose()),
+      );
       allMaterials.forEach((mat) => mat.dispose());
       renderer.dispose();
       renderer.domElement.remove();

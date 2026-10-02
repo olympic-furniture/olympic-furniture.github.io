@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-02T17:41:19.135626+00:00",
+  "generatedAt": "2026-10-02T17:57:32.889840+00:00",
   "title": "Design System: Olympic Furniture — Walnut Showroom",
   "extensions": {
     "colorMeta": {
@@ -165,18 +165,18 @@
       },
       {
         "name": "assembly",
-        "value": "4600ms total; furniture-root delay 250ms + index × 450ms; 1800ms root duration; component stages end at 4500ms; quartic ease-out",
-        "purpose": "Fixed walnut living room; mild camera orbit, 8% zoom and look-at height 1.23. Suspends offscreen/document-hidden and stops frames when complete."
+        "value": "4900ms total; floorboards 100ms + index × 32ms / 700ms; back wall 650ms / 1150ms; window-side wall 900ms / 1150ms; rug 1350ms / 1000ms; intact furniture roots 1600ms + index × 700ms / 1200ms; cubic ease-out; 180ms fade",
+        "purpose": "Foundation-only opening; hinged architecture precedes complete furniture gliding at floor level with a small Y-axis turn and attached children. Camera orbit, 8% zoom and look-at height 1.23 remain unchanged. Suspends offscreen/document-hidden and stops frames when complete."
       },
       {
         "name": "assembly-fallback",
-        "value": "4600ms steps(1, end); 48 native frames in an 8 × 6 sheet",
-        "purpose": "Matching fixed living room without WebGL or after context loss; offscreen/document-hidden suspension. Reduced motion uses the final static frame without requesting the sprite."
+        "value": "4900ms steps(1, end); 48 native frames in an 8 × 6 sheet",
+        "purpose": "Matching fixed living room when WebGL is unavailable, with offscreen suspension. Foundation-only opening WebP preserves frame zero while renderer/sprite loads. Context loss or sprite failure uses the completed static room without replay; reduced motion uses that final frame without requesting the sprite."
       },
       {
         "name": "photo-conveyor",
         "value": "22s linear infinite",
-        "purpose": "Pauses on fine-pointer hover, keyboard focus, local caption control and offscreen/document-hidden state. Reduced motion leaves one horizontally scrollable photo group."
+        "purpose": "Pauses on fine-pointer hover, focus within the photo track, local icon control and offscreen/document-hidden state. Control focus permits resume. Reduced motion leaves one horizontally scrollable photo group."
       },
       {
         "name": "letter-arrival",
@@ -288,9 +288,9 @@
       "name": "Photo Strip Pause Control",
       "kind": "button",
       "refersTo": "carousel-control",
-      "description": "Local text-and-SVG pause/resume beside the real-photo caption; pressed means this strip is paused. Hidden under reduced motion.",
-      "html": "<button class=\"ds-carousel-control\" dir=\"rtl\" aria-pressed=\"false\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M8 5v14M16 5v14\"/></svg>עצירת התמונות</button>",
-      "css": ".ds-carousel-control{font-family:Heebo,sans-serif;display:inline-flex;align-items:center;gap:7px;min-height:44px;border:0;padding:0;background:transparent;color:var(--blue,#526047);font-size:13px;cursor:pointer}.ds-carousel-control:hover{color:var(--ink,#332a20)}.ds-carousel-control:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-carousel-control{display:none}}"
+      "description": "Local icon-only 44px pause/resume above the photos at top 0 and inline-end 20px; accessible label, title and pressed state. No explanatory caption or visible action wording. Hidden under reduced motion.",
+      "html": "<div class=\"ds-carousel-strip\"><button class=\"ds-carousel-control\" aria-label=\"עצירת התמונות\" title=\"עצירת התמונות\" aria-pressed=\"false\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" aria-hidden=\"true\"><path d=\"M8 5v14M16 5v14\"/></svg></button></div>",
+      "css": ".ds-carousel-strip{position:relative;direction:ltr;min-height:44px;padding-top:45px}.ds-carousel-control{position:absolute;inset-inline-end:20px;top:0;z-index:1;display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line,#d8cbbb);border-radius:50%;padding:0;background:transparent;color:var(--blue,#526047);cursor:pointer}.ds-carousel-control:hover{color:var(--ink,#332a20)}.ds-carousel-control:focus-visible{outline:3px solid var(--blue,#526047);outline-offset:5px}@media(max-width:767px){.ds-carousel-strip{padding-top:54px}}@media(prefers-reduced-motion:reduce){.ds-carousel-control{display:none}}"
     }
   ],
   "narrative": {

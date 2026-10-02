@@ -24,7 +24,7 @@ React, Tailwind CSS and TypeScript on GitHub Pages. Hebrew and RTL now, other la
 
 ## Brand Commitments
 
-The business name and original logo remain recognizable. The user approved the modern wood-inspired design as the homepage, with furniture assembling into a room, inspired by the movement on https://oren-bechor-drive.github.io/. The ר in ריהוט and ל in לבית in the hero, and their counterparts in the logo, use wooden planks and screw details. The logo retains its chair, Hebrew wording and red tagline. The user requested a larger, longer fixed living-room animation without room, finish, replay or caption controls, a faster carousel, an outlined phone link with the icon on its left, and removal of the header pause button, mobile bottom contact bar and public CMS link.
+The business name and original logo remain recognizable. The user approved the modern wood-inspired design as the homepage, with furniture assembling into a room, inspired by the movement on https://oren-bechor-drive.github.io/. The ר in ריהוט and ל in לבית in the hero, and their counterparts in the logo, use wooden planks and screw details. The logo retains its chair, Hebrew wording and red tagline. The user requested a larger, longer fixed living-room animation without room, finish, replay or caption controls, a faster carousel, an outlined phone link with the icon on its left, and removal of the header pause button, mobile bottom contact bar and public CMS link. The carousel caption and visible pause/resume wording are also removed; its stop control is icon-only and placed on the carousel. The hero opens on a foundation, unfolds the walls and moves complete furniture into the room without floating, disconnected parts.
 
 ## Evidence on Hand
 

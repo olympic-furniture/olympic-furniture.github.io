@@ -14,6 +14,7 @@ export function RoomScene(props: Props) {
     "pending",
   );
   const [loadedSprite, setLoadedSprite] = useState<string>();
+  const [fallbackCompleted, setFallbackCompleted] = useState(false);
   const [visible, setVisible] = useState(true);
   const sprite = "/images/wood-preview/living-hero-assembly.webp";
   useEffect(() => {
@@ -21,6 +22,7 @@ export function RoomScene(props: Props) {
     let canvas: HTMLCanvasElement | undefined;
     function useFallback() {
       if (cancelled || !host.current) return;
+      setFallbackCompleted(!!controller.current);
       controller.current?.dispose();
       controller.current = null;
       host.current.dataset.renderer = "fallback";
@@ -55,18 +57,23 @@ export function RoomScene(props: Props) {
     };
   }, []);
   useEffect(() => {
-    if (renderer !== "fallback" || props.motion === "off") return;
+    if (renderer !== "fallback" || props.motion === "off" || fallbackCompleted)
+      return;
     let cancelled = false;
     const image = new Image();
     image.onload = () => {
       if (!cancelled) setLoadedSprite(sprite);
     };
+    image.onerror = () => {
+      if (!cancelled) setFallbackCompleted(true);
+    };
     image.src = sprite;
     return () => {
       cancelled = true;
       image.onload = null;
+      image.onerror = null;
     };
-  }, [renderer, sprite, props.motion]);
+  }, [renderer, sprite, props.motion, fallbackCompleted]);
   useEffect(() => {
     const element = host.current;
     if (!element || typeof IntersectionObserver === "undefined") return;
@@ -81,6 +88,7 @@ export function RoomScene(props: Props) {
   }, [props.motion]);
   const animatedFallback =
     renderer === "fallback" &&
+    !fallbackCompleted &&
     loadedSprite === sprite &&
     props.motion !== "off";
   return (
@@ -95,7 +103,11 @@ export function RoomScene(props: Props) {
       <img
         className="wood-room-still"
         data-visible={renderer !== "webgl" && !animatedFallback}
-        src="/images/wood-preview/living-hero.webp"
+        src={
+          props.motion === "off" || fallbackCompleted
+            ? "/images/wood-preview/living-hero.webp"
+            : "/images/wood-preview/living-hero-start.webp"
+        }
         alt=""
         width="640"
         height="470"
