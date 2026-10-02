@@ -36,7 +36,6 @@ content:
           values:
             - {name: wardrobes, label: ארונות}
             - {name: bedrooms, label: חדרי שינה}
-            - {name: children, label: חדרי ילדים}
             - {name: sofas, label: סלונים}
             - {name: dining, label: פינות אוכל}
             - {name: mattresses, label: מזרנים}

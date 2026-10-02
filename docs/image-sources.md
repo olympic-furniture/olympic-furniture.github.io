@@ -17,12 +17,12 @@ Photographs were converted to WebP with Pillow, with EXIF orientation applied. I
 | `/images/wood-bedroom.webp` | 600 × 338 | 21,800 | Furniture gallery, bedrooms. | [Original page](https://lp.vp4.me/gqio) | Not supplied |
 | `/images/wardrobe-interior.webp` | 600 × 573 | 16,196 | Furniture gallery, wardrobes. | [Original page](https://lp.vp4.me/8pdw) | Not supplied |
 | `/images/striped-wardrobe.webp` | 400 × 350 | 6,254 | Furniture gallery, wardrobes. | [Original page](https://lp.vp4.me/8pdw) | Not supplied |
-| `/images/showroom-sofa.webp` | 1200 × 1600 | 166,008 | Opening hero and furniture gallery, sofas. | [Original page](https://www.facebook.com/photo.php?fbid=1250727543741445) | November 17, 2025 |
+| `/images/showroom-sofa.webp` | 1200 × 1600 | 166,008 | Furniture gallery, sofas. | [Original page](https://www.facebook.com/photo.php?fbid=1250727543741445) | November 17, 2025 |
 | `/images/gray-bedroom.webp` | 1579 × 1141 | 74,964 | Furniture gallery, bedrooms; original post historical price deliberately omitted. | [Original page](https://www.facebook.com/photo.php?fbid=957926699688199) | November 5, 2024 |
 | `/images/guest-chair-flat.webp` | 1600 × 1200 | 52,130 | Furniture gallery, sofas; photographed open chair. | [Original page](https://www.facebook.com/photo.php?fbid=958620822952120) | November 6, 2024 |
 | `/images/guest-chair-angle.webp` | 1600 × 1200 | 75,426 | Alternate view available to future editors; not a separate furniture entry. | [Original page](https://www.facebook.com/photo.php?fbid=958620772952125) | November 6, 2024 |
 | `/images/guest-chair.webp` | 1200 × 1600 | 48,474 | Furniture gallery, sofas; photographed light-colored chair. | [Original page](https://www.facebook.com/photo.php?fbid=958620672952135) | November 6, 2024 |
-| `/images/logo-banner.webp` | 1247 × 476 | 26,020 | Original authorized Facebook business banner; suitable wide header logo. | [Original page](https://www.facebook.com/photo.php?fbid=930294232451446) | September 29, 2024 |
+| `/images/logo-banner.webp` | 1247 × 476 | 26,020 | Original authorized Facebook business banner; opening hero logo. | [Original page](https://www.facebook.com/photo.php?fbid=930294232451446) | September 29, 2024 |
 | `/images/founders.webp` | 1512 × 1006 | 161,654 | Family story; exact confirmed names in business content. | User attachment | Not supplied |
 
 ## Original file locations

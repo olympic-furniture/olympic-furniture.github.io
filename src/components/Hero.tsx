@@ -35,9 +35,9 @@ export function Hero() {
       <figure className="hero-figure">
         <BusinessImage
           src={site.heroImage}
-          alt="רהיטים באולם התצוגה של רהיטי אולימפיק"
-          width={1200}
-          height={1600}
+          alt={site.name}
+          width={1247}
+          height={476}
           eager
         />
       </figure>

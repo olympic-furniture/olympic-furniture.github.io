@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { ListIcon, PhoneIcon, XIcon } from '@phosphor-icons/react';
 import { site } from '../content';
 import { phoneHref } from './ContactLinks';
-import { BusinessImage } from './BusinessImage';
 
 const links = [
   { href: '#furniture', label: 'הרהיטים שלנו' },
@@ -40,19 +39,6 @@ export function Header() {
   return (
     <header className="site-header" ref={header}>
       <div className="shell header-inner">
-        <a
-          href="#home"
-          className="brand"
-          aria-label={`${site.name}, לעמוד הבית`}
-        >
-          <BusinessImage
-            src="/images/logo-banner.webp"
-            alt={site.name}
-            width={1247}
-            height={476}
-            eager
-          />
-        </a>
         <nav className="desktop-nav" aria-label="ניווט ראשי">
           {links.map((link) => (
             <a key={link.href} href={link.href}>
@@ -60,10 +46,6 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <a className="header-phone" href={phoneHref}>
-          <PhoneIcon size={19} aria-hidden />
-          <bdi>{site.phone}</bdi>
-        </a>
         <button
           className="menu-toggle icon-button"
           ref={toggle}
@@ -74,6 +56,10 @@ export function Header() {
         >
           {open ? <XIcon size={25} /> : <ListIcon size={25} />}
         </button>
+        <a className="header-phone" href={phoneHref}>
+          <PhoneIcon size={19} aria-hidden />
+          <bdi>{site.phone}</bdi>
+        </a>
       </div>
       {open && (
         <nav

@@ -14,7 +14,7 @@
   --ink: #1c2c3e;
   --muted: #526174;
   --line: #dbe3f0;
-  --yellow: #f6db78;
+  --yellow: #f6f2ad;
   --shadow: 0 12px 36px rgb(45 71 118 / 0.08);
   --blue: #485e88;
   --red: #e21c23;
@@ -111,18 +111,6 @@ p {
   justify-content: space-between;
   gap: 30px;
 }
-.brand {
-  flex-shrink: 0;
-  display: block;
-}
-.brand img,
-.brand .image-fallback {
-  width: 166px;
-  height: 64px;
-  object-fit: contain;
-  background: #fff;
-  border-radius: 10px;
-}
 .desktop-nav {
   display: flex;
   gap: clamp(20px, 3vw, 44px);
@@ -142,6 +130,7 @@ p {
   text-underline-offset: 6px;
 }
 .header-phone {
+  margin-inline-start: auto;
   gap: 9px;
   color: var(--blue);
   direction: ltr;
@@ -247,18 +236,17 @@ h1 {
 }
 .hero-figure {
   position: relative;
-  padding: 12px;
+  padding: 24px;
   background: var(--surface);
   border-radius: 28px;
   box-shadow: var(--shadow);
-  transform: rotate(-1.5deg);
 }
 .hero-figure > img,
 .hero-figure > .image-fallback {
   width: 100%;
-  height: clamp(430px, 42vw, 570px);
-  object-fit: cover;
-  object-position: center 49%;
+  height: auto;
+  aspect-ratio: 1247 / 476;
+  object-fit: contain;
   border-radius: 18px;
 }
 .furniture {
@@ -431,7 +419,7 @@ h1 {
   max-width: 25ch;
 }
 .family-section {
-  background: #fff4cd;
+  background: var(--yellow);
 }
 .family-story {
   display: grid;
@@ -473,14 +461,14 @@ h1 {
 }
 .visit-layout {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1fr 1.35fr;
   align-items: center;
   gap: 65px;
   margin-top: 45px;
 }
 .visit-details {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 36px;
 }
 .visit-details > div > svg {
@@ -665,9 +653,6 @@ address {
   .menu-toggle {
     display: inline-grid !important;
   }
-  .header-phone {
-    margin-inline-start: auto;
-  }
   .mobile-nav {
     padding: 15px 32px 24px;
     display: grid;
@@ -692,9 +677,6 @@ address {
   .visit-layout {
     grid-template-columns: 1fr;
   }
-  .visit-photo {
-    max-width: 550px;
-  }
 }
 @media (max-width: 767px) {
   html {
@@ -709,11 +691,6 @@ address {
   .header-inner {
     height: 70px;
     gap: 16px;
-  }
-  .brand img,
-  .brand .image-fallback {
-    width: 140px;
-    height: 55px;
   }
   .header-phone {
     font-size: 14px;
@@ -762,8 +739,7 @@ address {
   .hero-figure > img,
   .hero-figure > .image-fallback {
     height: auto;
-    aspect-ratio: 1.08;
-    object-position: center 52%;
+    aspect-ratio: 1247 / 476;
   }
   h2 {
     font-size: 34px;
@@ -908,12 +884,6 @@ address {
   }
 }
 @media (max-width: 370px) {
-  .header-phone {
-    display: none;
-  }
-  .menu-toggle {
-    margin-inline-start: auto;
-  }
   .hero-actions {
     gap: 8px;
   }

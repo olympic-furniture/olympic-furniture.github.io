@@ -5,7 +5,6 @@ import {
   PhoneIcon,
   DoorOpenIcon,
   BedIcon,
-  BabyIcon,
   ArmchairIcon,
   TableIcon,
   MoonIcon,
@@ -19,7 +18,6 @@ import { phoneHref } from './ContactLinks';
 const categoryIcons = {
   wardrobes: DoorOpenIcon,
   bedrooms: BedIcon,
-  children: BabyIcon,
   sofas: ArmchairIcon,
   dining: TableIcon,
   mattresses: MoonIcon,

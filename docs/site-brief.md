@@ -15,7 +15,7 @@ Built with React, TypeScript, and Tailwind CSS. The approved publishing destinat
 - Use the names exactly as supplied by the user: מושה אבן ימין וגילה אבן ימין. Both founders may appear in the supplied photograph.
 - Custom builds and a large selection are the main selling points.
 - Customization includes dimensions, materials, colors, doors, handles, and internal storage.
-- Offer wardrobes, bedrooms, children's furniture, sofas, dining furniture, mattresses, and office furniture.
+- Offer wardrobes, bedrooms, sofas, dining furniture, mattresses, and office furniture.
 - Write Hebrew copy for the grandfather to review.
 - Brand colors: red #e21c23 and blue #485e88.
 - Use existing business website images and the supplied founders photograph. Facebook permissions include the banner and photographs dated November 15, 2023 through November 17, 2025, inclusive.
@@ -32,8 +32,8 @@ Unknown contact channels will stay out of the public interface until supplied. D
 
 Use a main page with anchored navigation and a furniture gallery visitors can filter by category. This combines a welcoming introduction and showroom information with enough browsing detail to invite a conversation. A minimal contact-only page would give the furniture too little space; a full store would require unconfirmed product, pricing, and fulfillment information.
 
-1. Header: original business logo if usable, category navigation, the story, directions, and a telephone link. A compact mobile menu keeps these reachable on smaller screens.
-2. Opening section: a strong real furniture image, a short Hebrew message, and buttons for browsing furniture and visiting the shop.
+1. Header: right-aligned category navigation, the story, directions, and a telephone link. The logo appears in the opening section. A compact mobile menu keeps these reachable on smaller screens.
+2. Opening section: the original business logo, a short Hebrew message, and buttons for browsing furniture and visiting the shop.
 3. Furniture categories: visual entry points into the available selection, with wardrobes first because the existing business pages emphasize them. This is an editorial choice, not a claim about best sellers.
 4. Gallery: real business photographs with descriptive Hebrew labels and category filters. Images can open in a keyboard-accessible larger view. Keep product information limited to verified details. An empty category should offer a conversation with the shop rather than invented products.
 5. Custom builds: explain the confirmed choices of size, material, color, and storage. Invite customers to bring their needs and measurements for discussion. Do not imply a measurement visit or installation service is included.
@@ -53,7 +53,7 @@ Suggested buttons: לצפייה ברהיטים, בואו לבקר בחנות, ד
 
 ## Visual direction
 
-The user's October 2, 2026 refresh request calls for a lighter, more visually inviting design closer to the Oren Bechor reference site. Use pale blue and white surfaces, rounded Varela Round Hebrew headings, yellow headline highlights and a warm yellow family section. Keep dark readable text, blue navigation and the original red primary buttons. Frame the real furniture and founders photographs with rounded corners and soft shadows. The site remains light regardless of device color preference, and respects reduced motion.
+The user's October 2, 2026 refresh request calls for a lighter, more visually inviting design closer to the Oren Bechor reference site. Use pale blue and white surfaces, rounded Varela Round Hebrew headings, yellow headline highlights and a yellow family section, both using #f6f2ad. Keep dark readable text, blue navigation and the original red primary buttons. Frame the real furniture and founders photographs with rounded corners and soft shadows. The site remains light regardless of device color preference, and respects reduced motion.
 
 Retain the recognizable business identity rather than redesigning the logo. Test text contrast when applying the supplied colors. Support right-to-left layout, keyboard navigation, visible focus, meaningful image descriptions, and reduced motion. Mobile visitors should have a persistent, accessible call-and-directions shortcut.
 

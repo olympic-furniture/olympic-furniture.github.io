@@ -28,6 +28,7 @@ describe('editor contract and production output', () => {
     site.name = 'בדיקת עריכה </script><script>alert("cms")</script> & חנות';
     site.heroTitle = 'כותרת בדיקת עריכה';
     site.heroDescription = 'תיאור בדיקה "חדש" <img src=x onerror=alert(1)>';
+    site.heroImage = '/images/cms-added.webp';
     site.address = 'רחוב בדיקה 12, עיר בדיקה';
     site.email = null;
     site.whatsapp = '';
@@ -86,7 +87,7 @@ describe('editor contract and production output', () => {
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://olympic-furniture.github.io/');
     expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toContain('תיאור בדיקה "חדש" <img src=x onerror=alert(1)>');
     expect(document.querySelector('meta[property="og:title"]')?.getAttribute('content')).toContain(name);
-    expect(document.querySelector('meta[property="og:image"]')?.getAttribute('content')).toBe('https://olympic-furniture.github.io/images/showroom-sofa.webp');
+    expect(document.querySelector('meta[property="og:image"]')?.getAttribute('content')).toBe('https://olympic-furniture.github.io/images/cms-added.webp');
     expect(document.querySelectorAll('script:not([src])')).toHaveLength(1);
     expect(document.querySelector('img')).toBeNull();
     const json = document.querySelector('script[type="application/ld+json"]')?.textContent;

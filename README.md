@@ -27,7 +27,7 @@ The family owns the business descriptions, furniture information, photographs an
 - `public/images` contains uploaded photographs. Content references `/images/...`.
 - `.pages.yml` defines the Hebrew editing forms and media source.
 - `src/content/schema.ts` validates the editable contract. Optional empty strings and null values normalize to absent values.
-- `src/content/categories.ts` defines the seven fixed categories. Changing category IDs requires a code change and migration of existing records.
+- `src/content/categories.ts` defines the six fixed categories. Changing category IDs requires a code change and migration of existing records.
 
 Descriptions are plain text. Prices are optional positive numbers in shekels. `priceFrom` selects the starting-price wording. `published: false` removes a furniture record from the public application bundle. Drafts still need valid fields and existing images. The repository is public, so draft files and uploaded photographs are visible on GitHub even when the furniture record is hidden on the website.
 
