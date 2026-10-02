@@ -1,12 +1,12 @@
 # רהיטי אולימפיק: proposed website brief
 
-Status: approved by the user on October 2, 2026. Implementation is underway.
+Status: approved by the user on October 2, 2026. The site, editor configuration and deployment workflow are implemented locally and await final review and live deployment verification.
 
 ## Purpose
 
 Create a Hebrew website for the family furniture business at האורזים 6, נתניה. Help visitors browse furniture, understand custom-build options, call the shop, and visit the showroom. The confirmed telephone number is 09-861-8985.
 
-Build with React, TypeScript, and Tailwind CSS. Publish at https://olympic-furniture.github.io/ when GitHub organization setup is complete.
+Built with React, TypeScript, and Tailwind CSS. The approved publishing destination is https://olympic-furniture.github.io/; the GitHub organization and repository exist.
 
 ## Confirmed information
 
@@ -68,7 +68,7 @@ Configure clearly named Hebrew fields for:
 - Furniture entries: descriptive title, category, image, optional verified specifications, optional current price in shekels, price wording, display order, and publication status.
 - Image uploads.
 
-The family edits through forms, saves, and the GitHub deployment workflow republishes the site. Content and media changes remain in Git history. The editor needs an authorized GitHub App installation after the destination repository exists. Confirm that an external editing dashboard is acceptable; a custom dashboard inside the website would need separate authentication and backend hosting.
+The user approved the external Pages CMS editor and GitHub Pages publishing. The Hebrew forms are configured in `.pages.yml`. The family edits through forms and saves to `main`; the GitHub workflow checks the content and republishes successful builds. Content and media changes remain in Git history. Pages CMS still requires an authorized GitHub App installation and user sign-in. See [the editing guide](editing-guide.he.md) for the exact setup step and saving instructions.
 
 ## Content and deployment structure
 
@@ -78,7 +78,7 @@ Use reusable components for navigation, category browsing, the gallery, the fami
 
 Deploy with GitHub Actions to GitHub Pages. The organization must be named olympic-furniture, and its root-site repository must be olympic-furniture.github.io. Transfer an existing repository if the user identifies one; otherwise create the new repository directly in the organization.
 
-The user supplied https://github.com/olympic-furniture/olympic-furniture.github.io after organization setup. Both the organization and its empty public repository now exist. The authenticated account has active organization administrator membership and repository ADMIN permission. GitHub Pages is not configured yet. No repository transfer is necessary. The local workspace contains this brief and is not yet a Git repository.
+The user supplied https://github.com/olympic-furniture/olympic-furniture.github.io after organization setup. The organization and public repository exist. The authenticated account has active organization administrator membership and repository ADMIN permission. No repository transfer is necessary. The local workspace is a Git repository with committed site implementation. The publishing workflow is configured locally; GitHub Pages configuration, push and live verification remain part of the final deployment step.
 
 ## Image and price handling
 
@@ -96,7 +96,7 @@ One older landing page advertises a wardrobe at ₪1,400. Another image filename
 - Inspect the Hebrew layout on desktop and mobile, including mixed Hebrew and telephone numbers.
 - Verify that editing the configured content changes the built site.
 - Check the deployed site and deployment workflow once the organization, repository, and Pages setup exist.
-- Obtain the grandfather's review of the Hebrew business copy and any prices before publication.
+- The grandfather's review of Hebrew business copy remains pending. Publishing is authorized by the user's destination request and approved brief; add prices and other unconfirmed details only after business approval.
 
 ## Sources
 

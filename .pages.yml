@@ -1,0 +1,140 @@
+media:
+  - name: images
+    label: תמונות העסק והרהיטים
+    input: public/images
+    output: /images
+    rename: safe
+    extensions: [jpg, jpeg, png, webp, avif, gif, svg]
+
+content:
+  - name: products
+    label: רהיטים בגלריה
+    type: collection
+    path: content/products
+    format: json
+    subfolders: false
+    filename:
+      template: "{year}-{month}-{day}-{hour}{minute}{second}-{primary}.json"
+      field: create
+    view:
+      primary: title
+      fields: [title, category, published, price, order]
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: שם הרהיט
+        type: string
+        required: true
+      - name: category
+        label: קטגוריה
+        type: select
+        required: true
+        options:
+          values:
+            - {name: wardrobes, label: ארונות}
+            - {name: bedrooms, label: חדרי שינה}
+            - {name: children, label: חדרי ילדים}
+            - {name: sofas, label: סלונים}
+            - {name: dining, label: פינות אוכל}
+            - {name: mattresses, label: מזרנים}
+            - {name: office, label: ריהוט משרדי}
+      - name: image
+        label: תמונת הרהיט
+        type: image
+        required: true
+        options:
+          media: images
+      - name: description
+        label: תיאור הרהיט והפרטים המאומתים
+        type: text
+        required: true
+        description: טקסט רגיל. יש לכתוב רק פרטים שהעסק אישר.
+      - name: published
+        label: להציג באתר
+        type: boolean
+        required: true
+        default: false
+        description: השאירו כבוי עד שהתמונה, התיאור והמחיר נבדקו.
+      - name: order
+        label: סדר הצגה
+        type: number
+        required: true
+        default: 100
+        options:
+          min: 0
+        description: מספר שלם בלבד. מספר קטן מופיע קודם.
+      - name: price
+        label: מחיר עדכני בשקלים
+        type: number
+        options:
+          min: 0.01
+        description: אופציונלי. מספר בלבד, ללא סימן שקל. אם המחיר לא אושר, השאירו ריק.
+      - name: priceFrom
+        label: המחיר מתחיל מ־
+        type: boolean
+        default: false
+        description: הפעילו רק אם זה מחיר התחלתי מאושר. ללא מחיר, האפשרות לא מוצגת.
+
+  - name: site
+    label: פרטי העסק ותוכן האתר
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - {name: name, label: שם העסק, type: string, required: true}
+      - name: phone
+        label: טלפון החנות
+        type: string
+        required: true
+        description: "לדוגמה 09-861-8985. יש לשמור כטקסט עם האפס בתחילת המספר."
+      - name: address
+        label: כתובת החנות
+        type: string
+        required: true
+        description: "רחוב ומספר, פסיק, עיר. לדוגמה האורזים 6, נתניה."
+      - {name: mapsUrl, label: קישור לגוגל מפות, type: string, required: true}
+      - {name: wazeUrl, label: קישור לווייז, type: string, required: true}
+      - {name: facebookUrl, label: קישור לעמוד הפייסבוק, type: string, required: true}
+      - {name: email, label: דואר אלקטרוני מאושר, type: string}
+      - name: whatsapp
+        label: מספר וואטסאפ מאושר
+        type: string
+        description: השאירו ריק עד לאישור מספר שתומך בוואטסאפ. אין להשתמש אוטומטית בטלפון החנות.
+      - name: hoursText
+        label: שעות פתיחה מאושרות
+        type: text
+        description: השאירו ריק עד לאישור שעות עדכניות.
+      - {name: heroTitle, label: הכותרת הראשית, type: string, required: true}
+      - {name: heroDescription, label: הטקסט הפותח, type: text, required: true}
+      - name: heroImage
+        label: התמונה הראשית
+        type: image
+        required: true
+        options: {media: images}
+      - {name: storyTitle, label: כותרת הסיפור המשפחתי, type: string, required: true}
+      - name: storyParagraphs
+        label: פסקאות הסיפור המשפחתי
+        type: text
+        list: true
+        required: true
+        description: כל פריט הוא פסקה בטקסט רגיל. יש להשאיר לפחות פסקה אחת.
+      - name: storyImage
+        label: תמונת המשפחה
+        type: image
+        required: true
+        options: {media: images}
+      - {name: founders, label: שמות המייסדים, type: string, required: true}
+      - {name: customTitle, label: כותרת ההתאמה האישית, type: string, required: true}
+      - {name: customDescription, label: תיאור ההתאמה האישית, type: text, required: true}
+      - name: customOptions
+        label: אפשרויות ההתאמה האישית
+        type: object
+        list: true
+        required: true
+        description: יש להשאיר לפחות אפשרות אחת שאושרה על ידי העסק.
+        fields:
+          - {name: title, label: שם האפשרות, type: string, required: true}
+          - {name: description, label: הסבר קצר, type: text, required: true}
