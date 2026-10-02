@@ -102,12 +102,21 @@ describe('editor contract and production output', () => {
     expect(sitemap.querySelector('loc')?.textContent).toBe('https://olympic-furniture.github.io/');
   });
 
-  it('builds the separate design preview without indexing it or changing the homepage identity', async () => {
+  it('publishes the wood homepage with root metadata and keeps the preview unindexed', async () => {
     const preview = new JSDOM(await readFile(path.join(root, 'dist/wood-preview/index.html'), 'utf8')).window.document;
     expect(preview.documentElement.getAttribute('dir')).toBe('rtl');
     expect(preview.querySelector('meta[name="robots"]')?.getAttribute('content')).toBe('noindex, nofollow');
     expect(preview.querySelector('link[rel="canonical"]')).toBeNull();
     expect(preview.querySelector('script[type="module"][src]')).not.toBeNull();
-    expect(new JSDOM(html).window.document.title).toContain('כותרת בדיקת עריכה');
+    const main = new JSDOM(html).window.document;
+    expect(main.title).toContain('כותרת בדיקת עריכה');
+    expect(main.documentElement.getAttribute('data-design')).toBe('wood');
+    expect(main.querySelector('meta[name="robots"]')?.getAttribute('content') ?? '').not.toContain('noindex');
+    expect(output).toContain('/images/brand/logo-wood-letters.webp');
+    for (const room of ['living', 'bedroom', 'office']) {
+      for (const finish of [0, 1, 2]) {
+        expect((await readFile(path.join(root, `dist/images/wood-preview/${room}-${finish}-assembly.webp`))).byteLength).toBeGreaterThan(1000);
+      }
+    }
   });
 });

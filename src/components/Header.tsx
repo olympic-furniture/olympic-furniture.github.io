@@ -1,22 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
-import { ListIcon, PhoneIcon, XIcon } from '@phosphor-icons/react';
-import { site } from '../content';
-import { phoneHref } from './ContactLinks';
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { ListIcon, PhoneIcon, XIcon } from "@phosphor-icons/react";
+import { site } from "../content";
+import { phoneHref } from "./ContactLinks";
 
 const links = [
-  { href: '#furniture', label: 'הרהיטים שלנו' },
-  { href: '#custom', label: 'בהתאמה אישית' },
-  { href: '#story', label: 'הסיפור שלנו' },
-  { href: '#visit', label: 'בואו לבקר' },
+  { href: "#furniture", label: "הרהיטים שלנו" },
+  { href: "#custom", label: "בהתאמה אישית" },
+  { href: "#story", label: "הסיפור שלנו" },
+  { href: "#visit", label: "בואו לבקר" },
 ];
-export function Header() {
+export function Header({ controls }: { controls?: ReactNode }) {
   const [open, setOpen] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
   const header = useRef<HTMLElement>(null);
   useEffect(() => {
     if (!open) return;
     function dismiss(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         setOpen(false);
         toggle.current?.focus();
       }
@@ -27,13 +27,13 @@ export function Header() {
     function resized() {
       if (window.innerWidth >= 1024) setOpen(false);
     }
-    document.addEventListener('keydown', dismiss);
-    document.addEventListener('pointerdown', outside);
-    window.addEventListener('resize', resized);
+    document.addEventListener("keydown", dismiss);
+    document.addEventListener("pointerdown", outside);
+    window.addEventListener("resize", resized);
     return () => {
-      document.removeEventListener('keydown', dismiss);
-      document.removeEventListener('pointerdown', outside);
-      window.removeEventListener('resize', resized);
+      document.removeEventListener("keydown", dismiss);
+      document.removeEventListener("pointerdown", outside);
+      window.removeEventListener("resize", resized);
     };
   }, [open]);
   return (
@@ -49,17 +49,20 @@ export function Header() {
         <button
           className="menu-toggle icon-button"
           ref={toggle}
-          aria-label={open ? 'סגירת תפריט' : 'פתיחת תפריט'}
+          aria-label={open ? "סגירת תפריט" : "פתיחת תפריט"}
           aria-expanded={open}
           aria-controls="mobile-navigation"
           onClick={() => setOpen(!open)}
         >
           {open ? <XIcon size={25} /> : <ListIcon size={25} />}
         </button>
-        <a className="header-phone" href={phoneHref}>
-          <PhoneIcon size={19} aria-hidden />
-          <bdi>{site.phone}</bdi>
-        </a>
+        <div className="header-actions">
+          {controls}
+          <a className="header-phone" href={phoneHref}>
+            <PhoneIcon size={19} aria-hidden />
+            <bdi>{site.phone}</bdi>
+          </a>
+        </div>
       </div>
       {open && (
         <nav

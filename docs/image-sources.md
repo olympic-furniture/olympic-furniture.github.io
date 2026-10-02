@@ -64,6 +64,10 @@ The canonical Facebook photo pages above preserve attribution after the CDN link
 - Facebook photo `930262535787949`, September 29, 2024, is a holiday graphic and is excluded.
 - No old post prices, sales claims, supplier logos or dimensions have been copied into editable furniture descriptions. Small artwork/watermarks already present in authorized photographs are preserved.
 
+## Wood homepage artwork
+
+The approved wood homepage preserves every catalog photograph. Its changed image backgrounds and framing are CSS presentation. The user's requested wooden ר and ל use built-in imagegen assets recorded, with exact prompts and original logo source, in [the brand manifest](design/wood-brand-assets.json). The original logo file and favicon are retained. The room is explicitly illustrative: all three 3D presets and nine 16-frame animated fallbacks come from the same authored Three.js scene, recorded in [the assembly manifest](design/wood-assembly-assets.json). They do not depict catalog inventory.
+
 ## Self-hosted Hebrew typeface
 
 Heebo is redistributed from `@fontsource/heebo` version 5.3.0. Project authors: The Heebo Project Authors. Upstream: [Heebo source](https://github.com/OdedEzer/heebo), [Fontsource Heebo](https://fontsource.org/fonts/heebo).

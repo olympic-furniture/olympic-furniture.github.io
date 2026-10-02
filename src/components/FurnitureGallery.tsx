@@ -1,4 +1,4 @@
-import { useState, useSyncExternalStore } from 'react';
+import { useState, useSyncExternalStore } from "react";
 import {
   ArrowUpLeftIcon,
   PlusIcon,
@@ -11,11 +11,11 @@ import {
   OfficeChairIcon,
   CaretLeftIcon,
   CaretRightIcon,
-} from '@phosphor-icons/react';
-import { categories, type CategoryId, type Product } from '../content';
-import { BusinessImage } from './BusinessImage';
-import { ImageDialog } from './ImageDialog';
-import { phoneHref } from './ContactLinks';
+} from "@phosphor-icons/react";
+import { categories, type CategoryId, type Product } from "../content";
+import { BusinessImage } from "./BusinessImage";
+import { ImageDialog } from "./ImageDialog";
+import { phoneHref } from "./ContactLinks";
 
 const categoryIcons = {
   wardrobes: DoorOpenIcon,
@@ -26,30 +26,31 @@ const categoryIcons = {
   office: OfficeChairIcon,
 };
 
-const desktopQuery = '(min-width: 1024px)';
-const tabletQuery = '(min-width: 768px)';
+const desktopQuery = "(min-width: 1024px)";
+const tabletQuery = "(min-width: 768px)";
 
 function getGalleryColumns() {
-  if (typeof window === 'undefined' || !window.matchMedia) return 4;
+  if (typeof window === "undefined" || !window.matchMedia) return 4;
   if (window.matchMedia(desktopQuery).matches) return 4;
   return window.matchMedia(tabletQuery).matches ? 2 : 1;
 }
 
 function subscribeToGalleryColumns(onChange: () => void) {
-  if (typeof window === 'undefined' || !window.matchMedia) return () => {};
+  if (typeof window === "undefined" || !window.matchMedia) return () => {};
   const queries = [desktopQuery, tabletQuery].map((query) =>
     window.matchMedia(query),
   );
-  queries.forEach((query) => query.addEventListener('change', onChange));
+  queries.forEach((query) => query.addEventListener("change", onChange));
   return () => {
-    queries.forEach((query) => query.removeEventListener('change', onChange));
+    queries.forEach((query) => query.removeEventListener("change", onChange));
   };
 }
 
 export function FurnitureGallery({ items }: { items: Product[] }) {
-  const [category, setCategory] = useState<CategoryId>('wardrobes');
+  const [category, setCategory] = useState<CategoryId>("wardrobes");
   const [selected, setSelected] = useState<Product | null>(null);
   const [pageStart, setPageStart] = useState(0);
+  const [keyboardNavigation, setKeyboardNavigation] = useState(false);
   const columns = useSyncExternalStore(
     subscribeToGalleryColumns,
     getGalleryColumns,
@@ -87,7 +88,8 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
             <button
               key={item.id}
               aria-pressed={category === item.id}
-              onClick={() => {
+              onClick={(event) => {
+                setKeyboardNavigation(event.detail === 0);
                 setCategory(item.id);
                 setSelected(null);
                 setPageStart(0);
@@ -105,8 +107,10 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
       </p>
       {visible.length ? (
         <div
+          key={`${category}-${page}-${columns}`}
           id="furniture-grid"
           className="gallery-grid"
+          data-keyboard={keyboardNavigation}
           style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
         >
           {pageItems.map((product) => (
@@ -125,10 +129,10 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
               <p>{product.description}</p>
               {product.price !== undefined && (
                 <p className="product-price">
-                  {product.priceFrom && 'החל מ־'}
-                  {new Intl.NumberFormat('he-IL', {
-                    style: 'currency',
-                    currency: 'ILS',
+                  {product.priceFrom && "החל מ־"}
+                  {new Intl.NumberFormat("he-IL", {
+                    style: "currency",
+                    currency: "ILS",
                     maximumFractionDigits: 2,
                   }).format(product.price)}
                 </p>
@@ -156,7 +160,10 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
             aria-label="העמוד הקודם"
             aria-controls="furniture-grid"
             disabled={page === 0}
-            onClick={() => setPageStart((page - 1) * pageSize)}
+            onClick={(event) => {
+              setKeyboardNavigation(event.detail === 0);
+              setPageStart((page - 1) * pageSize);
+            }}
           >
             <CaretRightIcon size={24} aria-hidden />
           </button>
@@ -167,7 +174,10 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
             aria-label="העמוד הבא"
             aria-controls="furniture-grid"
             disabled={page === pageCount - 1}
-            onClick={() => setPageStart((page + 1) * pageSize)}
+            onClick={(event) => {
+              setKeyboardNavigation(event.detail === 0);
+              setPageStart((page + 1) * pageSize);
+            }}
           >
             <CaretLeftIcon size={24} aria-hidden />
           </button>

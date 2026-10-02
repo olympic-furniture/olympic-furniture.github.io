@@ -109,7 +109,8 @@ content:
       - {name: heroTitle, label: הכותרת הראשית, type: string, required: true}
       - {name: heroDescription, label: הטקסט הפותח, type: text, required: true}
       - name: heroImage
-        label: התמונה הראשית
+        label: תמונת האתר לשיתוף
+        description: התמונה המופיעה כשמשתפים קישור לאתר. אנימציית החדר בפתיחה מנוהלת בעיצוב האתר.
         type: image
         required: true
         options: {media: images}

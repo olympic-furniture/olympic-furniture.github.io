@@ -2,7 +2,7 @@
 
 Hebrew, right-to-left furniture website built with React, TypeScript, Tailwind CSS and Vite. The approved destination is [olympic-furniture.github.io](https://olympic-furniture.github.io/). Check the [publishing workflow status](https://github.com/olympic-furniture/olympic-furniture.github.io/actions/workflows/deploy.yml) for the latest verification and deployment results.
 
-The separate [wood design preview](https://olympic-furniture.github.io/wood-preview/) explores a cream, walnut and olive palette, an interactive room assembly and a moving strip of real furniture photos. It shares the existing editable business content and full gallery. Its illustration's room and finish controls are decorative previews; they do not configure a product. The route is excluded from indexing and retains a link to the current homepage. See [the preview design brief](docs/design/wood-preview.md).
+The approved homepage uses a cream, walnut and olive palette, an interactive room assembly and a moving strip of real furniture photos. Room and finish controls are illustrative; they do not configure a product. All business text and furniture records stay editable. Browsers without WebGL use a matching animated 16-frame room render; reduced motion shows the assembled room. The original logo remains recognizable with the two requested wooden letters. [Brand assets and generation prompts](docs/design/wood-brand-assets.json) and [authored room animation provenance](docs/design/wood-assembly-assets.json) record the supplied and produced imagery. The [preview alias](https://olympic-furniture.github.io/wood-preview/) remains unindexed. See [the design brief](docs/design/wood-preview.md).
 
 ## Development
 

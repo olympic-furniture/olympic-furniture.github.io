@@ -1,0 +1,554 @@
+{
+  "purpose": "Authored room assembly flipbook fallback for browsers with WebGL unavailable. Illustrative scenes, not catalog product imagery.",
+  "classification": "illustrative-not-catalog",
+  "source": [
+    {
+      "path": "src/wood-preview/room-scene.ts",
+      "sha256": "b9edea783b56fe57070fc1fd5402320c9be30597bddea8ad342a820492cea16c"
+    },
+    {
+      "path": "src/wood-preview/room-presets.ts",
+      "sha256": "0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1"
+    }
+  ],
+  "source_crop": null,
+  "rendering": {
+    "method": "Isolated authored Three.js WebGL scene captured synchronously with captureAssemblyFrames(16), then native ImageMagick montage alpha WebP encoding.",
+    "url": "http://127.0.0.1:5173/__assembly-helper",
+    "browser": "Playwright Chromium headless",
+    "browserArguments": [
+      "--use-gl=angle",
+      "--use-angle=swiftshader",
+      "--enable-unsafe-swiftshader"
+    ],
+    "viewport": {
+      "width": 800,
+      "height": 600
+    },
+    "deviceScaleFactor": 1,
+    "cssCanvas": {
+      "width": 640,
+      "height": 470
+    },
+    "captureCanvas": {
+      "width": 640,
+      "height": 470
+    },
+    "output": {
+      "width": 2560,
+      "height": 1880
+    },
+    "frame_count": 16,
+    "grid": {
+      "columns": 4,
+      "rows": 4,
+      "order": "row-major"
+    },
+    "duration_ms": 1750,
+    "conversion": "ImageMagick montage -tile 4x4 -geometry 640x470+0+0 -background none -quality 88",
+    "alpha": true,
+    "colorSpace": "sRGB",
+    "camera": {
+      "kind": "orthographic",
+      "frustum": [
+        -4.5,
+        4.5,
+        3.3,
+        -3.3,
+        0.1,
+        40
+      ],
+      "position": [
+        8,
+        7.5,
+        10
+      ],
+      "lookAt": [
+        0,
+        1.1,
+        0
+      ]
+    }
+  },
+  "produce": [
+    {
+      "id": "living-0-assembly",
+      "room": "living",
+      "finish": 0,
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/living-0-assembly.webp",
+      "strategy": "Deterministic source rendering and native sprite composition",
+      "prompt_used": "Deterministic assembly flipbook sprite, illustrative-not-catalog. Origin: authored Three.js source src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts. Import createRoomScene into isolated Playwright Chromium helper at http://127.0.0.1:5173/__assembly-helper, WebGL ANGLE SwiftShader enabled, exact 640x470 CSS host, DPR1. Set motion off, room living, finish 0, call captureAssemblyFrames(16), sampling elapsed 0..1750ms inclusively at 1750/15ms intervals. Capture transparent PNG canvas dataURLs and compose row-major 4x4 frames with native ImageMagick montage -tile 4x4 -geometry 640x470+0+0 -background none -quality 88. Output 2560x1880 alpha WebP; preserve authored geometry, camera, lighting, material and scene shadows; no UI, page chrome, imagegen, or catalog photography. Source hashes: [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"b9edea783b56fe57070fc1fd5402320c9be30597bddea8ad342a820492cea16c\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}].",
+      "dimensions": {
+        "width": 2560,
+        "height": 1880
+      },
+      "frame_dimensions": {
+        "width": 640,
+        "height": 470
+      },
+      "frame_count": 16,
+      "grid": {
+        "columns": 4,
+        "rows": 4,
+        "order": "row-major"
+      },
+      "duration_ms": 1750,
+      "frame_elapsed_ms": [
+        0,
+        116.66666666666667,
+        233.33333333333334,
+        350,
+        466.6666666666667,
+        583.3333333333334,
+        700,
+        816.6666666666666,
+        933.3333333333334,
+        1050,
+        1166.6666666666667,
+        1283.3333333333333,
+        1400,
+        1516.6666666666667,
+        1633.3333333333333,
+        1750
+      ],
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 326602,
+      "sha256": "6e5e1fc45d0531eab9de83a776a786e280a2ab7d2c5e9bb476d94290b5e5fccd",
+      "unique_png_frames": 15
+    },
+    {
+      "id": "living-1-assembly",
+      "room": "living",
+      "finish": 1,
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/living-1-assembly.webp",
+      "strategy": "Deterministic source rendering and native sprite composition",
+      "prompt_used": "Deterministic assembly flipbook sprite, illustrative-not-catalog. Origin: authored Three.js source src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts. Import createRoomScene into isolated Playwright Chromium helper at http://127.0.0.1:5173/__assembly-helper, WebGL ANGLE SwiftShader enabled, exact 640x470 CSS host, DPR1. Set motion off, room living, finish 1, call captureAssemblyFrames(16), sampling elapsed 0..1750ms inclusively at 1750/15ms intervals. Capture transparent PNG canvas dataURLs and compose row-major 4x4 frames with native ImageMagick montage -tile 4x4 -geometry 640x470+0+0 -background none -quality 88. Output 2560x1880 alpha WebP; preserve authored geometry, camera, lighting, material and scene shadows; no UI, page chrome, imagegen, or catalog photography. Source hashes: [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"b9edea783b56fe57070fc1fd5402320c9be30597bddea8ad342a820492cea16c\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}].",
+      "dimensions": {
+        "width": 2560,
+        "height": 1880
+      },
+      "frame_dimensions": {
+        "width": 640,
+        "height": 470
+      },
+      "frame_count": 16,
+      "grid": {
+        "columns": 4,
+        "rows": 4,
+        "order": "row-major"
+      },
+      "duration_ms": 1750,
+      "frame_elapsed_ms": [
+        0,
+        116.66666666666667,
+        233.33333333333334,
+        350,
+        466.6666666666667,
+        583.3333333333334,
+        700,
+        816.6666666666666,
+        933.3333333333334,
+        1050,
+        1166.6666666666667,
+        1283.3333333333333,
+        1400,
+        1516.6666666666667,
+        1633.3333333333333,
+        1750
+      ],
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 314274,
+      "sha256": "c7aad00523ed4437167c000bf74a46f4628c79c275d76e66fb251dd2e41b6053",
+      "unique_png_frames": 15
+    },
+    {
+      "id": "living-2-assembly",
+      "room": "living",
+      "finish": 2,
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/living-2-assembly.webp",
+      "strategy": "Deterministic source rendering and native sprite composition",
+      "prompt_used": "Deterministic assembly flipbook sprite, illustrative-not-catalog. Origin: authored Three.js source src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts. Import createRoomScene into isolated Playwright Chromium helper at http://127.0.0.1:5173/__assembly-helper, WebGL ANGLE SwiftShader enabled, exact 640x470 CSS host, DPR1. Set motion off, room living, finish 2, call captureAssemblyFrames(16), sampling elapsed 0..1750ms inclusively at 1750/15ms intervals. Capture transparent PNG canvas dataURLs and compose row-major 4x4 frames with native ImageMagick montage -tile 4x4 -geometry 640x470+0+0 -background none -quality 88. Output 2560x1880 alpha WebP; preserve authored geometry, camera, lighting, material and scene shadows; no UI, page chrome, imagegen, or catalog photography. Source hashes: [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"b9edea783b56fe57070fc1fd5402320c9be30597bddea8ad342a820492cea16c\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}].",
+      "dimensions": {
+        "width": 2560,
+        "height": 1880
+      },
+      "frame_dimensions": {
+        "width": 640,
+        "height": 470
+      },
+      "frame_count": 16,
+      "grid": {
+        "columns": 4,
+        "rows": 4,
+        "order": "row-major"
+      },
+      "duration_ms": 1750,
+      "frame_elapsed_ms": [
+        0,
+        116.66666666666667,
+        233.33333333333334,
+        350,
+        466.6666666666667,
+        583.3333333333334,
+        700,
+        816.6666666666666,
+        933.3333333333334,
+        1050,
+        1166.6666666666667,
+        1283.3333333333333,
+        1400,
+        1516.6666666666667,
+        1633.3333333333333,
+        1750
+      ],
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 293594,
+      "sha256": "36693477ccc46a2e393da7793b9e784c60bc2465ffb6747da0d7682481de9f9a",
+      "unique_png_frames": 15
+    },
+    {
+      "id": "bedroom-0-assembly",
+      "room": "bedroom",
+      "finish": 0,
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/bedroom-0-assembly.webp",
+      "strategy": "Deterministic source rendering and native sprite composition",
+      "prompt_used": "Deterministic assembly flipbook sprite, illustrative-not-catalog. Origin: authored Three.js source src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts. Import createRoomScene into isolated Playwright Chromium helper at http://127.0.0.1:5173/__assembly-helper, WebGL ANGLE SwiftShader enabled, exact 640x470 CSS host, DPR1. Set motion off, room bedroom, finish 0, call captureAssemblyFrames(16), sampling elapsed 0..1750ms inclusively at 1750/15ms intervals. Capture transparent PNG canvas dataURLs and compose row-major 4x4 frames with native ImageMagick montage -tile 4x4 -geometry 640x470+0+0 -background none -quality 88. Output 2560x1880 alpha WebP; preserve authored geometry, camera, lighting, material and scene shadows; no UI, page chrome, imagegen, or catalog photography. Source hashes: [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"b9edea783b56fe57070fc1fd5402320c9be30597bddea8ad342a820492cea16c\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}].",
+      "dimensions": {
+        "width": 2560,
+        "height": 1880
+      },
+      "frame_dimensions": {
+        "width": 640,
+        "height": 470
+      },
+      "frame_count": 16,
+      "grid": {
+        "columns": 4,
+        "rows": 4,
+        "order": "row-major"
+      },
+      "duration_ms": 1750,
+      "frame_elapsed_ms": [
+        0,
+        116.66666666666667,
+        233.33333333333334,
+        350,
+        466.6666666666667,
+        583.3333333333334,
+        700,
+        816.6666666666666,
+        933.3333333333334,
+        1050,
+        1166.6666666666667,
+        1283.3333333333333,
+        1400,
+        1516.6666666666667,
+        1633.3333333333333,
+        1750
+      ],
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 299164,
+      "sha256": "bd31696942b441efe2db4c01d7402b50f83f144685ecf898994d8b5ce6e3fd05",
+      "unique_png_frames": 14
+    },
+    {
+      "id": "bedroom-1-assembly",
+      "room": "bedroom",
+      "finish": 1,
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/bedroom-1-assembly.webp",
+      "strategy": "Deterministic source rendering and native sprite composition",
+      "prompt_used": "Deterministic assembly flipbook sprite, illustrative-not-catalog. Origin: authored Three.js source src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts. Import createRoomScene into isolated Playwright Chromium helper at http://127.0.0.1:5173/__assembly-helper, WebGL ANGLE SwiftShader enabled, exact 640x470 CSS host, DPR1. Set motion off, room bedroom, finish 1, call captureAssemblyFrames(16), sampling elapsed 0..1750ms inclusively at 1750/15ms intervals. Capture transparent PNG canvas dataURLs and compose row-major 4x4 frames with native ImageMagick montage -tile 4x4 -geometry 640x470+0+0 -background none -quality 88. Output 2560x1880 alpha WebP; preserve authored geometry, camera, lighting, material and scene shadows; no UI, page chrome, imagegen, or catalog photography. Source hashes: [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"b9edea783b56fe57070fc1fd5402320c9be30597bddea8ad342a820492cea16c\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}].",
+      "dimensions": {
+        "width": 2560,
+        "height": 1880
+      },
+      "frame_dimensions": {
+        "width": 640,
+        "height": 470
+      },
+      "frame_count": 16,
+      "grid": {
+        "columns": 4,
+        "rows": 4,
+        "order": "row-major"
+      },
+      "duration_ms": 1750,
+      "frame_elapsed_ms": [
+        0,
+        116.66666666666667,
+        233.33333333333334,
+        350,
+        466.6666666666667,
+        583.3333333333334,
+        700,
+        816.6666666666666,
+        933.3333333333334,
+        1050,
+        1166.6666666666667,
+        1283.3333333333333,
+        1400,
+        1516.6666666666667,
+        1633.3333333333333,
+        1750
+      ],
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 285798,
+      "sha256": "b6f80927897ef0c0411c223b8a170615dfaf411f7d8aee97bcabe9c698134dd4",
+      "unique_png_frames": 14
+    },
+    {
+      "id": "bedroom-2-assembly",
+      "room": "bedroom",
+      "finish": 2,
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/bedroom-2-assembly.webp",
+      "strategy": "Deterministic source rendering and native sprite composition",
+      "prompt_used": "Deterministic assembly flipbook sprite, illustrative-not-catalog. Origin: authored Three.js source src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts. Import createRoomScene into isolated Playwright Chromium helper at http://127.0.0.1:5173/__assembly-helper, WebGL ANGLE SwiftShader enabled, exact 640x470 CSS host, DPR1. Set motion off, room bedroom, finish 2, call captureAssemblyFrames(16), sampling elapsed 0..1750ms inclusively at 1750/15ms intervals. Capture transparent PNG canvas dataURLs and compose row-major 4x4 frames with native ImageMagick montage -tile 4x4 -geometry 640x470+0+0 -background none -quality 88. Output 2560x1880 alpha WebP; preserve authored geometry, camera, lighting, material and scene shadows; no UI, page chrome, imagegen, or catalog photography. Source hashes: [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"b9edea783b56fe57070fc1fd5402320c9be30597bddea8ad342a820492cea16c\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}].",
+      "dimensions": {
+        "width": 2560,
+        "height": 1880
+      },
+      "frame_dimensions": {
+        "width": 640,
+        "height": 470
+      },
+      "frame_count": 16,
+      "grid": {
+        "columns": 4,
+        "rows": 4,
+        "order": "row-major"
+      },
+      "duration_ms": 1750,
+      "frame_elapsed_ms": [
+        0,
+        116.66666666666667,
+        233.33333333333334,
+        350,
+        466.6666666666667,
+        583.3333333333334,
+        700,
+        816.6666666666666,
+        933.3333333333334,
+        1050,
+        1166.6666666666667,
+        1283.3333333333333,
+        1400,
+        1516.6666666666667,
+        1633.3333333333333,
+        1750
+      ],
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 266396,
+      "sha256": "c8fe3a09631ae73edfa21bae56bc190caa1303bf3dc03333cf4e73843993e48b",
+      "unique_png_frames": 14
+    },
+    {
+      "id": "office-0-assembly",
+      "room": "office",
+      "finish": 0,
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/office-0-assembly.webp",
+      "strategy": "Deterministic source rendering and native sprite composition",
+      "prompt_used": "Deterministic assembly flipbook sprite, illustrative-not-catalog. Origin: authored Three.js source src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts. Import createRoomScene into isolated Playwright Chromium helper at http://127.0.0.1:5173/__assembly-helper, WebGL ANGLE SwiftShader enabled, exact 640x470 CSS host, DPR1. Set motion off, room office, finish 0, call captureAssemblyFrames(16), sampling elapsed 0..1750ms inclusively at 1750/15ms intervals. Capture transparent PNG canvas dataURLs and compose row-major 4x4 frames with native ImageMagick montage -tile 4x4 -geometry 640x470+0+0 -background none -quality 88. Output 2560x1880 alpha WebP; preserve authored geometry, camera, lighting, material and scene shadows; no UI, page chrome, imagegen, or catalog photography. Source hashes: [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"b9edea783b56fe57070fc1fd5402320c9be30597bddea8ad342a820492cea16c\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}].",
+      "dimensions": {
+        "width": 2560,
+        "height": 1880
+      },
+      "frame_dimensions": {
+        "width": 640,
+        "height": 470
+      },
+      "frame_count": 16,
+      "grid": {
+        "columns": 4,
+        "rows": 4,
+        "order": "row-major"
+      },
+      "duration_ms": 1750,
+      "frame_elapsed_ms": [
+        0,
+        116.66666666666667,
+        233.33333333333334,
+        350,
+        466.6666666666667,
+        583.3333333333334,
+        700,
+        816.6666666666666,
+        933.3333333333334,
+        1050,
+        1166.6666666666667,
+        1283.3333333333333,
+        1400,
+        1516.6666666666667,
+        1633.3333333333333,
+        1750
+      ],
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 326892,
+      "sha256": "1458a76442d949d9dae8e54f4c52bb587c05e57d17773a267a82f23b5ee0531f",
+      "unique_png_frames": 15
+    },
+    {
+      "id": "office-1-assembly",
+      "room": "office",
+      "finish": 1,
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/office-1-assembly.webp",
+      "strategy": "Deterministic source rendering and native sprite composition",
+      "prompt_used": "Deterministic assembly flipbook sprite, illustrative-not-catalog. Origin: authored Three.js source src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts. Import createRoomScene into isolated Playwright Chromium helper at http://127.0.0.1:5173/__assembly-helper, WebGL ANGLE SwiftShader enabled, exact 640x470 CSS host, DPR1. Set motion off, room office, finish 1, call captureAssemblyFrames(16), sampling elapsed 0..1750ms inclusively at 1750/15ms intervals. Capture transparent PNG canvas dataURLs and compose row-major 4x4 frames with native ImageMagick montage -tile 4x4 -geometry 640x470+0+0 -background none -quality 88. Output 2560x1880 alpha WebP; preserve authored geometry, camera, lighting, material and scene shadows; no UI, page chrome, imagegen, or catalog photography. Source hashes: [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"b9edea783b56fe57070fc1fd5402320c9be30597bddea8ad342a820492cea16c\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}].",
+      "dimensions": {
+        "width": 2560,
+        "height": 1880
+      },
+      "frame_dimensions": {
+        "width": 640,
+        "height": 470
+      },
+      "frame_count": 16,
+      "grid": {
+        "columns": 4,
+        "rows": 4,
+        "order": "row-major"
+      },
+      "duration_ms": 1750,
+      "frame_elapsed_ms": [
+        0,
+        116.66666666666667,
+        233.33333333333334,
+        350,
+        466.6666666666667,
+        583.3333333333334,
+        700,
+        816.6666666666666,
+        933.3333333333334,
+        1050,
+        1166.6666666666667,
+        1283.3333333333333,
+        1400,
+        1516.6666666666667,
+        1633.3333333333333,
+        1750
+      ],
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 312886,
+      "sha256": "db66377f562e9decbe96ba73fbe87474e099fc02226c4570f06c33abdbac0929",
+      "unique_png_frames": 15
+    },
+    {
+      "id": "office-2-assembly",
+      "room": "office",
+      "finish": 2,
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/office-2-assembly.webp",
+      "strategy": "Deterministic source rendering and native sprite composition",
+      "prompt_used": "Deterministic assembly flipbook sprite, illustrative-not-catalog. Origin: authored Three.js source src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts. Import createRoomScene into isolated Playwright Chromium helper at http://127.0.0.1:5173/__assembly-helper, WebGL ANGLE SwiftShader enabled, exact 640x470 CSS host, DPR1. Set motion off, room office, finish 2, call captureAssemblyFrames(16), sampling elapsed 0..1750ms inclusively at 1750/15ms intervals. Capture transparent PNG canvas dataURLs and compose row-major 4x4 frames with native ImageMagick montage -tile 4x4 -geometry 640x470+0+0 -background none -quality 88. Output 2560x1880 alpha WebP; preserve authored geometry, camera, lighting, material and scene shadows; no UI, page chrome, imagegen, or catalog photography. Source hashes: [{\"path\":\"src/wood-preview/room-scene.ts\",\"sha256\":\"b9edea783b56fe57070fc1fd5402320c9be30597bddea8ad342a820492cea16c\"},{\"path\":\"src/wood-preview/room-presets.ts\",\"sha256\":\"0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1\"}].",
+      "dimensions": {
+        "width": 2560,
+        "height": 1880
+      },
+      "frame_dimensions": {
+        "width": 640,
+        "height": 470
+      },
+      "frame_count": 16,
+      "grid": {
+        "columns": 4,
+        "rows": 4,
+        "order": "row-major"
+      },
+      "duration_ms": 1750,
+      "frame_elapsed_ms": [
+        0,
+        116.66666666666667,
+        233.33333333333334,
+        350,
+        466.6666666666667,
+        583.3333333333334,
+        700,
+        816.6666666666666,
+        933.3333333333334,
+        1050,
+        1166.6666666666667,
+        1283.3333333333333,
+        1400,
+        1516.6666666666667,
+        1633.3333333333333,
+        1750
+      ],
+      "format": "webp",
+      "transparency": "true alpha",
+      "quality": 88,
+      "deviations": [],
+      "qa_status": "accepted",
+      "bytes": 290538,
+      "sha256": "7cac7f8f891ec57398a0b354dabaa0843a4c68ad48437f90cbfb85279518f9fb",
+      "unique_png_frames": 15
+    }
+  ],
+  "direct": [],
+  "semantic": [
+    {
+      "id": "assembly-flipbook-player",
+      "implementation": "RoomScene renders the matching sprite through a CSS background on a 640/470 aspect-ratio element. WAAPI selects row-major positions of all 16 frames over 1750ms for room changes and replay. Preserve the assembled static image after completion and for reduced motion. Keep room and finish controls, text, page background and component framing semantic HTML/CSS.",
+      "notes": "Frame 0 is exploded; frame 15 is assembled. CSS owns display sizing, clipping and animation timing. Browser WebGL retains authored live rendering when available.",
+      "qa_status": "needs_parent_review"
+    }
+  ],
+  "execution_order": [
+    "living finishes 0,1,2",
+    "bedroom finishes 0,1,2",
+    "office finishes 0,1,2"
+  ],
+  "blockers": [],
+  "assumptions": [
+    "Use existing assembled images after animation and for reduced motion.",
+    "All sprites preserve true alpha and contain no UI."
+  ],
+  "validation": {
+    "browserPageErrors": [],
+    "rasterCount": 9,
+    "provenanceScan": "SCAN: 18 rasters, 0 missing",
+    "visualInspection": "All nine final frames inspected as contact sheet. Representative walnut room frames 0,7,15 inspected for living, bedroom and office: furniture moves into place, final frame preserves authored static perspective and geometry. Final-frame side-by-side contact sheet against original assembled WebPs confirms matching camera, composition, palette and lighting. No UI, text, borders, rounded framing or page background is baked into assets.",
+    "deterministicCapture": "All nine final WebP SHA256 hashes match across two independent isolated Playwright Chromium capture runs.",
+    "trueAlpha": "All nine files are sRGBA with alpha minimum 0 and maximum 1.",
+    "terminalFrameDuplicates": "16 frames are retained as specified. Authored easing completes some rooms before the final timestamp: living and office have 15 unique PNG frames, bedroom has 14. Terminal duplicates are expected and preserve the source timing.",
+    "totalBytes": 2716144
+  }
+}

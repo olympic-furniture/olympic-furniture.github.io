@@ -4,7 +4,12 @@ import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.j
 import { finishes, type Room, type Motion } from "./room-presets";
 
 export function createRoomScene(host: HTMLDivElement) {
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("webgl2");
+  if (!context) throw new Error("WebGL is unavailable");
   const renderer = new THREE.WebGLRenderer({
+    canvas,
+    context,
     alpha: true,
     antialias: true,
     preserveDrawingBuffer: true,
@@ -315,6 +320,21 @@ export function createRoomScene(host: HTMLDivElement) {
   renderer.setSize(host.clientWidth, host.clientHeight, false);
   host.dataset.renderer = "webgl";
   return {
+    captureAssemblyFrames(count = 16) {
+      const previousMotion = motion;
+      const previousElapsed = elapsed;
+      cancelAnimationFrame(frame);
+      motion = "playing";
+      const frames = Array.from({ length: count }, (_, index) => {
+        elapsed = (1750 * index) / (count - 1);
+        arrange();
+        return renderer.domElement.toDataURL("image/png");
+      });
+      motion = previousMotion;
+      elapsed = previousElapsed;
+      start();
+      return frames;
+    },
     setRoom,
     setFinish(index: number) {
       wood.color.set(finishes[index].color);

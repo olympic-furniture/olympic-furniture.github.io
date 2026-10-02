@@ -24,7 +24,7 @@ React, Tailwind CSS and TypeScript on GitHub Pages. Hebrew and RTL now, other la
 
 ## Brand Commitments
 
-The business name and original logo remain recognizable. The user requested a separate modern wood-inspired design preview with furniture assembling into a room, inspired by the movement on https://oren-bechor-drive.github.io/. The established light website remains available while the preview is reviewed.
+The business name and original logo remain recognizable. The user approved the modern wood-inspired design as the homepage, with furniture assembling into a room, inspired by the movement on https://oren-bechor-drive.github.io/. The ר in ריהוט and ל in לבית in the hero, and their counterparts in the logo, use wooden planks and screw details. The logo retains its chair, Hebrew wording and red tagline.
 
 ## Evidence on Hand
 

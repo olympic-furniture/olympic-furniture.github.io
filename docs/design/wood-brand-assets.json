@@ -1,0 +1,18 @@
+{
+  "method": "Built-in imagegen",
+  "logo": {
+    "path": "/images/brand/logo-wood-letters.webp",
+    "source": "public/images/logo.webp",
+    "prompt": "Edit the supplied original Hebrew furniture business logo. Keep the logo's exact layout, chair illustration, beige background, all wording, red tagline, and all other letters unchanged. Change ONLY the Hebrew letter ר in the large bold word רהיטים and the Hebrew letter ל in the upper word אולימפיק: make those two letters look constructed from connected dark walnut wooden planks, with visible small silver screw heads fastening their joints, realistic subtle wood grain. Preserve the exact Hebrew glyph shapes, baseline, dimensions, and readability; the logo must remain immediately recognizable. Do not add any other letters, text, marks, icons or shadows outside the modified glyphs. Keep the original square framing.",
+    "scope": "Only the requested Hebrew ר and ל become wooden planks; recognizable original chair, wording and layout retained."
+  },
+  "letters": {
+    "paths": [
+      "/images/brand/letter-resh.png",
+      "/images/brand/letter-lamed.png"
+    ],
+    "initialPrompt": "Create a clean transparent typographic asset for a Hebrew furniture website. Two separate Hebrew glyphs: ר on the LEFT half and ל on the RIGHT half of a wide image, each centered inside its equal-sized half with generous transparent margin, neither touching the divider. Each glyph is constructed from real dark walnut wooden planks fastened at the intersections with small silver countersunk slotted screws. Realistic fine wood grain, crisp finished edges, very shallow depth, soft even front light, straight-on view. The ר must be the recognizable Hebrew resh: horizontal top plank and upright right plank, open below and left. The ל must be the recognizable Hebrew lamed, with its tall ascender and lower curved/angular hook clearly reading as ל. The two glyphs have equal optical scale and share wood tone and screw size. These will replace single letters inside a headline, so retain clear letter silhouettes and no decorative extra pieces. No other characters, text, framing, floor or background. Truly transparent alpha background.",
+    "finalPrompt": "Edit the FIRST reference image (two wooden Hebrew letters on transparent background). Keep the LEFT wooden ר exactly unchanged. Correct ONLY the RIGHT wooden ל: it must have the SAME correctly oriented Hebrew lamed silhouette as the wooden ל in the TOP word of the SECOND reference image (the furniture logo). Specifically: a short vertical ascender rises at the UPPER LEFT, a horizontal plank extends RIGHT from its lower end, then a diagonal plank descends DOWN-LEFT from the right end. It is the conventional readable Hebrew ל, not a mirrored or curved J shape. Build it from three straight connected dark walnut planks with small silver screw heads at the joints. Match the left ר's wood color, grain, lighting, shallow depth, screw style and optical scale. Keep both glyphs centered in their same respective equal-sized halves with transparent margins. Preserve truly transparent alpha background. No other letters, text, backdrop, or framing.",
+    "conversion": "Split final transparent sprite into explicit equal halves, trim alpha margins, resize via ImageMagick, preserve PNG alpha; no invented catalog imagery."
+  }
+}

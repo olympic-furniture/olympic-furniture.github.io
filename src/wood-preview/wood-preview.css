@@ -1,3 +1,31 @@
+.wood-preview {
+  --wood-toolbar-height: 0px;
+}
+.wood-preview.is-preview {
+  --wood-toolbar-height: 42px;
+}
+html[data-preview="true"] {
+  scroll-padding-top: 142px;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.wood-motion-control {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--blue);
+}
+.wood-motion-control:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
 html[data-design="wood"] {
   --paper: #f5efe5;
   --surface: #fcf8f1;
@@ -10,7 +38,7 @@ html[data-design="wood"] {
   --yellow: #dfcfad;
   --wood-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --wood-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  scroll-padding-top: 142px;
+  scroll-padding-top: 100px;
   scrollbar-color: #9b8163 #f5efe5;
 }
 html[data-design="wood"] ::selection {
@@ -26,7 +54,7 @@ html[data-design="wood"] ::selection {
   letter-spacing: -0.025em;
 }
 .wood-preview .site-header {
-  top: 42px;
+  top: var(--wood-toolbar-height);
   background: #f5efe5;
   backdrop-filter: none;
 }
@@ -66,8 +94,8 @@ html[data-design="wood"] ::selection {
   cursor: default;
 }
 .wood-hero {
-  min-height: calc(100vh - var(--header-height) - 42px);
-  min-height: calc(100dvh - var(--header-height) - 42px);
+  min-height: calc(100vh - var(--header-height) - var(--wood-toolbar-height));
+  min-height: calc(100dvh - var(--header-height) - var(--wood-toolbar-height));
   padding-block: 38px 72px;
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -81,8 +109,37 @@ html[data-design="wood"] ::selection {
   line-height: 1.18;
   max-width: 600px;
 }
-.wood-hero h1 span {
+.wood-hero h1 .wood-headline-rest {
   color: #8a593b;
+}
+.wood-letter {
+  display: inline-block;
+  position: relative;
+  width: 0.82em;
+  height: 0.82em;
+  vertical-align: -0.035em;
+  margin-inline: -0.08em;
+}
+.wood-letter-lamed {
+  height: 1.04em;
+  width: 0.78em;
+}
+.wood-letter-piece {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: wood-letter-arrival 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.wood-letter-lamed .wood-letter-piece {
+  animation-delay: 140ms;
+}
+@keyframes wood-letter-arrival {
+  from {
+    transform: translateY(-0.12em) rotate(-7deg);
+  }
+  to {
+    transform: translateY(0) rotate(0);
+  }
 }
 .wood-hero-copy > p {
   color: var(--muted);
@@ -146,19 +203,80 @@ html[data-design="wood"] ::selection {
   aspect-ratio: 640 / 470;
   position: relative;
 }
-.wood-room > img,
+.wood-room-still,
 .wood-room-canvas,
-.wood-room-canvas canvas {
+.wood-room-canvas canvas,
+.wood-room-flipbook {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
-.wood-room[data-ready="true"] > img {
+.wood-room [data-visible="false"] {
   visibility: hidden;
 }
-.wood-room[data-ready="false"] .wood-room-canvas {
-  visibility: hidden;
+.wood-room-flipbook {
+  background-size: 400% 400%;
+  background-repeat: no-repeat;
+  animation: wood-room-flipbook 1750ms steps(1, end) both;
+}
+.wood-room[data-motion="paused"] .wood-room-flipbook,
+.wood-room[data-visible="false"] .wood-room-flipbook {
+  animation-play-state: paused;
+}
+.wood-room[data-motion="off"] .wood-room-flipbook {
+  animation: none;
+  background-position: 100% 100%;
+}
+@keyframes wood-room-flipbook {
+  0.0000% {
+    background-position: 0% 0%;
+  }
+  6.6667% {
+    background-position: 33.3333% 0%;
+  }
+  13.3333% {
+    background-position: 66.6667% 0%;
+  }
+  20.0000% {
+    background-position: 100% 0%;
+  }
+  26.6667% {
+    background-position: 0% 33.3333%;
+  }
+  33.3333% {
+    background-position: 33.3333% 33.3333%;
+  }
+  40.0000% {
+    background-position: 66.6667% 33.3333%;
+  }
+  46.6667% {
+    background-position: 100% 33.3333%;
+  }
+  53.3333% {
+    background-position: 0% 66.6667%;
+  }
+  60.0000% {
+    background-position: 33.3333% 66.6667%;
+  }
+  66.6667% {
+    background-position: 66.6667% 66.6667%;
+  }
+  73.3333% {
+    background-position: 100% 66.6667%;
+  }
+  80.0000% {
+    background-position: 0% 100%;
+  }
+  86.6667% {
+    background-position: 33.3333% 100%;
+  }
+  93.3333% {
+    background-position: 66.6667% 100%;
+  }
+  100.0000% {
+    background-position: 100% 100%;
+  }
 }
 .wood-room-tools {
   display: flex;
@@ -250,7 +368,7 @@ html[data-design="wood"] ::selection {
   padding-inline-end: 24px;
 }
 .wood-strip-photo {
-  width: 275px;
+  width: max-content;
   display: block;
   border: 0;
   padding: 0;
@@ -260,14 +378,17 @@ html[data-design="wood"] ::selection {
 }
 .wood-strip-photo img,
 .wood-strip-photo .image-fallback {
-  width: 100%;
+  width: auto;
+  max-width: 620px;
   height: 230px;
   object-fit: contain;
-  background: #f5efe5;
+  background: transparent;
   border-radius: 12px;
 }
-.wood-strip-photo span {
+.wood-strip-photo > span {
   display: block;
+  width: 0;
+  min-width: 100%;
   padding-top: 14px;
   font-size: 15px;
 }
@@ -323,9 +444,34 @@ html[data-design="wood"] ::selection {
   border-radius: 0;
 }
 .wood-preview .furniture-image {
-  border-radius: 12px;
-  background: #e8dfd1;
+  height: 320px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  border-radius: 0;
+  background: transparent;
+  overflow: visible;
 }
+.wood-preview .furniture-image > img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  border-radius: 12px;
+}
+.wood-preview .furniture-image > .image-fallback {
+  height: 100%;
+}
+.wood-preview .furniture-image::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  inset-inline: 0;
+  height: 5px;
+  border-radius: 2px;
+  background: #b08a64;
+}
+
 .wood-preview .furniture-item h4 {
   font-size: 18px;
   margin-inline: 0;
@@ -596,8 +742,8 @@ html[data-design="wood"] ::selection {
   .wood-showcase-heading p {
     font-size: 16px;
   }
-  .wood-strip-photo {
-    width: 220px;
+  .wood-strip-photo img {
+    max-width: 480px;
   }
   .wood-strip-photo img,
   .wood-strip-photo .image-fallback {
@@ -649,5 +795,109 @@ html[data-design="wood"] ::selection {
   }
   .wood-options summary svg {
     transition: none;
+  }
+}
+
+.wood-preview .gallery-grid {
+  animation: wood-gallery-page 260ms var(--wood-ease-out) both;
+}
+@keyframes wood-gallery-page {
+  from {
+    opacity: 0.65;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.wood-options details[open] > p {
+  animation: wood-option-open 220ms var(--wood-ease-out) both;
+}
+@keyframes wood-option-open {
+  from {
+    opacity: 0.6;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.wood-story figure[data-in-view="true"] {
+  animation: wood-family-arrival 650ms var(--wood-ease-out) both;
+}
+@keyframes wood-family-arrival {
+  from {
+    opacity: 0.7;
+    transform: translateY(18px) rotate(-1deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
+.wood-scroll-progress {
+  position: fixed;
+  top: calc(var(--header-height) - 2px);
+  inset-inline: 0;
+  height: 2px;
+  background: var(--red);
+  transform-origin: right;
+  transform: scaleX(0);
+  z-index: 32;
+  pointer-events: none;
+}
+.is-preview .wood-scroll-progress {
+  top: calc(var(--header-height) + 40px);
+}
+.wood-preview[data-motion="paused"]
+  :is(
+    .gallery-grid,
+    .wood-options details > p,
+    .wood-story figure,
+    .wood-letter-piece
+  ) {
+  animation-play-state: paused;
+}
+.wood-preview[data-motion="off"]
+  :is(
+    .gallery-grid,
+    .wood-options details > p,
+    .wood-story figure,
+    .wood-letter-piece
+  ) {
+  animation: none;
+}
+.wood-preview .gallery-grid[data-keyboard="true"] {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wood-preview
+    :is(
+      .gallery-grid,
+      .wood-options details > p,
+      .wood-story figure,
+      .wood-letter-piece
+    ) {
+    animation: none;
+  }
+  .wood-room-flipbook {
+    animation: none;
+    background-position: 100% 100%;
+  }
+}
+@media (max-width: 767px) {
+  html[data-design="wood"] {
+    scroll-padding-top: 94px;
+  }
+  html[data-preview="true"] {
+    scroll-padding-top: 130px;
+  }
+  .header-actions {
+    gap: 10px;
+  }
+  .wood-preview .furniture-image {
+    height: 340px;
   }
 }

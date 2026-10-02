@@ -16,6 +16,8 @@ import { BusinessImage } from "../components/BusinessImage";
 import { ImageDialog } from "../components/ImageDialog";
 import { phoneHref } from "../components/ContactLinks";
 import { RoomComposer } from "./RoomComposer";
+import { usePageMotion } from "./usePageMotion";
+import { WoodHeadline } from "./WoodHeadline";
 
 const featuredIds = new Set([
   "facebook-832837595530444",
@@ -37,7 +39,8 @@ function subscribeToMotion(onChange: () => void) {
   query?.addEventListener("change", onChange);
   return () => query?.removeEventListener("change", onChange);
 }
-export function WoodPreview() {
+export function WoodPreview({ preview = false }: { preview?: boolean }) {
+  const { root, progress } = usePageMotion();
   const [playing, setPlaying] = useState(true);
   const [selected, setSelected] = useState<Product | null>(null);
   const reduce = useSyncExternalStore(
@@ -47,15 +50,57 @@ export function WoodPreview() {
   );
   const motion = reduce ? "off" : playing ? "playing" : "paused";
   return (
-    <div className="wood-preview" data-motion={motion}>
+    <div
+      className={`wood-preview${preview ? " is-preview" : ""}`}
+      data-motion={motion}
+      ref={root}
+    >
       <a className="skip-link" href="#main">
         דילוג לתוכן הראשי
       </a>
-      <div className="wood-preview-toolbar">
-        <div className="shell wood-preview-toolbar-inner">
-          <span>תצוגת עיצוב חדשה</span>
-          <div>
+      {preview && (
+        <div className="wood-preview-toolbar">
+          <div className="shell wood-preview-toolbar-inner">
+            <span>תצוגת עיצוב חדשה</span>
+            <div>
+              <button
+                disabled={reduce}
+                aria-pressed={!playing || reduce}
+                aria-label={
+                  reduce
+                    ? "תנועה מופחתת מופעלת"
+                    : playing
+                      ? "השהיית אנימציות"
+                      : "הפעלת אנימציות"
+                }
+                onClick={() => setPlaying((value) => !value)}
+              >
+                {motion === "playing" ? (
+                  <PauseIcon size={18} aria-hidden />
+                ) : (
+                  <PlayIcon size={18} aria-hidden />
+                )}
+                <span>
+                  {reduce
+                    ? "תנועה מופחתת"
+                    : playing
+                      ? "השהיית תנועה"
+                      : "הפעלת תנועה"}
+                </span>
+              </button>
+              <a href="/">
+                לאתר הנוכחי
+                <ArrowUpLeftIcon size={16} aria-hidden />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+      <Header
+        controls={
+          !preview ? (
             <button
+              className="wood-motion-control"
               disabled={reduce}
               aria-pressed={!playing || reduce}
               aria-label={
@@ -65,29 +110,25 @@ export function WoodPreview() {
                     ? "השהיית אנימציות"
                     : "הפעלת אנימציות"
               }
+              title={
+                reduce
+                  ? "תנועה מופחתת מופעלת"
+                  : playing
+                    ? "השהיית אנימציות"
+                    : "הפעלת אנימציות"
+              }
               onClick={() => setPlaying((value) => !value)}
             >
               {motion === "playing" ? (
-                <PauseIcon size={18} aria-hidden />
+                <PauseIcon size={19} aria-hidden />
               ) : (
-                <PlayIcon size={18} aria-hidden />
+                <PlayIcon size={19} aria-hidden />
               )}
-              <span>
-                {reduce
-                  ? "תנועה מופחתת"
-                  : playing
-                    ? "השהיית תנועה"
-                    : "הפעלת תנועה"}
-              </span>
             </button>
-            <a href="/">
-              לאתר הנוכחי
-              <ArrowUpLeftIcon size={16} aria-hidden />
-            </a>
-          </div>
-        </div>
-      </div>
-      <Header />
+          ) : undefined
+        }
+      />
+      <div className="wood-scroll-progress" aria-hidden="true" ref={progress} />
       <main id="main" tabIndex={-1}>
         <section
           id="home"
@@ -95,11 +136,7 @@ export function WoodPreview() {
           aria-labelledby="wood-hero-title"
         >
           <div className="wood-hero-copy">
-            <h1 id="wood-hero-title">
-              ריהוט לבית,
-              <br />
-              <span>בדיוק כמו שרציתם.</span>
-            </h1>
+            <WoodHeadline title={site.heroTitle} />
             <p>{site.heroDescription}</p>
             <div className="wood-hero-actions">
               <a className="button primary" href="#furniture">
@@ -241,10 +278,10 @@ export function WoodPreview() {
       </main>
       <div className="shell wood-logo-signature">
         <img
-          src="/images/logo.webp"
+          src="/images/brand/logo-wood-letters.webp"
           alt={site.name}
-          width={88}
-          height={88}
+          width={140}
+          height={140}
           loading="lazy"
         />
         <p>

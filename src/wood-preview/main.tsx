@@ -6,6 +6,6 @@ import "./wood-preview.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <WoodPreview />
+    <WoodPreview preview />
   </StrictMode>,
 );
