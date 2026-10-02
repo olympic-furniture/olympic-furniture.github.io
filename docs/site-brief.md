@@ -1,6 +1,6 @@
 # רהיטי אולימפיק: proposed website brief
 
-Status: approved by the user on October 2, 2026. The site, editor configuration and deployment workflow are implemented locally and await final review and live deployment verification.
+Status: approved by the user on October 2, 2026. The site, editor configuration and deployment workflow implement this brief. Check the [publishing workflow status](https://github.com/olympic-furniture/olympic-furniture.github.io/actions/workflows/deploy.yml) for verification and deployment results.
 
 ## Purpose
 
@@ -68,7 +68,7 @@ Configure clearly named Hebrew fields for:
 - Furniture entries: descriptive title, category, image, optional verified specifications, optional current price in shekels, price wording, display order, and publication status.
 - Image uploads.
 
-The user approved the external Pages CMS editor and GitHub Pages publishing. The Hebrew forms are configured in `.pages.yml`. The family edits through forms and saves to `main`; the GitHub workflow checks the content and republishes successful builds. Content and media changes remain in Git history. Pages CMS still requires an authorized GitHub App installation and user sign-in. See [the editing guide](editing-guide.he.md) for the exact setup step and saving instructions.
+The user approved the external Pages CMS editor and GitHub Pages publishing. The Hebrew forms are configured in `.pages.yml`. The family edits through forms and saves to `main`; the GitHub workflow checks the content and republishes successful builds. Content and media changes remain in Git history. The Pages CMS GitHub App installation was confirmed on October 2, 2026 for `olympic-furniture`, with **Only select repositories** selected. The organization contained only the target repository at that check. Installation is complete; the authenticated editing forms have not been verified. See [the editing guide](editing-guide.he.md) for sign-in, conditional installation and saving instructions.
 
 ## Content and deployment structure
 
@@ -78,7 +78,7 @@ Use reusable components for navigation, category browsing, the gallery, the fami
 
 Deploy with GitHub Actions to GitHub Pages. The organization must be named olympic-furniture, and its root-site repository must be olympic-furniture.github.io. Transfer an existing repository if the user identifies one; otherwise create the new repository directly in the organization.
 
-The user supplied https://github.com/olympic-furniture/olympic-furniture.github.io after organization setup. The organization and public repository exist. The authenticated account has active organization administrator membership and repository ADMIN permission. No repository transfer is necessary. The local workspace is a Git repository with committed site implementation. The publishing workflow is configured locally; GitHub Pages configuration, push and live verification remain part of the final deployment step.
+The user supplied https://github.com/olympic-furniture/olympic-furniture.github.io after organization setup. The organization and public repository exist. Organization administrator membership and repository ADMIN permission were confirmed on October 2, 2026. No repository transfer is necessary. The repository includes the publishing workflow; its [run history](https://github.com/olympic-furniture/olympic-furniture.github.io/actions/workflows/deploy.yml) records verification and deployment results.
 
 ## Image and price handling
 
@@ -96,7 +96,7 @@ One older landing page advertises a wardrobe at ₪1,400. Another image filename
 - Inspect the Hebrew layout on desktop and mobile, including mixed Hebrew and telephone numbers.
 - Verify that editing the configured content changes the built site.
 - Check the deployed site and deployment workflow once the organization, repository, and Pages setup exist.
-- The grandfather's review of Hebrew business copy remains pending. Publishing is authorized by the user's destination request and approved brief; add prices and other unconfirmed details only after business approval.
+- The grandfather's review of Hebrew business copy is a follow-up to initial publication. Publishing is authorized by the user's destination request and approved brief; add prices and other unconfirmed details only after business approval.
 
 ## Sources
 

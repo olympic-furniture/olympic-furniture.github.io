@@ -73,10 +73,14 @@ export function parseProductEntries(entries: Record<string, unknown>): Product[]
 }
 
 /** Public visibility and stable sorting are shared by the application and build checks. */
-export function loadProductEntries(entries: Record<string, unknown>): Product[] {
-  return parseProductEntries(entries)
+export function selectPublicProducts(products: Product[]): Product[] {
+  return products
     .filter(({ published }) => published)
     .sort((a, b) => a.order - b.order || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+}
+
+export function loadProductEntries(entries: Record<string, unknown>): Product[] {
+  return selectPublicProducts(parseProductEntries(entries));
 }
 
 export function assertImageAssets(site: SiteContent, products: Product[], available: Set<string>): void {

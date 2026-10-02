@@ -1,6 +1,6 @@
 # רהיטי אולימפיק
 
-Hebrew, right-to-left furniture website built with React, TypeScript, Tailwind CSS and Vite. The approved destination is [olympic-furniture.github.io](https://olympic-furniture.github.io/). The local site and publishing configuration are ready for final review. A successful live deployment has not yet been verified.
+Hebrew, right-to-left furniture website built with React, TypeScript, Tailwind CSS and Vite. The approved destination is [olympic-furniture.github.io](https://olympic-furniture.github.io/). Check the [publishing workflow status](https://github.com/olympic-furniture/olympic-furniture.github.io/actions/workflows/deploy.yml) for the latest verification and deployment results.
 
 ## Development
 
@@ -31,7 +31,7 @@ The family owns the business descriptions, furniture information, photographs an
 
 Descriptions are plain text. Prices are optional positive numbers in shekels. `priceFrom` selects the starting-price wording. `published: false` removes a furniture record from the public application bundle. Drafts still need valid fields and existing images. The repository is public, so draft files and uploaded photographs are visible on GitHub even when the furniture record is hidden on the website.
 
-The business telephone and address are confirmed. WhatsApp, email, hours, current prices, detailed product specifications, fulfillment coverage, times, costs, installation, warranty and the detailed order process await confirmation. Do not fill these gaps with historical promotions or assumptions. The grandfather's review of Hebrew copy remains pending.
+The business telephone and address are confirmed. WhatsApp, email, hours, current prices, detailed product specifications, fulfillment coverage, times, costs, installation, warranty and the detailed order process await confirmation. Do not fill these gaps with historical promotions or assumptions. The grandfather's review of Hebrew copy is a follow-up to the user-authorized initial publication.
 
 Approved image sources and the self-hosted Heebo license are recorded in [docs/image-sources.md](docs/image-sources.md). The favicon is an unchanged copy of the original square business logo. Additional Facebook photographs require date verification within November 15, 2023 through November 17, 2025, inclusive. Use local image files, not expiring CDN URLs.
 
@@ -41,6 +41,6 @@ The [deployment workflow](.github/workflows/deploy.yml) verifies pull requests a
 
 `scripts/generate-metadata.ts` reads validated site content during Vite's HTML transformation. It generates the title, description, canonical URL, Open Graph tags and FurnitureStore JSON-LD. The address field uses `street and number, city`; the last comma separates the city. It emits `dist/robots.txt` and `dist/sitemap.xml` during each build so checked-in copies cannot become stale. The site uses the root base `/`. Assets and fonts are self-hosted; no application secrets or runtime CMS API are needed.
 
-Pages CMS access is not connected yet. An organization administrator must [install the Pages CMS GitHub App](https://github.com/apps/pages-cms/installations/new), choose `olympic-furniture`, select **Only select repositories**, and grant access only to `olympic-furniture.github.io`. Then sign in at [app.pagescms.org](https://app.pagescms.org/) with an authorized GitHub account and select this repository's `main` branch. Grant family editors suitable GitHub repository access. The public site has no account login or password storage.
+The Pages CMS GitHub App installation was confirmed on October 2, 2026 for `olympic-furniture`, with **Only select repositories** selected. The organization contained only `olympic-furniture.github.io` at that check. Installation is complete; the authenticated editing forms have not been verified. Sign in at [app.pagescms.org](https://app.pagescms.org/) with an authorized GitHub account and select this repository's `main` branch. If the App needs to be installed again, an organization administrator can [install Pages CMS](https://github.com/apps/pages-cms/installations/new), choose `olympic-furniture`, select **Only select repositories**, and grant access only to `olympic-furniture.github.io`. Grant family editors suitable GitHub repository access. The public site has no account login or password storage.
 
 Configuration references: [content](https://pagescms.org/docs/configuration/content/), [media](https://pagescms.org/docs/configuration/media/), [filename](https://pagescms.org/docs/configuration/content/filename/), [select](https://pagescms.org/docs/configuration/fields/select/), [number](https://pagescms.org/docs/configuration/fields/number/), [image](https://pagescms.org/docs/configuration/fields/image/), [object](https://pagescms.org/docs/configuration/fields/object/).

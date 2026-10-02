@@ -527,6 +527,7 @@ address {
   display: none;
 }
 .image-fallback {
+  aspect-ratio: var(--image-aspect-ratio);
   display: grid;
   place-items: center;
   padding: 24px;
@@ -769,7 +770,8 @@ address {
   .family-story figure {
     order: 2;
   }
-  .family-story figure > img {
+  .family-story figure > img,
+  .family-story figure > .image-fallback {
     aspect-ratio: 1.5;
   }
   .story-copy h2 {

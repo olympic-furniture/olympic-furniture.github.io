@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 
 type Props = {
   src: string;
@@ -22,7 +22,7 @@ export function BusinessImage({
       role="img"
       aria-label={alt}
       className={`image-fallback ${className}`}
-      style={{ aspectRatio: `${width}/${height}` }}
+      style={{ '--image-aspect-ratio': `${width}/${height}` } as CSSProperties}
     >
       <span>
         התמונה אינה זמינה כרגע

@@ -1,6 +1,6 @@
 import { readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
-import { assertImageAssets, loadProductEntries, parseProductEntries, siteSchema } from '../src/content/schema.ts';
+import { assertImageAssets, parseProductEntries, selectPublicProducts, siteSchema } from '../src/content/schema.ts';
 
 /** Shared Node-only validation for CLI checks and Vite's public content module. */
 export async function readContent(root: string) {
@@ -21,7 +21,7 @@ export async function readContent(root: string) {
     return [relativePath, await readJson(relativePath)];
   })));
   const allProducts = parseProductEntries(entries);
-  const products = loadProductEntries(entries);
+  const products = selectPublicProducts(allProducts);
   const imageEntries = await readdir(path.join(root, 'public/images'), { recursive: true, withFileTypes: true });
   const available = new Set(imageEntries.filter((entry) => entry.isFile()).map((entry) =>
     `/${path.relative(path.join(root, 'public'), path.join(entry.parentPath, entry.name)).split(path.sep).join('/')}`));

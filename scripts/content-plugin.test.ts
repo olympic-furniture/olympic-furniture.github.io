@@ -64,6 +64,14 @@ describe('public virtual content module', () => {
       .rejects.toThrow(/bad-draft.json/);
   });
 
+  it('rejects a missing draft image before stripping the draft from browser output', async () => {
+    await writeProduct('draft-missing-image', {
+      ...furniture, published: false, image: '/images/missing.webp',
+    });
+    await expect(furnitureContentPlugin(root).load('\0virtual:olympic-content'))
+      .rejects.toThrow(/furniture draft-missing-image: \/images\/missing.webp/);
+  });
+
   it('reloads cached development content after the editor changes a JSON file', async () => {
     await writeProduct('public', furniture);
     const server = await createServer({
