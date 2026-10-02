@@ -16,7 +16,7 @@ export function RoomScene(props: Props) {
   const [loadedSprite, setLoadedSprite] = useState<string>();
   const [fallbackCompleted, setFallbackCompleted] = useState(false);
   const [visible, setVisible] = useState(true);
-  const sprite = "/images/wood-preview/living-hero-assembly.webp";
+  const sprite = "/images/wood-preview/living-hero-assembly.webp?v=room-build";
   useEffect(() => {
     let cancelled = false;
     let canvas: HTMLCanvasElement | undefined;
