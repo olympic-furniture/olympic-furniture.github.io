@@ -1,0 +1,285 @@
+{
+  "purpose": "Matching assembled fallback renders for the authored interactive WebGL room. These are illustrative design scenes, not catalog product imagery.",
+  "classification": "illustrative-not-catalog",
+  "source": [
+    {
+      "path": "src/wood-preview/room-scene.ts",
+      "sha256": "1b754bcfc7ed84c0d064261335e1df40f29cd690dda446f2239d6afa3ea1880a"
+    },
+    {
+      "path": "src/wood-preview/room-presets.ts",
+      "sha256": "0a92016fac4f4d9b9cc81d4da846b21aa247c38b02e2181f557be447d3419bf1"
+    },
+    {
+      "path": "src/wood-preview/RoomScene.tsx",
+      "sha256": "e8a0b28d569373ece7a6bd93631f4b9fc15476a5744c7edcabb924af878921db"
+    }
+  ],
+  "source_crop": null,
+  "rendering": {
+    "method": "Native authored Three.js WebGL renderer captured through canvas.toDataURL(\"image/png\"), then ImageMagick WebP encoding. No image generation, SVG scene imitation, catalog photography, or UI screenshot pixels.",
+    "url": "http://127.0.0.1:5175/wood-preview/",
+    "browser": "Playwright Chromium, headless",
+    "browserArguments": [
+      "--use-gl=angle",
+      "--use-angle=swiftshader",
+      "--enable-unsafe-swiftshader"
+    ],
+    "viewport": {
+      "width": 1440,
+      "height": 1100
+    },
+    "deviceScaleFactor": 2,
+    "reducedMotion": "reduce",
+    "assembly": "assembled",
+    "captureCanvas": {
+      "width": 1280,
+      "height": 940
+    },
+    "output": {
+      "width": 1280,
+      "height": 940
+    },
+    "conversion": "ImageMagick magick -quality 92",
+    "alpha": true,
+    "antialias": true,
+    "preserveDrawingBuffer": true,
+    "colorSpace": "sRGB",
+    "shadowMap": "PCFSoftShadowMap 1024x1024",
+    "camera": {
+      "kind": "orthographic",
+      "frustum": [
+        -4.5,
+        4.5,
+        3.3,
+        -3.3,
+        0.1,
+        40
+      ],
+      "position": [
+        8,
+        7.5,
+        10
+      ],
+      "lookAt": [
+        0,
+        1.1,
+        0
+      ]
+    },
+    "cssCanvas": {
+      "width": 640,
+      "height": 470
+    }
+  },
+  "produce": [
+    {
+      "id": "living-0",
+      "room": "living",
+      "finish": 0,
+      "room_label": "סלון",
+      "finish_label": "עץ בהיר",
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/living-0.webp",
+      "strategy": "Native source rendering and deterministic format conversion",
+      "prompt_used": "Deterministic static fallback raster, illustrative-not-catalog. Source: src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts, src/wood-preview/RoomScene.tsx. Native authored Three.js solid room models rendered by production build at http://127.0.0.1:5175/wood-preview/ using Playwright Chromium headless SwiftShader, viewport 1440x1100, deviceScaleFactor 2, prefers-reduced-motion reduce. Select exact room button סלון and finish button עץ בהיר; wait .wood-room-canvas[data-renderer=webgl][data-room=living][data-finish=0][data-assembly=assembled], then two animation frames. Read alpha canvas via preserveDrawingBuffer canvas.toDataURL(image/png), source 1280x940 from a 640x470 CSS canvas; encode with ImageMagick WebP quality92 without resizing. Preserve authored geometry, camera, lights, materials, alpha and shadows; include no UI or page chrome. No image generation and no fictional catalog product.",
+      "dimensions": {
+        "width": 1280,
+        "height": 940
+      },
+      "format": "webp",
+      "transparency": "true alpha",
+      "deviations": [],
+      "qa_status": "accepted",
+      "sha256": "b5d65c0db7f7ff943c1a7b1ac0178e90acb918d1c9333d4d470810a413c083a7"
+    },
+    {
+      "id": "living-1",
+      "room": "living",
+      "finish": 1,
+      "room_label": "סלון",
+      "finish_label": "אגוז חם",
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/living-1.webp",
+      "strategy": "Native source rendering and deterministic format conversion",
+      "prompt_used": "Deterministic static fallback raster, illustrative-not-catalog. Source: src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts, src/wood-preview/RoomScene.tsx. Native authored Three.js solid room models rendered by production build at http://127.0.0.1:5175/wood-preview/ using Playwright Chromium headless SwiftShader, viewport 1440x1100, deviceScaleFactor 2, prefers-reduced-motion reduce. Select exact room button סלון and finish button אגוז חם; wait .wood-room-canvas[data-renderer=webgl][data-room=living][data-finish=1][data-assembly=assembled], then two animation frames. Read alpha canvas via preserveDrawingBuffer canvas.toDataURL(image/png), source 1280x940 from a 640x470 CSS canvas; encode with ImageMagick WebP quality92 without resizing. Preserve authored geometry, camera, lights, materials, alpha and shadows; include no UI or page chrome. No image generation and no fictional catalog product.",
+      "dimensions": {
+        "width": 1280,
+        "height": 940
+      },
+      "format": "webp",
+      "transparency": "true alpha",
+      "deviations": [],
+      "qa_status": "accepted",
+      "sha256": "8154b4b0e6bca592a60ee49c11a9342f44a5e036ee0b62f08c128933b729424c"
+    },
+    {
+      "id": "living-2",
+      "room": "living",
+      "finish": 2,
+      "room_label": "סלון",
+      "finish_label": "אלון מעושן",
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/living-2.webp",
+      "strategy": "Native source rendering and deterministic format conversion",
+      "prompt_used": "Deterministic static fallback raster, illustrative-not-catalog. Source: src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts, src/wood-preview/RoomScene.tsx. Native authored Three.js solid room models rendered by production build at http://127.0.0.1:5175/wood-preview/ using Playwright Chromium headless SwiftShader, viewport 1440x1100, deviceScaleFactor 2, prefers-reduced-motion reduce. Select exact room button סלון and finish button אלון מעושן; wait .wood-room-canvas[data-renderer=webgl][data-room=living][data-finish=2][data-assembly=assembled], then two animation frames. Read alpha canvas via preserveDrawingBuffer canvas.toDataURL(image/png), source 1280x940 from a 640x470 CSS canvas; encode with ImageMagick WebP quality92 without resizing. Preserve authored geometry, camera, lights, materials, alpha and shadows; include no UI or page chrome. No image generation and no fictional catalog product.",
+      "dimensions": {
+        "width": 1280,
+        "height": 940
+      },
+      "format": "webp",
+      "transparency": "true alpha",
+      "deviations": [],
+      "qa_status": "accepted",
+      "sha256": "cf6b0140e455091e3729d83c4f0e020a424056595bb67c33cf56b44e8451734f"
+    },
+    {
+      "id": "bedroom-0",
+      "room": "bedroom",
+      "finish": 0,
+      "room_label": "חדר שינה",
+      "finish_label": "עץ בהיר",
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/bedroom-0.webp",
+      "strategy": "Native source rendering and deterministic format conversion",
+      "prompt_used": "Deterministic static fallback raster, illustrative-not-catalog. Source: src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts, src/wood-preview/RoomScene.tsx. Native authored Three.js solid room models rendered by production build at http://127.0.0.1:5175/wood-preview/ using Playwright Chromium headless SwiftShader, viewport 1440x1100, deviceScaleFactor 2, prefers-reduced-motion reduce. Select exact room button חדר שינה and finish button עץ בהיר; wait .wood-room-canvas[data-renderer=webgl][data-room=bedroom][data-finish=0][data-assembly=assembled], then two animation frames. Read alpha canvas via preserveDrawingBuffer canvas.toDataURL(image/png), source 1280x940 from a 640x470 CSS canvas; encode with ImageMagick WebP quality92 without resizing. Preserve authored geometry, camera, lights, materials, alpha and shadows; include no UI or page chrome. No image generation and no fictional catalog product.",
+      "dimensions": {
+        "width": 1280,
+        "height": 940
+      },
+      "format": "webp",
+      "transparency": "true alpha",
+      "deviations": [],
+      "qa_status": "accepted",
+      "sha256": "bdec23393a0dce255778bb500ce4fd5515533e9ededafa3a2992974361ebce66"
+    },
+    {
+      "id": "bedroom-1",
+      "room": "bedroom",
+      "finish": 1,
+      "room_label": "חדר שינה",
+      "finish_label": "אגוז חם",
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/bedroom-1.webp",
+      "strategy": "Native source rendering and deterministic format conversion",
+      "prompt_used": "Deterministic static fallback raster, illustrative-not-catalog. Source: src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts, src/wood-preview/RoomScene.tsx. Native authored Three.js solid room models rendered by production build at http://127.0.0.1:5175/wood-preview/ using Playwright Chromium headless SwiftShader, viewport 1440x1100, deviceScaleFactor 2, prefers-reduced-motion reduce. Select exact room button חדר שינה and finish button אגוז חם; wait .wood-room-canvas[data-renderer=webgl][data-room=bedroom][data-finish=1][data-assembly=assembled], then two animation frames. Read alpha canvas via preserveDrawingBuffer canvas.toDataURL(image/png), source 1280x940 from a 640x470 CSS canvas; encode with ImageMagick WebP quality92 without resizing. Preserve authored geometry, camera, lights, materials, alpha and shadows; include no UI or page chrome. No image generation and no fictional catalog product.",
+      "dimensions": {
+        "width": 1280,
+        "height": 940
+      },
+      "format": "webp",
+      "transparency": "true alpha",
+      "deviations": [],
+      "qa_status": "accepted",
+      "sha256": "e746931478d648ca86e7cc72d3d39fb77c1f2a4a478a4974ad346b2dc03a578f"
+    },
+    {
+      "id": "bedroom-2",
+      "room": "bedroom",
+      "finish": 2,
+      "room_label": "חדר שינה",
+      "finish_label": "אלון מעושן",
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/bedroom-2.webp",
+      "strategy": "Native source rendering and deterministic format conversion",
+      "prompt_used": "Deterministic static fallback raster, illustrative-not-catalog. Source: src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts, src/wood-preview/RoomScene.tsx. Native authored Three.js solid room models rendered by production build at http://127.0.0.1:5175/wood-preview/ using Playwright Chromium headless SwiftShader, viewport 1440x1100, deviceScaleFactor 2, prefers-reduced-motion reduce. Select exact room button חדר שינה and finish button אלון מעושן; wait .wood-room-canvas[data-renderer=webgl][data-room=bedroom][data-finish=2][data-assembly=assembled], then two animation frames. Read alpha canvas via preserveDrawingBuffer canvas.toDataURL(image/png), source 1280x940 from a 640x470 CSS canvas; encode with ImageMagick WebP quality92 without resizing. Preserve authored geometry, camera, lights, materials, alpha and shadows; include no UI or page chrome. No image generation and no fictional catalog product.",
+      "dimensions": {
+        "width": 1280,
+        "height": 940
+      },
+      "format": "webp",
+      "transparency": "true alpha",
+      "deviations": [],
+      "qa_status": "accepted",
+      "sha256": "f2e781c0b50fc663146cded82a17c7378f3d289d9fd069f016d7fd69d63defac"
+    },
+    {
+      "id": "office-0",
+      "room": "office",
+      "finish": 0,
+      "room_label": "פינת עבודה",
+      "finish_label": "עץ בהיר",
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/office-0.webp",
+      "strategy": "Native source rendering and deterministic format conversion",
+      "prompt_used": "Deterministic static fallback raster, illustrative-not-catalog. Source: src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts, src/wood-preview/RoomScene.tsx. Native authored Three.js solid room models rendered by production build at http://127.0.0.1:5175/wood-preview/ using Playwright Chromium headless SwiftShader, viewport 1440x1100, deviceScaleFactor 2, prefers-reduced-motion reduce. Select exact room button פינת עבודה and finish button עץ בהיר; wait .wood-room-canvas[data-renderer=webgl][data-room=office][data-finish=0][data-assembly=assembled], then two animation frames. Read alpha canvas via preserveDrawingBuffer canvas.toDataURL(image/png), source 1280x940 from a 640x470 CSS canvas; encode with ImageMagick WebP quality92 without resizing. Preserve authored geometry, camera, lights, materials, alpha and shadows; include no UI or page chrome. No image generation and no fictional catalog product.",
+      "dimensions": {
+        "width": 1280,
+        "height": 940
+      },
+      "format": "webp",
+      "transparency": "true alpha",
+      "deviations": [],
+      "qa_status": "accepted",
+      "sha256": "fddffdf7c71bbf8a9eaf82e9a2fd93b22ce77da43c2dba76ffcfd7a635d1dd27"
+    },
+    {
+      "id": "office-1",
+      "room": "office",
+      "finish": 1,
+      "room_label": "פינת עבודה",
+      "finish_label": "אגוז חם",
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/office-1.webp",
+      "strategy": "Native source rendering and deterministic format conversion",
+      "prompt_used": "Deterministic static fallback raster, illustrative-not-catalog. Source: src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts, src/wood-preview/RoomScene.tsx. Native authored Three.js solid room models rendered by production build at http://127.0.0.1:5175/wood-preview/ using Playwright Chromium headless SwiftShader, viewport 1440x1100, deviceScaleFactor 2, prefers-reduced-motion reduce. Select exact room button פינת עבודה and finish button אגוז חם; wait .wood-room-canvas[data-renderer=webgl][data-room=office][data-finish=1][data-assembly=assembled], then two animation frames. Read alpha canvas via preserveDrawingBuffer canvas.toDataURL(image/png), source 1280x940 from a 640x470 CSS canvas; encode with ImageMagick WebP quality92 without resizing. Preserve authored geometry, camera, lights, materials, alpha and shadows; include no UI or page chrome. No image generation and no fictional catalog product.",
+      "dimensions": {
+        "width": 1280,
+        "height": 940
+      },
+      "format": "webp",
+      "transparency": "true alpha",
+      "deviations": [],
+      "qa_status": "accepted",
+      "sha256": "4ac6cd234e4a5a5e72a2e1f94337d16dd340a9ee98621aafffa25d03bc67446d"
+    },
+    {
+      "id": "office-2",
+      "room": "office",
+      "finish": 2,
+      "room_label": "פינת עבודה",
+      "finish_label": "אלון מעושן",
+      "source_crop": null,
+      "output_path": "public/images/wood-preview/office-2.webp",
+      "strategy": "Native source rendering and deterministic format conversion",
+      "prompt_used": "Deterministic static fallback raster, illustrative-not-catalog. Source: src/wood-preview/room-scene.ts, src/wood-preview/room-presets.ts, src/wood-preview/RoomScene.tsx. Native authored Three.js solid room models rendered by production build at http://127.0.0.1:5175/wood-preview/ using Playwright Chromium headless SwiftShader, viewport 1440x1100, deviceScaleFactor 2, prefers-reduced-motion reduce. Select exact room button פינת עבודה and finish button אלון מעושן; wait .wood-room-canvas[data-renderer=webgl][data-room=office][data-finish=2][data-assembly=assembled], then two animation frames. Read alpha canvas via preserveDrawingBuffer canvas.toDataURL(image/png), source 1280x940 from a 640x470 CSS canvas; encode with ImageMagick WebP quality92 without resizing. Preserve authored geometry, camera, lights, materials, alpha and shadows; include no UI or page chrome. No image generation and no fictional catalog product.",
+      "dimensions": {
+        "width": 1280,
+        "height": 940
+      },
+      "format": "webp",
+      "transparency": "true alpha",
+      "deviations": [],
+      "qa_status": "accepted",
+      "sha256": "0194136870834b5a1880f729785649114d6c2f2be957d29c9eaeb7463a48ce02"
+    }
+  ],
+  "direct": [],
+  "semantic": [
+    {
+      "id": "interactive-room-composer",
+      "implementation": "RoomComposer owns semantic HTML room buttons and finish buttons with aria-pressed state, finish label, replay button, and illustrative disclaimer. RoomScene composes one of the nine matching fallback img assets beneath the authored WebGL canvas. CSS owns the 640/470 component aspect ratio and positioning; WebGL owns scene perspective, object shadows, lighting and materials. The corresponding img remains visible if WebGL initialization fails; React state selects the matching room and finish asset.",
+      "notes": "Keep these scenes distinct from genuine product gallery photographs. Respect reduced motion by selecting the assembled state; responsive CSS should preserve the room canvas aspect ratio.",
+      "qa_status": "accepted"
+    }
+  ],
+  "execution_order": [
+    "living finishes 0,1,2",
+    "bedroom finishes 0,1,2",
+    "office finishes 0,1,2"
+  ],
+  "blockers": [],
+  "assumptions": [
+    "Fallback should match the fully assembled reduced-motion WebGL state.",
+    "All furniture is illustrative and does not represent specific products in the catalog.",
+    "UI controls, page background, text and component chrome remain semantic HTML/CSS."
+  ],
+  "validation": {
+    "browserPageErrors": [],
+    "rasterCount": 9,
+    "provenanceScan": "9 rasters, 0 missing",
+    "trueAlpha": "All files have sRGBA channels, fully transparent alpha minima, and nonopaque image data.",
+    "visualInspection": "All nine assembled scenes inspected; living-walnut, bedroom-walnut and office-walnut inspected at full 1280x940 scale. Camera padding now preserves the rear wall apex and all geometry. No UI, text, borders, or page background are baked into the images.",
+    "deterministicCapture": "All nine WebP SHA256 hashes match across two independent Chromium capture runs."
+  }
+}

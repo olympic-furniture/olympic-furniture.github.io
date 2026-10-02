@@ -2,6 +2,8 @@
 
 Hebrew, right-to-left furniture website built with React, TypeScript, Tailwind CSS and Vite. The approved destination is [olympic-furniture.github.io](https://olympic-furniture.github.io/). Check the [publishing workflow status](https://github.com/olympic-furniture/olympic-furniture.github.io/actions/workflows/deploy.yml) for the latest verification and deployment results.
 
+The separate [wood design preview](https://olympic-furniture.github.io/wood-preview/) explores a cream, walnut and olive palette, an interactive room assembly and a moving strip of real furniture photos. It shares the existing editable business content and full gallery. Its illustration's room and finish controls are decorative previews; they do not configure a product. The route is excluded from indexing and retains a link to the current homepage. See [the preview design brief](docs/design/wood-preview.md).
+
 ## Development
 
 Use Node 24 LTS, version 24.15.0 or newer within 24.x. The package engine also accepts Node 22.22.2+ within 22.x and Node 26+ to match the installed dependencies. Dependencies are locked in `package-lock.json`.
