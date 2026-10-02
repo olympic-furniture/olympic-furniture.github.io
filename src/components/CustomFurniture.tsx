@@ -1,8 +1,15 @@
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  RulerIcon,
+  PaletteIcon,
+  DoorOpenIcon,
+  SquaresFourIcon,
+} from '@phosphor-icons/react';
 import { site } from '../content';
 import { phoneHref } from './ContactLinks';
 
 export function CustomFurniture() {
+  const icons = [RulerIcon, PaletteIcon, DoorOpenIcon, SquaresFourIcon];
   return (
     <section
       id="custom"
@@ -16,15 +23,18 @@ export function CustomFurniture() {
           <p className="section-intro">{site.customDescription}</p>
         </div>
         <div className="custom-options">
-          {site.customOptions.map((option, index) => (
-            <div key={option.title}>
-              <span className="option-number" aria-hidden>
-                {String(index + 1).padStart(2, '0')}
-              </span>
-              <h3>{option.title}</h3>
-              <p>{option.description}</p>
-            </div>
-          ))}
+          {site.customOptions.map((option, index) => {
+            const Icon = icons[index] ?? SquaresFourIcon;
+            return (
+              <div key={option.title}>
+                <span className="option-icon">
+                  <Icon size={29} aria-hidden />
+                </span>
+                <h3>{option.title}</h3>
+                <p>{option.description}</p>
+              </div>
+            );
+          })}
         </div>
         <a className="text-link" href={phoneHref}>
           בואו נדבר על הרהיט שלכם

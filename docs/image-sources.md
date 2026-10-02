@@ -62,3 +62,9 @@ Heebo is redistributed from `@fontsource/heebo` version 5.3.0. Project authors: 
 Eight WOFF2 files in `public/fonts` cover Hebrew and Latin at weights 400, 500, 600 and 700. They are unmodified Fontsource files. `public/fonts/heebo.css` includes `font-display: swap` and the original Unicode ranges so Hebrew and Latin load the correct subsets. All font requests remain local.
 
 The SIL Open Font License 1.1 and copyright notice are reproduced in `public/fonts/Heebo-OFL.txt`. Retain that file when redistributing the font.
+
+## Self-hosted rounded headings
+
+Varela Round is redistributed from `@fontsource/varela-round` version 5.3.0 for the light design refresh requested on October 2, 2026. The Hebrew and Latin WOFF2 files are unmodified, with weight 400, `font-display: swap` and their original Unicode ranges. The body still uses Heebo. No fonts load from an external service.
+
+Upstream: [Varela Round Hebrew source](https://github.com/alefalefalef/Varela-Round-Hebrew/), [Fontsource Varela Round](https://fontsource.org/fonts/varela-round). The copyright notice and SIL Open Font License 1.1 are in `public/fonts/VarelaRound-OFL.txt`; retain that file when redistributing the font.

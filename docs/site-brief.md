@@ -53,7 +53,7 @@ Suggested buttons: לצפייה ברהיטים, בואו לבקר בחנות, ד
 
 ## Visual direction
 
-Combine family warmth with a clean, modern layout. Use warm off-white backgrounds, dark readable text, blue navigation and supporting elements, and red primary buttons. Furniture and the founders should dominate the photography. Use spacious sections and comfortably sized Hebrew typography, informed by the user's Oren Bechor reference site.
+The user's October 2, 2026 refresh request calls for a lighter, more visually inviting design closer to the Oren Bechor reference site. Use pale blue and white surfaces, rounded Varela Round Hebrew headings, yellow headline highlights and a warm yellow family section. Keep dark readable text, blue navigation and the original red primary buttons. Frame the real furniture and founders photographs with rounded corners and soft shadows. The site remains light regardless of device color preference, and respects reduced motion.
 
 Retain the recognizable business identity rather than redesigning the logo. Test text contrast when applying the supplied colors. Support right-to-left layout, keyboard navigation, visible focus, meaningful image descriptions, and reduced motion. Mobile visitors should have a persistent, accessible call-and-directions shortcut.
 

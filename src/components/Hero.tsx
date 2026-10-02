@@ -3,14 +3,23 @@ import { site } from '../content';
 import { BusinessImage } from './BusinessImage';
 
 export function Hero() {
+  const breakAt = site.heroTitle.indexOf(',');
   return (
     <section id="home" className="hero shell" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="eyebrow">
-          <span />
-          בית לרהיטים. משפחה מאז 1980.
-        </p>
-        <h1 id="hero-title">{site.heroTitle}</h1>
+        <p className="eyebrow">בית לרהיטים. משפחה מאז 1980.</p>
+        <h1 id="hero-title">
+          {breakAt >= 0 ? (
+            <>
+              {site.heroTitle.slice(0, breakAt + 1)}{' '}
+              <span className="hero-highlight">
+                {site.heroTitle.slice(breakAt + 1).trim()}
+              </span>
+            </>
+          ) : (
+            site.heroTitle
+          )}
+        </h1>
         <p className="hero-description">{site.heroDescription}</p>
         <div className="hero-actions">
           <a className="button primary" href="#furniture">

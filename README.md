@@ -33,7 +33,7 @@ Descriptions are plain text. Prices are optional positive numbers in shekels. `p
 
 The business telephone and address are confirmed. WhatsApp, email, hours, current prices, detailed product specifications, fulfillment coverage, times, costs, installation, warranty and the detailed order process await confirmation. Do not fill these gaps with historical promotions or assumptions. The grandfather's review of Hebrew copy is a follow-up to the user-authorized initial publication.
 
-Approved image sources and the self-hosted Heebo license are recorded in [docs/image-sources.md](docs/image-sources.md). The favicon is an unchanged copy of the original square business logo. Additional Facebook photographs require date verification within November 15, 2023 through November 17, 2025, inclusive. Use local image files, not expiring CDN URLs.
+Approved image sources and the self-hosted Heebo and Varela Round licenses are recorded in [docs/image-sources.md](docs/image-sources.md). The favicon is an unchanged copy of the original square business logo. Additional Facebook photographs require date verification within November 15, 2023 through November 17, 2025, inclusive. Use local image files, not expiring CDN URLs.
 
 ## Publishing and editor access
 

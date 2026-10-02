@@ -1,9 +1,30 @@
 import { useState } from 'react';
-import { ArrowUpLeftIcon, PlusIcon, PhoneIcon } from '@phosphor-icons/react';
+import {
+  ArrowUpLeftIcon,
+  PlusIcon,
+  PhoneIcon,
+  DoorOpenIcon,
+  BedIcon,
+  BabyIcon,
+  ArmchairIcon,
+  TableIcon,
+  MoonIcon,
+  OfficeChairIcon,
+} from '@phosphor-icons/react';
 import { categories, type CategoryId, type Product } from '../content';
 import { BusinessImage } from './BusinessImage';
 import { ImageDialog } from './ImageDialog';
 import { phoneHref } from './ContactLinks';
+
+const categoryIcons = {
+  wardrobes: DoorOpenIcon,
+  bedrooms: BedIcon,
+  children: BabyIcon,
+  sofas: ArmchairIcon,
+  dining: TableIcon,
+  mattresses: MoonIcon,
+  office: OfficeChairIcon,
+};
 
 export function FurnitureGallery({ items }: { items: Product[] }) {
   const [category, setCategory] = useState<CategoryId>('wardrobes');
@@ -27,18 +48,22 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
         role="group"
         aria-label="סינון רהיטים לפי קטגוריה"
       >
-        {categories.map((item) => (
-          <button
-            key={item.id}
-            aria-pressed={category === item.id}
-            onClick={() => {
-              setCategory(item.id);
-              setSelected(null);
-            }}
-          >
-            {item.label}
-          </button>
-        ))}
+        {categories.map((item) => {
+          const Icon = categoryIcons[item.id];
+          return (
+            <button
+              key={item.id}
+              aria-pressed={category === item.id}
+              onClick={() => {
+                setCategory(item.id);
+                setSelected(null);
+              }}
+            >
+              <Icon size={20} aria-hidden />
+              {item.label}
+            </button>
+          );
+        })}
       </div>
       <div className="gallery-description">
         <h3>{current.label}</h3>
