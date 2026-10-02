@@ -33,7 +33,7 @@ The gallery now has 83 images: 36 wardrobes/storage, 26 living-room furniture, 1
 
 The [import manifest](facebook-photo-import.json) records every reviewed canonical Facebook photo page, its date and the import decision. Added records include local assets, categories, dimensions and file sizes. The two publicly available 3D-photo previews retain their native resolution. Furniture descriptions describe visible features rather than unverified specifications.
 
-Facebook's signed-out view does not expose the complete album history; this is the accessible set, not all 2,000-plus album items. The original date restriction no longer applies. Historical price and promotion artwork remains in some furniture photos, with archive wording in their captions and a notice above the gallery. No historical prices populate current price fields.
+Facebook's signed-out view does not expose the complete album history; this is the accessible set, not all 2,000-plus album items. The original date restriction no longer applies. Historical price and promotion artwork remains in some furniture photos, with archive wording in their captions. No historical prices populate current price fields.
 
 ## Original file locations
 

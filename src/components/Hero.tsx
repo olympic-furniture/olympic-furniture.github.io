@@ -7,7 +7,6 @@ export function Hero() {
   return (
     <section id="home" className="hero shell" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <p className="eyebrow">בית לרהיטים. משפחה מאז 1980.</p>
         <h1 id="hero-title">
           {breakAt >= 0 ? (
             <>

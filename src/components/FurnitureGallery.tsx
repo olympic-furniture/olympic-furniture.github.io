@@ -99,41 +99,10 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
           );
         })}
       </div>
-      <div className="gallery-description">
-        <h3>{current.label}</h3>
-        <p>{current.description}</p>
-      </div>
-      <p className="gallery-note">
-        התמונות מציגות דוגמאות לרהיטים לאורך השנים. מחירים ומבצעים שמופיעים
-        בתמונות הם מפרסומים ישנים. לבירור מחיר וזמינות עדכניים, דברו איתנו.
-      </p>
       <p className="sr-only" role="status" aria-atomic="true">
         {current.label}: {visible.length} תמונות
         {visible.length > 0 && `, עמוד ${page + 1} מתוך ${pageCount}`}
       </p>
-      {pageCount > 1 && (
-        <nav className="gallery-pagination" aria-label="דפדוף בתמונות רהיטים">
-          <button
-            aria-label="העמוד הקודם"
-            aria-controls="furniture-grid"
-            disabled={page === 0}
-            onClick={() => setPageStart((page - 1) * pageSize)}
-          >
-            <CaretRightIcon size={24} aria-hidden />
-          </button>
-          <span className="gallery-page-count" aria-hidden="true">
-            עמוד {page + 1} מתוך {pageCount}
-          </span>
-          <button
-            aria-label="העמוד הבא"
-            aria-controls="furniture-grid"
-            disabled={page === pageCount - 1}
-            onClick={() => setPageStart((page + 1) * pageSize)}
-          >
-            <CaretLeftIcon size={24} aria-hidden />
-          </button>
-        </nav>
-      )}
       {visible.length ? (
         <div
           id="furniture-grid"
@@ -180,6 +149,29 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
             דברו איתנו
           </a>
         </div>
+      )}
+      {pageCount > 1 && (
+        <nav className="gallery-pagination" aria-label="דפדוף בתמונות רהיטים">
+          <button
+            aria-label="העמוד הקודם"
+            aria-controls="furniture-grid"
+            disabled={page === 0}
+            onClick={() => setPageStart((page - 1) * pageSize)}
+          >
+            <CaretRightIcon size={24} aria-hidden />
+          </button>
+          <span className="gallery-page-count" aria-hidden="true">
+            עמוד {page + 1} מתוך {pageCount}
+          </span>
+          <button
+            aria-label="העמוד הבא"
+            aria-controls="furniture-grid"
+            disabled={page === pageCount - 1}
+            onClick={() => setPageStart((page + 1) * pageSize)}
+          >
+            <CaretLeftIcon size={24} aria-hidden />
+          </button>
+        </nav>
       )}
       {selected && (
         <ImageDialog product={selected} onClose={() => setSelected(null)} />
