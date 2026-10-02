@@ -359,7 +359,8 @@ h1 {
 .gallery-note {
   font-size: 14px;
   color: var(--muted);
-  margin-top: 30px;
+  margin: 0 0 24px;
+  max-width: 75ch;
 }
 .empty-category {
   min-height: 270px;

@@ -67,6 +67,10 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
         <h3>{current.label}</h3>
         <p>{current.description}</p>
       </div>
+      <p className="gallery-note">
+        התמונות מציגות דוגמאות לרהיטים לאורך השנים. מחירים ומבצעים שמופיעים בתמונות
+        הם מפרסומים ישנים. לבירור מחיר וזמינות עדכניים, דברו איתנו.
+      </p>
       <p className="sr-only" role="status">
         {current.label}: {visible.length} תמונות
       </p>
@@ -113,9 +117,6 @@ export function FurnitureGallery({ items }: { items: Product[] }) {
           </a>
         </div>
       )}
-      <p className="gallery-note">
-        התמונות מציגות דוגמאות לרהיטים. לפרטים ולבירור זמינות, דברו איתנו.
-      </p>
       {selected && (
         <ImageDialog product={selected} onClose={() => setSelected(null)} />
       )}

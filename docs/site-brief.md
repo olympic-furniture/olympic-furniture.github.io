@@ -18,7 +18,7 @@ Built with React, TypeScript, and Tailwind CSS. The approved publishing destinat
 - Offer wardrobes, bedrooms, sofas, dining furniture, mattresses, and office furniture.
 - Write Hebrew copy for the grandfather to review.
 - Brand colors: red #e21c23 and blue #485e88.
-- Use existing business website images and the supplied founders photograph. Facebook permissions include the banner and photographs dated November 15, 2023 through November 17, 2025, inclusive.
+- Use existing business website images and the supplied founders photograph. The user subsequently authorized Facebook furniture photos from all dates and chose publicly accessible photos for now. The original date restriction no longer applies.
 
 ## Information requiring confirmation
 
@@ -84,7 +84,7 @@ The user supplied https://github.com/olympic-furniture/olympic-furniture.github.
 
 The old landing pages expose real images of the factory, wardrobes, beds, sofas, dining furniture, bedroom furniture, and the business logo. Their dimensions vary, so select images after inspecting their quality. Use local copies for the published site rather than expiring Facebook CDN links.
 
-The Facebook public view exposes the banner and some photographs, but does not expose the complete requested date range. Verify the dates of individual photographs before using them. The authorized landing-page images and founders photograph can support the first layout while additional Facebook images are obtained.
+The Facebook public view exposes the banner and some photographs, but not the complete album history. The current import reviewed 85 accessible photo pages and added 72 furniture images with local copies and descriptive Hebrew labels. Publication dates and import decisions are recorded in [the import manifest](facebook-photo-import.json). Exact repeats and non-furniture graphics are excluded; distinct furniture views are retained. Older photos containing historical prices or promotions carry archive captions and a notice above the gallery. Their prices are not copied into current price fields.
 
 One older landing page advertises a wardrobe at ₪1,400. Another image filename mentions a ₪1,190 promotion. These are historical promotions, not verified current prices. Do not present them as current offers. The dashboard will support prices once the family confirms them.
 

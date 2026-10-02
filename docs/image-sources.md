@@ -1,8 +1,8 @@
 # Image sources and font license
 
-Assets were retrieved and visually inspected on October 2, 2026. Landing-page photographs are authorized by the approved business brief. Facebook photograph dates were verified by the root agent in the T3 browser and fall within the user-authorized November 15, 2023 through November 17, 2025 range, inclusive. The supplied founders photograph is also authorized.
+Assets were retrieved and visually inspected on October 2, 2026. Landing-page photographs are authorized by the approved business brief. The user authorized business furniture photos from all dates, replacing the original date restriction, and chose publicly accessible photos for this import. Facebook photo pages and publication dates were inspected in the collaborative browser. The supplied founders photograph is also authorized.
 
-Photographs were converted to WebP with Pillow, with EXIF orientation applied. Images larger than 1600 pixels along either axis were resized to fit within 1600 × 1600. Smaller images retain their native dimensions. No furniture was generated, removed, recolored or cropped. Logo artwork uses lossless WebP. The total optimized image payload is 807,684 bytes.
+Photographs were converted to WebP with Pillow, with EXIF orientation applied. Images larger than 1600 pixels along either axis were resized to fit within 1600 × 1600. Smaller images retain their native dimensions. No furniture was generated, removed, recolored or cropped. Logo artwork uses lossless WebP. The total optimized image payload is 5,185,066 bytes.
 
 ## Local assets
 
@@ -20,10 +20,20 @@ Photographs were converted to WebP with Pillow, with EXIF orientation applied. I
 | `/images/showroom-sofa.webp` | 1200 × 1600 | 166,008 | Furniture gallery, sofas. | [Original page](https://www.facebook.com/photo.php?fbid=1250727543741445) | November 17, 2025 |
 | `/images/gray-bedroom.webp` | 1579 × 1141 | 74,964 | Furniture gallery, bedrooms; original post historical price deliberately omitted. | [Original page](https://www.facebook.com/photo.php?fbid=957926699688199) | November 5, 2024 |
 | `/images/guest-chair-flat.webp` | 1600 × 1200 | 52,130 | Furniture gallery, sofas; photographed open chair. | [Original page](https://www.facebook.com/photo.php?fbid=958620822952120) | November 6, 2024 |
-| `/images/guest-chair-angle.webp` | 1600 × 1200 | 75,426 | Alternate view available to future editors; not a separate furniture entry. | [Original page](https://www.facebook.com/photo.php?fbid=958620772952125) | November 6, 2024 |
+| `/images/guest-chair-angle.webp` | 1600 × 1200 | 75,426 | Furniture gallery, sofas; alternate view of the open chair. | [Original page](https://www.facebook.com/photo.php?fbid=958620772952125) | November 6, 2024 |
 | `/images/guest-chair.webp` | 1200 × 1600 | 48,474 | Furniture gallery, sofas; photographed light-colored chair. | [Original page](https://www.facebook.com/photo.php?fbid=958620672952135) | November 6, 2024 |
 | `/images/logo-banner.webp` | 1247 × 476 | 26,020 | Original authorized Facebook business banner; opening hero logo. | [Original page](https://www.facebook.com/photo.php?fbid=930294232451446) | September 29, 2024 |
 | `/images/founders.webp` | 1512 × 1006 | 161,654 | Family story; exact confirmed names in business content. | User attachment | Not supplied |
+
+## Public Facebook gallery import
+
+The October 2, 2026 import reviewed 85 publicly accessible photo pages: 80 from the public photo grid and five additional album photos. It added 72 gallery entries, retained four already published entries, omitted seven repeated photographs and excluded the logo and a holiday graphic from the furniture gallery. Different angles of the same furniture remain separate photographs.
+
+The gallery now has 83 images: 36 wardrobes/storage, 26 living-room furniture, 15 bedroom furniture, four desks/workspaces and two dining-room furniture images. No standalone mattress photos were found in the accessible set, so that category retains its contact prompt. Seven existing gallery photos came from the older business landing pages.
+
+The [import manifest](facebook-photo-import.json) records every reviewed canonical Facebook photo page, its date and the import decision. Added records include local assets, categories, dimensions and file sizes. The two publicly available 3D-photo previews retain their native resolution. Furniture descriptions describe visible features rather than unverified specifications.
+
+Facebook's signed-out view does not expose the complete album history; this is the accessible set, not all 2,000-plus album items. The original date restriction no longer applies. Historical price and promotion artwork remains in some furniture photos, with archive wording in their captions and a notice above the gallery. No historical prices populate current price fields.
 
 ## Original file locations
 
@@ -51,7 +61,6 @@ The canonical Facebook photo pages above preserve attribution after the CDN link
 - The landing-page wardrobe sale artwork advertises a historical ₪1,400 price and is excluded.
 - The landing-page side-table image filename advertises a historical ₪1,190 price; that asset is excluded.
 - The older collaged gallery and generic photographic brand banner are excluded in favor of individual furniture photographs.
-- Facebook photo `1260480809432785`, November 30, 2025, falls outside the authorized range and is excluded.
 - Facebook photo `930262535787949`, September 29, 2024, is a holiday graphic and is excluded.
 - No old post prices, sales claims, supplier logos or dimensions have been copied into editable furniture descriptions. Small artwork/watermarks already present in authorized photographs are preserved.
 
