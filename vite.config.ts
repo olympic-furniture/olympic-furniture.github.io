@@ -5,5 +5,5 @@ import { furnitureContentPlugin } from './scripts/content-plugin.ts';
 
 export default defineConfig({
   plugins: [furnitureContentPlugin(), react(), tailwindcss()],
-  test: { environment: 'jsdom' },
+  test: { environment: 'jsdom', setupFiles: ['./src/test/setup.ts'] },
 });
